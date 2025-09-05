@@ -1,0 +1,4735 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "csv to cXML",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "SFTPSender",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 211,
+                    "y": 142,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_33",
+                "diagramId": "BPMNShape_Participant_33",
+                "isDirty": false,
+                "attributes": {
+                    "name": "AribaNetwork",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 1132,
+                    "y": 551,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_33_Lane0",
+                "containedIn": "Participant_33",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_45",
+                "diagramId": "BPMNShape_Participant_45",
+                "isDirty": false,
+                "attributes": {
+                    "name": "EmailReceiver",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 561,
+                    "y": 551,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_45_Lane0",
+                "containedIn": "Participant_45",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 359,
+                    "y": 10,
+                    "width": 1207,
+                    "height": 484
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 1207,
+                    "height": 457
+                }
+            },
+            {
+                "id": "CallActivity_30",
+                "diagramId": "BPMNShape_CallActivity_30",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Add cXML Header ",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 633,
+                    "y": 357,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "SubProcess_38",
+                "diagramId": "BPMNShape_SubProcess_38",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Exception Subprocess",
+                    "tooltip": "",
+                    "type": "subProcess",
+                    "flavor": "ErrorEventSubProcessTemplate",
+                    "x": 54,
+                    "y": 289,
+                    "width": 418,
+                    "height": 114
+                }
+            },
+            {
+                "id": "EndEvent_40",
+                "diagramId": "BPMNShape_EndEvent_40",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_38",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End Notify",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 318,
+                    "y": 42,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "ServiceTask_42",
+                "diagramId": "BPMNShape_ServiceTask_42",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_38",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Notify Exception",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "Send",
+                    "x": 147,
+                    "y": 28,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_39",
+                "diagramId": "BPMNShape_StartEvent_39",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_38",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Error Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "errorStart",
+                    "x": 33,
+                    "y": 42,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "EndEvent_2",
+                "diagramId": "BPMNShape_EndEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 970,
+                    "y": 371,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_2784",
+                "diagramId": "BPMNShape_CallActivity_2784",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set MPL Custom Header with Purchase Order number",
+                    "tooltip": "Script = /script/SetMPLCustomHeader.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 708,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "ServiceTask_27",
+                "diagramId": "BPMNShape_ServiceTask_27",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Request Reply",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "ExternalCall",
+                    "x": 773,
+                    "y": 357,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_19",
+                "diagramId": "BPMNShape_CallActivity_19",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Validate mapped Purchase Order",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "XmlValidator",
+                    "x": 773,
+                    "y": 245,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_2",
+                "diagramId": "BPMNShape_StartEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 54,
+                    "y": 153,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_11",
+                "diagramId": "BPMNShape_CallActivity_11",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Map CSV Purchase Order to cXML",
+                    "tooltip": "Transforms one XML structure to another",
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "x": 909,
+                    "y": 245,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_36",
+                "diagramId": "BPMNShape_CallActivity_36",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Save VendorID and Purchase Order Number",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 633,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_13",
+                "diagramId": "BPMNShape_CallActivity_13",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Validate Purchase Order",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "XmlValidator",
+                    "x": 773,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_9",
+                "diagramId": "BPMNShape_CallActivity_9",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Create Header and Row Hierarchy",
+                    "tooltip": "Transforms one XML structure to another",
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "x": 504,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_7",
+                "diagramId": "BPMNShape_CallActivity_7",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Convert CSV Purchase Order to xml",
+                    "tooltip": "XML Schema = {{xml_schema}}_newline_Field seperator in CSV = {{field_separator}} ...",
+                    "type": "Activity",
+                    "flavor": "CsvToXmlConverter",
+                    "x": 111,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_22",
+                "diagramId": "BPMNShape_CallActivity_22",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Post-processing",
+                    "tooltip": "Transforms one XML structure to another",
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "x": 633,
+                    "y": 245,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_49",
+                "diagramId": "BPMNShape_CallActivity_49",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Split Grouped Purchase Orders in individual Purchase Order",
+                    "tooltip": "Type = Camel_newline_",
+                    "type": "Activity",
+                    "flavor": "Splitter_IteratingSplitter",
+                    "x": 372,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_47",
+                "diagramId": "BPMNShape_CallActivity_47",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Group Purchase Orders received in CSV Batch File",
+                    "tooltip": "Transforms one XML structure to another",
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "x": 243,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_25",
+                "diagramId": "BPMNShape_CallActivity_25",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Pre-processing",
+                    "tooltip": "Transforms one XML structure to another",
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "x": 909,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "ServiceTask_27",
+                "target": "Participant_33",
+                "id": "MessageFlow_35",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_35",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_27",
+                "targetDiagramElement": "BPMNShape_Participant_33",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "Ariba",
+                    "tooltip": "Name = Ariba_newline_Adapter Type = Ariba_newline_Transport Protocol =HTTPS_newline_Message Protocol = cXML_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_42",
+                "target": "Participant_45",
+                "id": "MessageFlow_46",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_46",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_42",
+                "targetDiagramElement": "BPMNShape_Participant_45",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "Mail",
+                    "tooltip": "Name = Mail_newline_Adapter Type = Mail_newline_Transport Protocol =SMTP_newline_Message Protocol = None_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_2",
+                "id": "MessageFlow_4",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_4",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_2",
+                "attributes": {
+                    "name": "SFTP",
+                    "tooltip": "Name = SFTP_newline_Adapter Type = SFTP_newline_Transport Protocol =SFTP_newline_Message Protocol = File_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_30",
+                "target": "ServiceTask_27",
+                "id": "SequenceFlow_31",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_31",
+                "sourceDiagramElement": "BPMNShape_CallActivity_30",
+                "targetDiagramElement": "BPMNShape_ServiceTask_27",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_42",
+                "target": "EndEvent_40",
+                "id": "SequenceFlow_43",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_43",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_42",
+                "targetDiagramElement": "BPMNShape_EndEvent_40",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_39",
+                "target": "ServiceTask_42",
+                "id": "SequenceFlow_41",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_41",
+                "sourceDiagramElement": "BPMNShape_StartEvent_39",
+                "targetDiagramElement": "BPMNShape_ServiceTask_42",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_2784",
+                "target": "CallActivity_13",
+                "id": "SequenceFlow_2785",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_2785",
+                "sourceDiagramElement": "BPMNShape_CallActivity_2784",
+                "targetDiagramElement": "BPMNShape_CallActivity_13",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_27",
+                "target": "EndEvent_2",
+                "id": "SequenceFlow_28",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_28",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_27",
+                "targetDiagramElement": "BPMNShape_EndEvent_2",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_19",
+                "target": "CallActivity_22",
+                "id": "SequenceFlow_20",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_20",
+                "sourceDiagramElement": "BPMNShape_CallActivity_19",
+                "targetDiagramElement": "BPMNShape_CallActivity_22",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_2",
+                "target": "CallActivity_7",
+                "id": "SequenceFlow_3",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_3",
+                "sourceDiagramElement": "BPMNShape_StartEvent_2",
+                "targetDiagramElement": "BPMNShape_CallActivity_7",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_11",
+                "target": "CallActivity_19",
+                "id": "SequenceFlow_12",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_12",
+                "sourceDiagramElement": "BPMNShape_CallActivity_11",
+                "targetDiagramElement": "BPMNShape_CallActivity_19",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_36",
+                "target": "CallActivity_2784",
+                "id": "SequenceFlow_37",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_37",
+                "sourceDiagramElement": "BPMNShape_CallActivity_36",
+                "targetDiagramElement": "BPMNShape_CallActivity_2784",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_13",
+                "target": "CallActivity_25",
+                "id": "SequenceFlow_14",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_14",
+                "sourceDiagramElement": "BPMNShape_CallActivity_13",
+                "targetDiagramElement": "BPMNShape_CallActivity_25",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_9",
+                "target": "CallActivity_36",
+                "id": "SequenceFlow_10",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_10",
+                "sourceDiagramElement": "BPMNShape_CallActivity_9",
+                "targetDiagramElement": "BPMNShape_CallActivity_36",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_7",
+                "target": "CallActivity_47",
+                "id": "SequenceFlow_8",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_8",
+                "sourceDiagramElement": "BPMNShape_CallActivity_7",
+                "targetDiagramElement": "BPMNShape_CallActivity_47",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_22",
+                "target": "CallActivity_30",
+                "id": "SequenceFlow_23",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_23",
+                "sourceDiagramElement": "BPMNShape_CallActivity_22",
+                "targetDiagramElement": "BPMNShape_CallActivity_30",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_49",
+                "target": "CallActivity_9",
+                "id": "SequenceFlow_50",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_50",
+                "sourceDiagramElement": "BPMNShape_CallActivity_49",
+                "targetDiagramElement": "BPMNShape_CallActivity_9",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_47",
+                "target": "CallActivity_49",
+                "id": "SequenceFlow_48",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_48",
+                "sourceDiagramElement": "BPMNShape_CallActivity_47",
+                "targetDiagramElement": "BPMNShape_CallActivity_49",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_25",
+                "target": "CallActivity_11",
+                "id": "SequenceFlow_26",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_26",
+                "sourceDiagramElement": "BPMNShape_CallActivity_25",
+                "targetDiagramElement": "BPMNShape_CallActivity_11",
+                "routingDirection": "north-north",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "componentVersion": "1.1",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9uL3ZlcnNpb246OjEuMS4xNw==",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration/version::1.1.17",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "allowed_headers",
+                    "additionalMetadata": {},
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "httpSessionHandling": {
+                    "value": "None",
+                    "defaultValue": "None",
+                    "key": "http_session_reuse",
+                    "additionalMetadata": {
+                        "isCombobox": "true"
+                    },
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "false",
+                    "key": "return_exception_to_sender",
+                    "additionalMetadata": {
+                        "isCombobox": "false"
+                    },
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "Translate CSV PO to cXML Order Request",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "bundleId": {
+                    "value": "Translate_CSV_PO_to_cXML_Order_Request",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "SFTPSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_33",
+                "name": {
+                    "value": "AribaNetwork",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            },
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_45",
+                "name": {
+                    "value": "EmailReceiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_35",
+                "componentVersion": "1.0",
+                "name": {
+                    "value": "Ariba",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "AribaNetwork",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "Ariba",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTPS",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "cXML",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.3.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.3.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.3.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTPS",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "cXML",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "Ariba",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "deploymentMode": {
+                        "value": "TEST",
+                        "defaultValue": "TEST",
+                        "key": "connection_mode",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "authenticationDomain": {
+                        "value": "NETWORK_ID",
+                        "defaultValue": "NETWORK_ID",
+                        "key": "authentication_domain",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "aribaNetworkID": {
+                        "value": "BUYER_ANID",
+                        "defaultValue": "BUYER_ANID",
+                        "key": "buyer_anid",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "accountType": {
+                        "value": "BUYER",
+                        "defaultValue": "BUYER",
+                        "key": "account_type",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "cXMLVersion": {
+                        "value": "1.2.042",
+                        "defaultValue": "1.2.042",
+                        "key": "cxml_version",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "userAgent": {
+                        "value": "Ariba SN",
+                        "defaultValue": "Ariba SN",
+                        "key": "user_agent",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "language": {
+                        "value": "EN_US",
+                        "defaultValue": "EN_US",
+                        "key": "language",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "getProfileURL": {
+                        "value": "https://service.ariba.com/service/transaction/cxml.asp",
+                        "defaultValue": "https://service.ariba.com/service/transaction/cxml.asp",
+                        "key": "ariba_network_url",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "privateKeyAlias": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "credentialName": {
+                        "value": "AN_SHARED_SECRET",
+                        "defaultValue": "AN_SHARED_SECRET",
+                        "key": "credential_name",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "authentication": {
+                        "value": "SHARED_KEY",
+                        "defaultValue": "SHARED_KEY",
+                        "key": "authentication_type",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6QXJpYmEvdHA6OkhUVFBTL21wOjpjWE1ML2RpcmVjdGlvbjo6UmVjZWl2ZXIvdmVyc2lvbjo6MS4wLjU=",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:Ariba/tp::HTTPS/mp::cXML/direction::Receiver/version::1.0.5",
+                "systemId": "Participant_33"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_46",
+                "componentVersion": "1.9",
+                "name": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "EmailReceiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "SMTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "com.sap.it.ide.mail.ui.namespace2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "com.sap.it.ide.mail.ui.archive2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "com.sap.it.ide.mail.ui.archive2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "SMTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cc": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "cc",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "server": {
+                        "value": "SMTP_SERVER:PORT",
+                        "defaultValue": "SMTP_SERVER:PORT",
+                        "key": "address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "attachmentTransferEncoding": {
+                        "value": "auto",
+                        "defaultValue": "auto",
+                        "key": "content_transfer_encoding",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "bcc": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "bcc",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "auth": {
+                        "value": "loginPlain",
+                        "defaultValue": "loginPlain",
+                        "key": "mail_authentication",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "subject": {
+                        "value": "Exception on PO CPI Integration Flow",
+                        "defaultValue": "Exception on PO CPI Integration Flow",
+                        "key": "subject",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.aes.keysize": {
+                        "value": "128",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "content_encoding": {
+                        "value": "UTF-8",
+                        "defaultValue": "UTF-8",
+                        "key": "body_encoding",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "none",
+                        "defaultValue": "none",
+                        "key": "proxy_type",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "keep_attachments": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": "add_message_attachments",
+                        "additionalMetadata": {
+                            "isCombobox": "false"
+                        },
+                        "isPersisted": true
+                    },
+                    "body": {
+                        "value": "An exception has occurred in your Integration Flow while processing csv POs. \nSee attached the payload that failed processing due to this exception:\n\n1) Short description of the Exception: \n${exception.message}\n\n2) Complete stacktrace of the Exception: \n${exception.stacktrace}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ssl": {
+                        "value": "starttls_optional",
+                        "defaultValue": "starttls_optional",
+                        "key": "protection",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "timeout": {
+                        "value": "30000",
+                        "defaultValue": "30000",
+                        "key": "mail_timeout",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.des.keysize": {
+                        "value": "128",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "content_type": {
+                        "value": "text/html",
+                        "defaultValue": "text/html",
+                        "key": "body_mime_type",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "signature.smime.clearText": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "locationId": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.type": {
+                        "value": "none",
+                        "defaultValue": "none",
+                        "key": "signature_and_encryption_type",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.algorithm": {
+                        "value": "aes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "from": {
+                        "value": "FROM_EMAIL",
+                        "defaultValue": "FROM_EMAIL",
+                        "key": "from_email",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "tokenCredential": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "to": {
+                        "value": "TO_EMAIL",
+                        "defaultValue": "TO_EMAIL",
+                        "key": "to_email",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "user": {
+                        "value": "SMTP_PASSWORD",
+                        "defaultValue": "SMTP_PASSWORD",
+                        "key": "credential_name_smtp",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "attachments": {
+                        "value": [
+                            {
+                                "attachment.value": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "attachment.type": {
+                                    "value": "text/plain",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "attachment.name": {
+                                    "value": "error_payload.txt",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "attachment.source": {
+                                    "value": "Body",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "signature.smime.table": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.keys": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6TWFpbC90cDo6U01UUC9tcDo6Tm9uZS9kaXJlY3Rpb246OlJlY2VpdmVyL3ZlcnNpb246OjEuOS4w",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:Mail/tp::SMTP/mp::None/direction::Receiver/version::1.9.0",
+                "systemId": "Participant_45"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_4",
+                "componentVersion": "1.9",
+                "name": {
+                    "value": "SFTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "SFTPSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "SFTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "SFTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "File",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.9.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.9.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.9.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "SFTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "File",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "SFTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "disconnect": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": "auto_disconnect",
+                        "additionalMetadata": {
+                            "isCombobox": "false"
+                        },
+                        "isPersisted": true
+                    },
+                    "fileName": {
+                        "value": "*.csv",
+                        "defaultValue": "*.csv",
+                        "key": "file_extension",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "maximumReconnectAttempts": {
+                        "value": "3",
+                        "defaultValue": "3",
+                        "key": "max_reconnect_attempts",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "stepwise": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": "change_dir_stepwise",
+                        "additionalMetadata": {
+                            "isCombobox": "false"
+                        },
+                        "isPersisted": true
+                    },
+                    "privateKeyAlias": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "location_id": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "recursive": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": "include_subdirectories",
+                        "additionalMetadata": {
+                            "isCombobox": "false"
+                        },
+                        "isPersisted": true
+                    },
+                    "flatten": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "path": {
+                        "value": "SFTP_OUTBOX",
+                        "defaultValue": "SFTP_OUTBOX",
+                        "key": "sftp_directory",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "noop": {
+                        "value": "delete",
+                        "defaultValue": "delete",
+                        "key": "post_processing",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "doneFileName": {
+                        "value": "${file:name}.done",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "file.move": {
+                        "value": ".archive",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "host": {
+                        "value": "SFTP_HOST",
+                        "defaultValue": "SFTP_HOST",
+                        "key": "sftp_host",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "connectTimeout": {
+                        "value": "10000",
+                        "defaultValue": "10000",
+                        "key": "timeout",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "file_sorting_criteria": {
+                        "value": "sort_by_none",
+                        "defaultValue": "sort_by_none",
+                        "key": "sorting",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "maxMessagesPerPoll": {
+                        "value": "5",
+                        "defaultValue": "5",
+                        "key": "nr_of_messages_per_poll",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "authentication": {
+                        "value": "user_password",
+                        "defaultValue": "user_password",
+                        "key": "authentication",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "file_sorting_direction": {
+                        "value": "sort_direction_asc",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "credential_name": {
+                        "value": "SFTP_PASSWORD",
+                        "defaultValue": "SFTP_PASSWORD",
+                        "key": "sftp_credentials",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "readLock": {
+                        "value": "none",
+                        "defaultValue": "none",
+                        "key": "read_lock_strategy",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "idempotentRepository": {
+                        "value": "database",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "none",
+                        "defaultValue": "none",
+                        "key": "proxy_type",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "reconnectDelay": {
+                        "value": "1000",
+                        "defaultValue": "1000",
+                        "key": "reconnect_delay",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "scheduleKey": {
+                        "value": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEveryMinute</cell><cell>1</cell></row><row><cell>timeType</cell><cell>TIME_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0+0/1+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                        "defaultValue": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEveryMinute</cell><cell>1</cell></row><row><cell>timeType</cell><cell>TIME_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0+0/1+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                        "key": "scheduler",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "file_lock_timeout": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": "lock_timeout",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "username": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "scheduler": {
+                    "externalizedKey": "scheduler",
+                    "modified": false,
+                    "noOfSchedules": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "triggerType": {
+                        "value": "cron",
+                        "defaultValue": "cron",
+                        "key": ""
+                    },
+                    "dateType": {
+                        "value": "DAILY",
+                        "defaultValue": "DAILY",
+                        "key": ""
+                    },
+                    "timeType": {
+                        "value": "TIME_INTERVAL",
+                        "defaultValue": "TIME_INTERVAL",
+                        "key": ""
+                    },
+                    "date": {
+                        "value": "09/04/2025",
+                        "defaultValue": "09/04/2025",
+                        "key": ""
+                    },
+                    "time": {
+                        "value": "12:14",
+                        "defaultValue": "12:14",
+                        "key": ""
+                    },
+                    "dayOfMonth": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "mon": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "tue": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "wed": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "thu": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "fri": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sat": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sun": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "onEveryDuration": {
+                        "value": "60",
+                        "defaultValue": "60",
+                        "key": ""
+                    },
+                    "fromInterval": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": ""
+                    },
+                    "toInterval": {
+                        "value": "24",
+                        "defaultValue": "24",
+                        "key": ""
+                    },
+                    "timeZone": {
+                        "value": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "defaultValue": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "key": ""
+                    },
+                    "additionalMetadata": {},
+                    "throwExceptionOnExpiry": {
+                        "value": true,
+                        "defaultValue": true,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "second": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "minute": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "hour": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "month": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "dayOfWeek": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "day_of_month": {
+                        "value": "?",
+                        "defaultValue": "?",
+                        "key": ""
+                    },
+                    "year": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "startAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "endAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "attributeBehaviour": {
+                        "value": "isRunOnceRequired,isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "defaultValue": "isRunOnceRequired,isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "key": ""
+                    },
+                    "scheduleType": {
+                        "value": "simpleSchedule",
+                        "defaultValue": "simpleSchedule",
+                        "key": ""
+                    },
+                    "simpleRepeat": {
+                        "value": "NONE",
+                        "defaultValue": "NONE",
+                        "key": ""
+                    },
+                    "simpleSchedule": {
+                        "value": "onDeployment",
+                        "defaultValue": "onDeployment",
+                        "key": ""
+                    },
+                    "simpleRunOn": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "simpleEvery": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "simpleDaysOfWeek": {
+                        "value": "SUN",
+                        "defaultValue": "SUN",
+                        "key": ""
+                    },
+                    "multipleScheduleObject": {
+                        "value": "",
+                        "values": [
+                            ""
+                        ],
+                        "defaultValue": "",
+                        "defaultValues": [
+                            ""
+                        ],
+                        "key": ""
+                    }
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6U0ZUUC90cDo6U0ZUUC9tcDo6RmlsZS9kaXJlY3Rpb246OlNlbmRlci92ZXJzaW9uOjoxLjkuMQ==",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:SFTP/tp::SFTP/mp::File/direction::Sender/version::1.9.1",
+                "systemId": "Participant_1"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "CallActivity_30",
+                "name": "Add cXML Header ",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "<cXML payloadID=\"OA.${date:now:yyyy}-${date:now:MM}-${date:now:dd}T${date:now:HH}:${date:now:mm}:${date:now:ss}\" timestamp=\"${date:now:yyyy}-${date:now:MM}-${date:now:dd}T${date:now:HH}:${date:now:mm}:${date:now:ss}\">\n<Header>\n<To>\n<Credential domain=\"VendorID\">\n<Identity>${property.VendorID}</Identity>\n</Credential>\n</To>\n</Header>\n<Request deploymentMode=\"test\">\n${property.ExtractedMessage}\n</Request>\n</cXML>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "/*",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "ExtractedMessage",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "org.w3c.dom.NodeList",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "SubProcess_38",
+                "name": "Exception Subprocess",
+                "componentVersion": "1.0",
+                "activityType": "ErrorEventSubProcessTemplate",
+                "displayName": "Exception Subprocess",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JFdmVudFN1YlByb2Nlc3NUZW1wbGF0ZS92ZXJzaW9uOjoxLjAuMg==",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorEventSubProcessTemplate/version::1.0.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_40",
+                "name": "End Notify",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "ServiceTask_42",
+                "name": "Notify Exception",
+                "componentVersion": "1.0",
+                "activityType": "Send",
+                "displayName": "Send",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U2VuZC92ZXJzaW9uOjoxLjAuNA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::Send/version::1.0.4",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_39",
+                "name": "Error Start",
+                "activityType": "",
+                "displayName": "Error Start Event",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JTdGFydEV2ZW50",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorStartEvent",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_2",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_2784",
+                "name": "Set MPL Custom Header with Purchase Order number",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/SetMPLCustomHeader.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4x",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "ServiceTask_27",
+                "name": "Request Reply",
+                "componentVersion": "1.0",
+                "activityType": "ExternalCall",
+                "displayName": "Request Reply",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXh0ZXJuYWxDYWxsL3ZlcnNpb246OjEuMC40",
+                "metadataURI": "ctype::FlowstepVariant/cname::ExternalCall/version::1.0.4",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_19",
+                "name": "Validate mapped Purchase Order",
+                "componentVersion": "2.1",
+                "activityType": "XmlValidator",
+                "displayName": "XML Validator",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "preventException": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xsd": {
+                        "value": "/xsd/OrderRequest_RD.xsd",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WG1sVmFsaWRhdG9yL3ZlcnNpb246OjIuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::XmlValidator/version::2.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_2",
+                "name": "Start",
+                "componentVersion": "1.0",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQvdmVyc2lvbjo6MS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent/version::1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_11",
+                "name": "Map CSV Purchase Order to cXML",
+                "componentVersion": "1.2",
+                "activityType": "XSLTMapping",
+                "displayName": "XSLT Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappingoutputformat": {
+                        "value": "Bytes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingHeaderNameKey": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/mapping/Mapping_Custom_CSV_PO_to_OrderRequest.xslt",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingSource": {
+                        "value": "mappingSrcIflow",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WFNMVE1hcHBpbmcvdmVyc2lvbjo6MS4yLjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::XSLTMapping/version::1.2.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_36",
+                "name": "Save VendorID and Purchase Order Number",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "/root/header/VendorID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "VendorID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "/root/header/OrderID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "PONumber",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_13",
+                "name": "Validate Purchase Order",
+                "componentVersion": "2.1",
+                "activityType": "XmlValidator",
+                "displayName": "XML Validator",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "preventException": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xsd": {
+                        "value": "/xsd/Custom_CSV_PO_RD.xsd",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WG1sVmFsaWRhdG9yL3ZlcnNpb246OjIuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::XmlValidator/version::2.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_9",
+                "name": "Create Header and Row Hierarchy",
+                "componentVersion": "1.2",
+                "activityType": "XSLTMapping",
+                "displayName": "XSLT Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappingoutputformat": {
+                        "value": "String",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingHeaderNameKey": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/mapping/AddHierarchy.xsl",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingSource": {
+                        "value": "mappingSrcIflow",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WFNMVE1hcHBpbmcvdmVyc2lvbjo6MS4yLjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::XSLTMapping/version::1.2.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_7",
+                "name": "Convert CSV Purchase Order to xml",
+                "componentVersion": "1.3",
+                "activityType": "CsvToXmlConverter",
+                "displayName": "CSV To XML Converter",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "Field_Separator_in_CSV": {
+                        "value": ",",
+                        "defaultValue": ",",
+                        "key": "field_separator",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "ignoreFirstLineAsHeader": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "XML_Schema_File_Path": {
+                        "value": "/xsd/csv.schema.with.fieldnames.xsd",
+                        "defaultValue": "/xsd/csv.schema.with.fieldnames.xsd",
+                        "key": "xml_schema",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "headerMapping": {
+                        "value": "mapHeadersToXSD",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "Record_Identifier_in_CSV": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "XPath_Field_Location": {
+                        "value": "/root/row",
+                        "defaultValue": "/root/row",
+                        "key": "path_to_target",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6Q3N2VG9YbWxDb252ZXJ0ZXIvdmVyc2lvbjo6MS4zLjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::CsvToXmlConverter/version::1.3.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_22",
+                "name": "Post-processing",
+                "componentVersion": "1.2",
+                "activityType": "XSLTMapping",
+                "displayName": "XSLT Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappingoutputformat": {
+                        "value": "Bytes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingHeaderNameKey": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/mapping/OrderRequest_postproc.xslt",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingSource": {
+                        "value": "mappingSrcIflow",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WFNMVE1hcHBpbmcvdmVyc2lvbjo6MS4yLjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::XSLTMapping/version::1.2.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_49",
+                "name": "Split Grouped Purchase Orders in individual Purchase Order",
+                "componentVersion": "1.5",
+                "activityType": "Camel",
+                "displayName": "Iterating Splitter",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "exprType": {
+                        "value": "XPath",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "Streaming": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "StopOnExecution": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SplitterThreads": {
+                        "value": "10",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "splitExprValue": {
+                        "value": "/batch/root",
+                        "defaultValue": "/batch/root",
+                        "key": "xpath_expression",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "ParallelProcessing": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "tokenValue": {
+                        "value": "/batch/root",
+                        "defaultValue": "/batch/root",
+                        "key": "xpath_expression",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "grouping": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "timeOut": {
+                        "value": "300",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6Q2FtZWwvdmVyc2lvbjo6MS41LjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Camel/version::1.5.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_47",
+                "name": "Group Purchase Orders received in CSV Batch File",
+                "componentVersion": "1.2",
+                "activityType": "XSLTMapping",
+                "displayName": "XSLT Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappingoutputformat": {
+                        "value": "Bytes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingHeaderNameKey": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/mapping/GroupPOs.xslt",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingSource": {
+                        "value": "mappingSrcIflow",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WFNMVE1hcHBpbmcvdmVyc2lvbjo6MS4yLjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::XSLTMapping/version::1.2.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_25",
+                "name": "Pre-processing",
+                "componentVersion": "1.2",
+                "activityType": "XSLTMapping",
+                "displayName": "XSLT Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappingoutputformat": {
+                        "value": "Bytes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingHeaderNameKey": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/mapping/Custom_CSV_PO_preproc.xslt",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingSource": {
+                        "value": "mappingSrcIflow",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WFNMVE1hcHBpbmcvdmVyc2lvbjo6MS4yLjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::XSLTMapping/version::1.2.0",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4z",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.3",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-ArtifactTrait": "",
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.9",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "Translate CSV PO to cXML Order Request",
+            "Origin-ModifiedDate": "1640333246880",
+            "Origin-Bundle-SymbolicName": "Translate_CSV_PO_to_cXML_Order_Request",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "Translate CSV PO to cXML Order Request",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "Translate_CSV_PO_to_cXML_Order_Request",
+            "Bundle-Version": "1.0.9",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Import-Service": "com.sap.esb.webservice.audit.log.AuditLogger,com.sap.esb.security.KeyManagerFactory;multiple:=false,com.sap.esb.security.TrustManagerFactory;multiple:=false,javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\",org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false,com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false"
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": [
+            {
+                "value": ",",
+                "defaultValue": ",",
+                "key": "field_separator",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                }
+            },
+            {
+                "value": "",
+                "defaultValue": "",
+                "key": "allowed_headers",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "None",
+                "defaultValue": "None",
+                "key": "http_session_reuse",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                }
+            },
+            {
+                "value": "/xsd/csv.schema.with.fieldnames.xsd",
+                "defaultValue": "/xsd/csv.schema.with.fieldnames.xsd",
+                "key": "xml_schema",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "/batch/root",
+                "defaultValue": "/batch/root",
+                "key": "xpath_expression",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "false",
+                "defaultValue": "false",
+                "key": "return_exception_to_sender",
+                "additionalMetadata": {
+                    "isCombobox": "false"
+                }
+            },
+            {
+                "value": "/root/row",
+                "defaultValue": "/root/row",
+                "key": "path_to_target",
+                "additionalMetadata": {}
+            }
+        ]
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "BUYER",
+                "defaultValue": "BUYER",
+                "key": "account_type",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "FROM_EMAIL",
+                "defaultValue": "FROM_EMAIL",
+                "key": "from_email",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Exception on PO CPI Integration Flow",
+                "defaultValue": "Exception on PO CPI Integration Flow",
+                "key": "subject",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": ",",
+                "defaultValue": ",",
+                "key": "field_separator",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "CsvToXmlConverter",
+                    "name": "Convert CSV Purchase Order to xml",
+                    "id": "CallActivity_7",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "CSV To XML Converter",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "EN_US",
+                "defaultValue": "EN_US",
+                "key": "language",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SFTP_HOST",
+                "defaultValue": "SFTP_HOST",
+                "key": "sftp_host",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "0",
+                "defaultValue": "0",
+                "key": "change_dir_stepwise",
+                "additionalMetadata": {
+                    "isCombobox": "false"
+                },
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "BUYER_ANID",
+                "defaultValue": "BUYER_ANID",
+                "key": "buyer_anid",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SHARED_KEY",
+                "defaultValue": "SHARED_KEY",
+                "key": "authentication_type",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "allowed_headers",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "id": "Collobaration_1",
+                    "IType": "DEFAULT_INTEGRATION_FLOW",
+                    "displayName": "Integration Flow",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "None",
+                "defaultValue": "None",
+                "key": "http_session_reuse",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "id": "Collobaration_1",
+                    "IType": "DEFAULT_INTEGRATION_FLOW",
+                    "displayName": "Integration Flow",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "https://service.ariba.com/service/transaction/cxml.asp",
+                "defaultValue": "https://service.ariba.com/service/transaction/cxml.asp",
+                "key": "ariba_network_url",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1",
+                "defaultValue": "1",
+                "key": "lock_timeout",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "5",
+                "defaultValue": "5",
+                "key": "nr_of_messages_per_poll",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "loginPlain",
+                "defaultValue": "loginPlain",
+                "key": "mail_authentication",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "delete",
+                "defaultValue": "delete",
+                "key": "post_processing",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "AN_SHARED_SECRET",
+                "defaultValue": "AN_SHARED_SECRET",
+                "key": "credential_name",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "0",
+                "defaultValue": "0",
+                "key": "include_subdirectories",
+                "additionalMetadata": {
+                    "isCombobox": "false"
+                },
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SMTP_PASSWORD",
+                "defaultValue": "SMTP_PASSWORD",
+                "key": "credential_name_smtp",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SFTP_PASSWORD",
+                "defaultValue": "SFTP_PASSWORD",
+                "key": "sftp_credentials",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "/xsd/csv.schema.with.fieldnames.xsd",
+                "defaultValue": "/xsd/csv.schema.with.fieldnames.xsd",
+                "key": "xml_schema",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "CsvToXmlConverter",
+                    "name": "Convert CSV Purchase Order to xml",
+                    "id": "CallActivity_7",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "CSV To XML Converter",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "auto",
+                "defaultValue": "auto",
+                "key": "content_transfer_encoding",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "/batch/root",
+                "defaultValue": "/batch/root",
+                "key": "xpath_expression",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Camel",
+                    "name": "Split Grouped Purchase Orders in individual Purchase Order",
+                    "id": "CallActivity_49",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Iterating Splitter",
+                    "refCount": 2
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "none",
+                "defaultValue": "none",
+                "key": "signature_and_encryption_type",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "none",
+                "defaultValue": "none",
+                "key": "read_lock_strategy",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "*.csv",
+                "defaultValue": "*.csv",
+                "key": "file_extension",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "bcc",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "3",
+                "defaultValue": "3",
+                "key": "max_reconnect_attempts",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "false",
+                "defaultValue": "false",
+                "key": "return_exception_to_sender",
+                "additionalMetadata": {
+                    "isCombobox": "false"
+                },
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "id": "Collobaration_1",
+                    "IType": "DEFAULT_INTEGRATION_FLOW",
+                    "displayName": "Integration Flow",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "starttls_optional",
+                "defaultValue": "starttls_optional",
+                "key": "protection",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1",
+                "defaultValue": "1",
+                "key": "auto_disconnect",
+                "additionalMetadata": {
+                    "isCombobox": "false"
+                },
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "text/html",
+                "defaultValue": "text/html",
+                "key": "body_mime_type",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "10000",
+                "defaultValue": "10000",
+                "key": "timeout",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "UTF-8",
+                "defaultValue": "UTF-8",
+                "key": "body_encoding",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEveryMinute</cell><cell>1</cell></row><row><cell>timeType</cell><cell>TIME_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0+0/1+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                "defaultValue": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEveryMinute</cell><cell>1</cell></row><row><cell>timeType</cell><cell>TIME_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0+0/1+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                "key": "scheduler",
+                "dataType": "custom:schedule"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "30000",
+                "defaultValue": "30000",
+                "key": "mail_timeout",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "/root/row",
+                "defaultValue": "/root/row",
+                "key": "path_to_target",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "CsvToXmlConverter",
+                    "name": "Convert CSV Purchase Order to xml",
+                    "id": "CallActivity_7",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "CSV To XML Converter",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "sort_by_none",
+                "defaultValue": "sort_by_none",
+                "key": "sorting",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Ariba SN",
+                "defaultValue": "Ariba SN",
+                "key": "user_agent",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "user_password",
+                "defaultValue": "user_password",
+                "key": "authentication",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "cc",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "5",
+                "defaultValue": "5",
+                "key": "nr_of_messages",
+                "dataType": "xsd:integer"
+            },
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1.2.042",
+                "defaultValue": "1.2.042",
+                "key": "cxml_version",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "TO_EMAIL",
+                "defaultValue": "TO_EMAIL",
+                "key": "to_email",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SMTP_SERVER:PORT",
+                "defaultValue": "SMTP_SERVER:PORT",
+                "key": "address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1",
+                "defaultValue": "1",
+                "key": "add_message_attachments",
+                "additionalMetadata": {
+                    "isCombobox": "false"
+                },
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "NETWORK_ID",
+                "defaultValue": "NETWORK_ID",
+                "key": "authentication_domain",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1000",
+                "defaultValue": "1000",
+                "key": "reconnect_delay",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "TEST",
+                "defaultValue": "TEST",
+                "key": "connection_mode",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Ariba",
+                    "id": "MessageFlow_35",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SFTP_OUTBOX",
+                "defaultValue": "SFTP_OUTBOX",
+                "key": "sftp_directory",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "none",
+                "defaultValue": "none",
+                "key": "proxy_type",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_46",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                },
+                {
+                    "name": "SFTP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "csv to cXML",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_Process_1": {},
+                "Participant_45": {},
+                "Participant_1": {},
+                "Participant_33": {}
+            },
+            "messageFlows": {
+                "MessageFlow_4": {},
+                "MessageFlow_35": {},
+                "MessageFlow_46": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_45": {},
+                "BPMNEdge_MessageFlow_35": {},
+                "BPMNEdge_MessageFlow_46": {},
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNShape_Participant_33": {},
+                "BPMNEdge_MessageFlow_4": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "EndEvent_40": {
+                "eventType": "message",
+                "name": "End Notify",
+                "parentId": "SubProcess_38",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_40",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "SequenceFlow_48": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_48",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_26": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_26",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_28": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_28",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_30": {
+                "name": "Add cXML Header ",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_30",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_23": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_23",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_4": {
+                "name": "SFTP",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "SFTP"
+                },
+                "id": "MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "SubProcess_38": {
+                "events": {
+                    "EndEvent_40": {},
+                    "StartEvent_39": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_41": {},
+                    "SequenceFlow_43": {}
+                },
+                "activities": {
+                    "ServiceTask_42": {}
+                },
+                "gateways": {},
+                "name": "Exception Subprocess",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "subProcess",
+                    "flavor": "ErrorEventSubProcessTemplate",
+                    "displayName": "Exception Subprocess"
+                },
+                "id": "SubProcess_38",
+                "classDefinition": "sap.bpm.modelling.SubProcess"
+            },
+            "ServiceTask_42": {
+                "name": "Notify Exception",
+                "parentId": "SubProcess_38",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Send",
+                    "displayName": "Send"
+                },
+                "id": "ServiceTask_42",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_8": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_8",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "EndEvent_2": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "CallActivity_2784": {
+                "name": "Set MPL Custom Header with Purchase Order number",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_2784",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "Participant_45": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "EmailReceiver",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_45",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "StartEvent_39": {
+                "eventType": "error",
+                "name": "Error Start",
+                "parentId": "SubProcess_38",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "errorStart",
+                    "displayName": "Error Start Event"
+                },
+                "id": "StartEvent_39",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "SequenceFlow_3": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_3",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "ServiceTask_27": {
+                "name": "Request Reply",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "ExternalCall",
+                    "displayName": "Request Reply"
+                },
+                "id": "ServiceTask_27",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_19": {
+                "name": "Validate mapped Purchase Order",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XmlValidator",
+                    "displayName": "XML Validator"
+                },
+                "id": "CallActivity_19",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {
+                    "SubProcess_38": {}
+                },
+                "events": {
+                    "StartEvent_2": {},
+                    "EndEvent_2": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_26": {},
+                    "SequenceFlow_37": {},
+                    "SequenceFlow_48": {},
+                    "SequenceFlow_2785": {},
+                    "SequenceFlow_28": {},
+                    "SequenceFlow_23": {},
+                    "SequenceFlow_12": {},
+                    "SequenceFlow_8": {},
+                    "SequenceFlow_14": {},
+                    "SequenceFlow_3": {},
+                    "SequenceFlow_20": {},
+                    "SequenceFlow_31": {},
+                    "SequenceFlow_10": {},
+                    "SequenceFlow_50": {}
+                },
+                "activities": {
+                    "CallActivity_30": {},
+                    "CallActivity_2784": {},
+                    "CallActivity_9": {},
+                    "CallActivity_7": {},
+                    "ServiceTask_27": {},
+                    "CallActivity_19": {},
+                    "CallActivity_11": {},
+                    "CallActivity_22": {},
+                    "CallActivity_49": {},
+                    "CallActivity_47": {},
+                    "CallActivity_36": {},
+                    "CallActivity_25": {},
+                    "CallActivity_13": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "StartEvent_2": {
+                "eventType": "message",
+                "name": "Start",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "CallActivity_11": {
+                "name": "Map CSV Purchase Order to cXML",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "displayName": "XSLT Mapping"
+                },
+                "id": "CallActivity_11",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_41": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_41",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_20": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_20",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "SFTPSender",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "SequenceFlow_43": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_43",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_35": {
+                "name": "Ariba",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "Ariba"
+                },
+                "id": "MessageFlow_35",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_36": {
+                "name": "Save VendorID and Purchase Order Number",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_36",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_13": {
+                "name": "Validate Purchase Order",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XmlValidator",
+                    "displayName": "XML Validator"
+                },
+                "id": "CallActivity_13",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_37": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_37",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_2785": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_2785",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_12": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_12",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_14": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_14",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "Participant_33": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "AribaNetwork",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_33",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "CallActivity_9": {
+                "name": "Create Header and Row Hierarchy",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "displayName": "XSLT Mapping"
+                },
+                "id": "CallActivity_9",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_7": {
+                "name": "Convert CSV Purchase Order to xml",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "CsvToXmlConverter",
+                    "displayName": "CSV To XML Converter"
+                },
+                "id": "CallActivity_7",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_22": {
+                "name": "Post-processing",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "displayName": "XSLT Mapping"
+                },
+                "id": "CallActivity_22",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_31": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_31",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_10": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_10",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_46": {
+                "name": "Mail",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "Mail"
+                },
+                "id": "MessageFlow_46",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_49": {
+                "name": "Split Grouped Purchase Orders in individual Purchase Order",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Splitter_IteratingSplitter",
+                    "displayName": "Iterating Splitter"
+                },
+                "id": "CallActivity_49",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_47": {
+                "name": "Group Purchase Orders received in CSV Batch File",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "displayName": "XSLT Mapping"
+                },
+                "id": "CallActivity_47",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_25": {
+                "name": "Pre-processing",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "displayName": "XSLT Mapping"
+                },
+                "id": "CallActivity_25",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_50": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_50",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_EndEvent_40": {
+                "x": 721.0,
+                "y": 330.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_40",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_40",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_11": {
+                "x": 1258.0,
+                "y": 244.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Transforms one XML structure to another",
+                "object": "CallActivity_11",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_11",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_22": {
+                "x": 982.0,
+                "y": 244.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Transforms one XML structure to another",
+                "object": "CallActivity_22",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_22",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_13": {
+                "x": 1122.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "CallActivity_13",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_13",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_30": {
+                "x": 982.0,
+                "y": 356.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_30",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_30",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": 201.0,
+                "y": 104.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_19": {
+                "x": 1122.0,
+                "y": 244.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "CallActivity_19",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_19",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_36": {
+                "x": 982.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_36",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_36",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_47": {
+                "x": 592.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Transforms one XML structure to another",
+                "object": "CallActivity_47",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_47",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_25": {
+                "x": 1258.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Transforms one XML structure to another",
+                "object": "CallActivity_25",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_25",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_49": {
+                "x": 721.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Type = Camel\n",
+                "object": "CallActivity_49",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_49",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_SubProcess_38": {
+                "x": 403.0,
+                "y": 288.0,
+                "width": 418.0,
+                "height": 114.0,
+                "tooltip": "",
+                "object": "SubProcess_38",
+                "symbols": {
+                    "BPMNShape_ServiceTask_42": {},
+                    "BPMNShape_EndEvent_40": {},
+                    "BPMNEdge_SequenceFlow_43": {},
+                    "BPMNShape_StartEvent_39": {},
+                    "BPMNEdge_SequenceFlow_41": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_SubProcess_38",
+                "classDefinition": "sap.bpm.modelling.ui.SubProcessSymbol"
+            },
+            "BPMNShape_ServiceTask_42": {
+                "x": 550.0,
+                "y": 316.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "ServiceTask_42",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ServiceTask_42",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_EndEvent_2": {
+                "x": 1319.0,
+                "y": 370.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_9": {
+                "x": 853.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Transforms one XML structure to another",
+                "object": "CallActivity_9",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_9",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_StartEvent_2": {
+                "x": 403.0,
+                "y": 152.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_CallActivity_7": {
+                "x": 460.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "XML Schema = {{xml_schema}}\nField seperator in CSV = {{field_separator}} ...",
+                "object": "CallActivity_7",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_7",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_2784": {
+                "x": 1057.0,
+                "y": 22.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/SetMPLCustomHeader.groovy;Function = ",
+                "object": "CallActivity_2784",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_2784",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_ServiceTask_27": {
+                "x": 1122.0,
+                "y": 356.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "ServiceTask_27",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ServiceTask_27",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_45": {
+                "x": 551.0,
+                "y": 513.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_45",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_45",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_StartEvent_39": {
+                "x": 436.0,
+                "y": 330.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_39",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_39",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_Participant_33": {
+                "x": 1122.0,
+                "y": 513.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_33",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_33",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 349.0,
+                "y": -28.0,
+                "width": 1207.0,
+                "height": 484.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_CallActivity_11": {},
+                    "BPMNShape_CallActivity_13": {},
+                    "BPMNShape_CallActivity_30": {},
+                    "BPMNShape_CallActivity_19": {},
+                    "BPMNEdge_SequenceFlow_23": {},
+                    "BPMNShape_CallActivity_36": {},
+                    "BPMNShape_SubProcess_38": {},
+                    "BPMNEdge_SequenceFlow_20": {},
+                    "BPMNShape_EndEvent_2": {},
+                    "BPMNShape_CallActivity_9": {},
+                    "BPMNShape_StartEvent_2": {},
+                    "BPMNEdge_SequenceFlow_14": {},
+                    "BPMNShape_CallActivity_7": {},
+                    "BPMNEdge_SequenceFlow_37": {},
+                    "BPMNShape_CallActivity_22": {},
+                    "BPMNEdge_SequenceFlow_10": {},
+                    "BPMNEdge_SequenceFlow_12": {},
+                    "BPMNShape_CallActivity_25": {},
+                    "BPMNEdge_SequenceFlow_50": {},
+                    "BPMNShape_CallActivity_47": {},
+                    "BPMNShape_CallActivity_49": {},
+                    "BPMNEdge_SequenceFlow_31": {},
+                    "BPMNEdge_SequenceFlow_2785": {},
+                    "BPMNEdge_SequenceFlow_48": {},
+                    "BPMNEdge_SequenceFlow_26": {},
+                    "BPMNEdge_SequenceFlow_8": {},
+                    "BPMNShape_CallActivity_2784": {},
+                    "BPMNShape_ServiceTask_27": {},
+                    "BPMNEdge_SequenceFlow_28": {},
+                    "BPMNEdge_SequenceFlow_3": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_10": {
+                "object": "SequenceFlow_10",
+                "sourceSymbol": "BPMNShape_CallActivity_9",
+                "targetSymbol": "BPMNShape_CallActivity_36",
+                "tooltip": "",
+                "points": "903.0,168.0 1032.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_10",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_43": {
+                "object": "SequenceFlow_43",
+                "sourceSymbol": "BPMNShape_ServiceTask_42",
+                "targetSymbol": "BPMNShape_EndEvent_40",
+                "tooltip": "",
+                "points": "600.0,346.0 737.0,346.0",
+                "id": "BPMNEdge_SequenceFlow_43",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_35": {
+                "object": "MessageFlow_35",
+                "sourceSymbol": "BPMNShape_ServiceTask_27",
+                "targetSymbol": "BPMNShape_Participant_33",
+                "tooltip": "Name = Ariba\nAdapter Type = Ariba\nTransport Protocol =HTTPS\nMessage Protocol = cXML\n",
+                "id": "BPMNEdge_MessageFlow_35",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_46": {
+                "object": "MessageFlow_46",
+                "sourceSymbol": "BPMNShape_ServiceTask_42",
+                "targetSymbol": "BPMNShape_Participant_45",
+                "tooltip": "Name = Mail\nAdapter Type = Mail\nTransport Protocol =SMTP\nMessage Protocol = None\n",
+                "id": "BPMNEdge_MessageFlow_46",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_23": {
+                "object": "SequenceFlow_23",
+                "sourceSymbol": "BPMNShape_CallActivity_22",
+                "targetSymbol": "BPMNShape_CallActivity_30",
+                "tooltip": "",
+                "points": "1032.0,274.0 1032.0,386.0",
+                "id": "BPMNEdge_SequenceFlow_23",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_12": {
+                "object": "SequenceFlow_12",
+                "sourceSymbol": "BPMNShape_CallActivity_11",
+                "targetSymbol": "BPMNShape_CallActivity_19",
+                "tooltip": "",
+                "points": "1308.0,274.0 1172.0,274.0",
+                "id": "BPMNEdge_SequenceFlow_12",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_50": {
+                "object": "SequenceFlow_50",
+                "sourceSymbol": "BPMNShape_CallActivity_49",
+                "targetSymbol": "BPMNShape_CallActivity_9",
+                "tooltip": "",
+                "points": "771.0,168.0 903.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_50",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_41": {
+                "object": "SequenceFlow_41",
+                "sourceSymbol": "BPMNShape_StartEvent_39",
+                "targetSymbol": "BPMNShape_ServiceTask_42",
+                "tooltip": "",
+                "points": "452.0,346.0 600.0,346.0",
+                "id": "BPMNEdge_SequenceFlow_41",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_20": {
+                "object": "SequenceFlow_20",
+                "sourceSymbol": "BPMNShape_CallActivity_19",
+                "targetSymbol": "BPMNShape_CallActivity_22",
+                "tooltip": "",
+                "points": "1172.0,274.0 1032.0,274.0",
+                "id": "BPMNEdge_SequenceFlow_20",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_31": {
+                "object": "SequenceFlow_31",
+                "sourceSymbol": "BPMNShape_CallActivity_30",
+                "targetSymbol": "BPMNShape_ServiceTask_27",
+                "tooltip": "",
+                "points": "1032.0,386.0 1172.0,386.0",
+                "id": "BPMNEdge_SequenceFlow_31",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_2785": {
+                "object": "SequenceFlow_2785",
+                "sourceSymbol": "BPMNShape_CallActivity_2784",
+                "targetSymbol": "BPMNShape_CallActivity_13",
+                "tooltip": "",
+                "points": "1107.0,52.0 1107.0,110.0 1172.0,110.0 1172.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_2785",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_14": {
+                "object": "SequenceFlow_14",
+                "sourceSymbol": "BPMNShape_CallActivity_13",
+                "targetSymbol": "BPMNShape_CallActivity_25",
+                "tooltip": "",
+                "points": "1172.0,168.0 1308.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_14",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_48": {
+                "object": "SequenceFlow_48",
+                "sourceSymbol": "BPMNShape_CallActivity_47",
+                "targetSymbol": "BPMNShape_CallActivity_49",
+                "tooltip": "",
+                "points": "642.0,168.0 771.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_48",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_26": {
+                "object": "SequenceFlow_26",
+                "sourceSymbol": "BPMNShape_CallActivity_25",
+                "targetSymbol": "BPMNShape_CallActivity_11",
+                "tooltip": "",
+                "points": "1308.0,168.0 1308.0,274.0",
+                "id": "BPMNEdge_SequenceFlow_26",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_37": {
+                "object": "SequenceFlow_37",
+                "sourceSymbol": "BPMNShape_CallActivity_36",
+                "targetSymbol": "BPMNShape_CallActivity_2784",
+                "tooltip": "",
+                "points": "1032.0,168.0 1032.0,110.0 1107.0,110.0 1107.0,52.0",
+                "id": "BPMNEdge_SequenceFlow_37",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_8": {
+                "object": "SequenceFlow_8",
+                "sourceSymbol": "BPMNShape_CallActivity_7",
+                "targetSymbol": "BPMNShape_CallActivity_47",
+                "tooltip": "",
+                "points": "510.0,168.0 642.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_8",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_28": {
+                "object": "SequenceFlow_28",
+                "sourceSymbol": "BPMNShape_ServiceTask_27",
+                "targetSymbol": "BPMNShape_EndEvent_2",
+                "tooltip": "",
+                "points": "1172.0,386.0 1335.0,386.0",
+                "id": "BPMNEdge_SequenceFlow_28",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_3": {
+                "object": "SequenceFlow_3",
+                "sourceSymbol": "BPMNShape_StartEvent_2",
+                "targetSymbol": "BPMNShape_CallActivity_7",
+                "tooltip": "",
+                "points": "419.0,168.0 510.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_3",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_4": {
+                "object": "MessageFlow_4",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_2",
+                "tooltip": "Name = SFTP\nAdapter Type = SFTP\nTransport Protocol =SFTP\nMessage Protocol = File\n",
+                "id": "BPMNEdge_MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

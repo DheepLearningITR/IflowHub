@@ -1,0 +1,3404 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "Send Confirmation Message to SAP Master Data Governance",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "UploadiFlow",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 10,
+                    "y": 260,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_2",
+                "diagramId": "BPMNShape_Participant_2",
+                "isDirty": false,
+                "attributes": {
+                    "name": "OP_MDG",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 1890,
+                    "y": 10,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_2_Lane0",
+                "containedIn": "Participant_2",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 210,
+                    "y": 250,
+                    "width": 1830,
+                    "height": 330
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 1830,
+                    "height": 303
+                }
+            },
+            {
+                "id": "CallActivity_90961",
+                "diagramId": "BPMNShape_CallActivity_90961",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Split Payload To Create Confirmation Message For All BP",
+                    "tooltip": "Type = GeneralSplitter_newline_",
+                    "type": "Activity",
+                    "flavor": "Splitter_GeneralSplitter",
+                    "x": 434,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90971",
+                "diagramId": "BPMNShape_CallActivity_90971",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Save Payload in Property",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 1394,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90973",
+                "diagramId": "BPMNShape_CallActivity_90973",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Remove Multimap Tags After Splitting",
+                    "tooltip": "Script = /script/RemoveMultimapTagsAfterSplitting.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 1234,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90951",
+                "diagramId": "BPMNShape_CallActivity_90951",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Generate UUID for Confirmation Message",
+                    "tooltip": "Script = /script/GenerateUUID.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 114,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90954",
+                "diagramId": "BPMNShape_CallActivity_90954",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Prepare Properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 274,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90975",
+                "diagramId": "BPMNShape_CallActivity_90975",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Generate UUID for BusinessPartner MessageHeader ",
+                    "tooltip": "Script = /script/GenerateUUID.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 594,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "EndEvent_2",
+                "diagramId": "BPMNShape_EndEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 1714,
+                    "y": 37,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_90964",
+                "diagramId": "BPMNShape_CallActivity_90964",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Gather 1",
+                    "tooltip": "Message Type = SameXMLFormat_newline_Aggregation Algorithm = sap-identical-multi-mapping",
+                    "type": "Activity",
+                    "flavor": "Gather",
+                    "x": 1074,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_5",
+                "diagramId": "BPMNShape_CallActivity_5",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Concat Business Partner To Property",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 914,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "SubProcess_90977",
+                "diagramId": "BPMNShape_SubProcess_90977",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Exception Subprocess 1",
+                    "tooltip": "",
+                    "type": "subProcess",
+                    "flavor": "ErrorEventSubProcessTemplate",
+                    "x": 648,
+                    "y": 143,
+                    "width": 526,
+                    "height": 140
+                }
+            },
+            {
+                "id": "CallActivity_90983",
+                "diagramId": "BPMNShape_CallActivity_90983",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_90977",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Log Error",
+                    "tooltip": "Script = /script/LoggingScript.groovy;Function = errorLogging",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 263,
+                    "y": 40,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90982",
+                "diagramId": "BPMNShape_CallActivity_90982",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_90977",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Build Error Body ",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 103,
+                    "y": 40,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "EndEvent_90981",
+                "diagramId": "BPMNShape_EndEvent_90981",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_90977",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Error End 1",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "errorEnd",
+                    "x": 430,
+                    "y": 54,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "StartEvent_90978",
+                "diagramId": "BPMNShape_StartEvent_90978",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_90977",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Error Start 1",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "errorStart",
+                    "x": 38,
+                    "y": 46,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_90967",
+                "diagramId": "BPMNShape_CallActivity_90967",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Prepare Properties For Each BP And Create BusinessPartnerSUITEReplicateConfirmationMessage",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 754,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_90969",
+                "diagramId": "BPMNShape_CallActivity_90969",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Create Complete Confirmation Message",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 1554,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_90948",
+                "diagramId": "BPMNShape_StartEvent_90948",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start 1",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 22,
+                    "y": 37,
+                    "width": 32,
+                    "height": 32
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_90948",
+                "id": "MessageFlow_90949",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_90949",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_90948",
+                "attributes": {
+                    "name": "ProcessDirect",
+                    "tooltip": "Name = ProcessDirect_newline_Adapter Type = ProcessDirect_newline_Transport Protocol =Not Applicable_newline_Message Protocol = Not Applicable_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "EndEvent_2",
+                "target": "Participant_2",
+                "id": "MessageFlow_4",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_4",
+                "sourceDiagramElement": "BPMNShape_EndEvent_2",
+                "targetDiagramElement": "BPMNShape_Participant_2",
+                "attributes": {
+                    "name": "SOAP",
+                    "tooltip": "Name = SOAP_newline_Adapter Type = SOAP_newline_Transport Protocol = HTTPS_newline_Message Protocol = Plain SOAP_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90961",
+                "target": "CallActivity_90975",
+                "id": "SequenceFlow_90962",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90962",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90961",
+                "targetDiagramElement": "BPMNShape_CallActivity_90975",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90971",
+                "target": "CallActivity_90969",
+                "id": "SequenceFlow_90972",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90972",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90971",
+                "targetDiagramElement": "BPMNShape_CallActivity_90969",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90973",
+                "target": "CallActivity_90971",
+                "id": "SequenceFlow_90974",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90974",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90973",
+                "targetDiagramElement": "BPMNShape_CallActivity_90971",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90951",
+                "target": "CallActivity_90954",
+                "id": "SequenceFlow_90952",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90952",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90951",
+                "targetDiagramElement": "BPMNShape_CallActivity_90954",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90954",
+                "target": "CallActivity_90961",
+                "id": "SequenceFlow_90956",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90956",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90954",
+                "targetDiagramElement": "BPMNShape_CallActivity_90961",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90975",
+                "target": "CallActivity_90967",
+                "id": "SequenceFlow_90976",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90976",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90975",
+                "targetDiagramElement": "BPMNShape_CallActivity_90967",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90964",
+                "target": "CallActivity_90973",
+                "id": "SequenceFlow_90965",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90965",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90964",
+                "targetDiagramElement": "BPMNShape_CallActivity_90973",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_5",
+                "target": "CallActivity_90964",
+                "id": "SequenceFlow_6",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6",
+                "sourceDiagramElement": "BPMNShape_CallActivity_5",
+                "targetDiagramElement": "BPMNShape_CallActivity_90964",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90983",
+                "target": "EndEvent_90981",
+                "id": "SequenceFlow_90986",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90986",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90983",
+                "targetDiagramElement": "BPMNShape_EndEvent_90981",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90982",
+                "target": "CallActivity_90983",
+                "id": "SequenceFlow_90985",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90985",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90982",
+                "targetDiagramElement": "BPMNShape_CallActivity_90983",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_90978",
+                "target": "CallActivity_90982",
+                "id": "SequenceFlow_90984",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90984",
+                "sourceDiagramElement": "BPMNShape_StartEvent_90978",
+                "targetDiagramElement": "BPMNShape_CallActivity_90982",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90967",
+                "target": "CallActivity_5",
+                "id": "SequenceFlow_90968",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90968",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90967",
+                "targetDiagramElement": "BPMNShape_CallActivity_5",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_90969",
+                "target": "EndEvent_2",
+                "id": "SequenceFlow_90970",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90970",
+                "sourceDiagramElement": "BPMNShape_CallActivity_90969",
+                "targetDiagramElement": "BPMNShape_EndEvent_2",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_90948",
+                "target": "CallActivity_90951",
+                "id": "SequenceFlow_90958",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_90958",
+                "sourceDiagramElement": "BPMNShape_StartEvent_90948",
+                "targetDiagramElement": "BPMNShape_CallActivity_90951",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "componentVersion": "1.2",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9uL3ZlcnNpb246OjEuMi40",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration/version::1.2.4",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "xmlns:p1=http://sap.com/xi/SAP_BS_FND/MDG/Global2",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "httpSessionHandling": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlMaxAge": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "corsEnabled": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "exposedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "bundleId": {
+                    "value": "Send_Confirmation_Message_to_SAP_Master_Data_Governance",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedOrigins": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlAllowCredentials": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "Send Confirmation Message to SAP Master Data Governance",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedMethods": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "UploadiFlow",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_2",
+                "name": {
+                    "value": "OP_MDG",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_90949",
+                "componentVersion": "1.1",
+                "name": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "UploadiFlow",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "SAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "address": {
+                        "value": "sendConfirmation",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpQcm9jZXNzRGlyZWN0L3ZlbmRvcjo6U0FQL3RwOjpOb3QgQXBwbGljYWJsZS9tcDo6Tm90IEFwcGxpY2FibGUvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4xLjI=",
+                "metadataURI": "ctype::AdapterVariant/cname::ProcessDirect/vendor::SAP/tp::Not Applicable/mp::Not Applicable/direction::Sender/version::1.1.2",
+                "systemId": "Participant_1"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_4",
+                "componentVersion": "1.10",
+                "name": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "OP_MDG",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Plain SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.12.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.12.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.12.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "SAP RM",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cleanupHeaders": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "address": {
+                        "value": "{{SAP_MDG}}{{SAP_Client_No}}",
+                        "defaultValue": "{{SAP_MDG}}{{SAP_Client_No}}",
+                        "key": "",
+                        "partialParameters": [
+                            {
+                                "value": "SAP MDG SOAP Endpoint",
+                                "defaultValue": "SAP MDG SOAP Endpoint",
+                                "key": "SAP_MDG",
+                                "additionalMetadata": {}
+                            },
+                            {
+                                "value": "SAP Client No",
+                                "defaultValue": "SAP Client No",
+                                "key": "SAP_Client_No",
+                                "additionalMetadata": {}
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "allowChunking": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SapRmMessageIdDetermination": {
+                        "value": "Reuse",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "sapcc",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapWsdlPortName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "operationName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "privateKeyAlias": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyHost": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "location_id": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "LocationID",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "proxyPort": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapWsdlURL": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CompressMessage": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "sendHttpResponseCode": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapServiceName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "credentialName": {
+                        "value": "SAP MDG Credentials",
+                        "defaultValue": "SAP MDG Credentials",
+                        "key": "CredentialName",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "requestTimeout": {
+                        "value": "60000",
+                        "defaultValue": "60000",
+                        "key": "TimeoutMDG",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "SourceForSapRmMessageId": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "authentication": {
+                        "value": "Basic",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "KeepConnectionAlive": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6U09BUC90cDo6SFRUUC9tcDo6UGxhaW4gU09BUC9kaXJlY3Rpb246OlJlY2VpdmVyL3ZlcnNpb246OjEuMTAuMQ==",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:SOAP/tp::HTTP/mp::Plain SOAP/direction::Receiver/version::1.10.1",
+                "systemId": "Participant_2"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "CallActivity_90961",
+                "name": "Split Payload To Create Confirmation Message For All BP",
+                "componentVersion": "1.5",
+                "activityType": "GeneralSplitter",
+                "displayName": "General Splitter",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "exprType": {
+                        "value": "XPath",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "Streaming": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "StopOnExecution": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SplitterThreads": {
+                        "value": "10",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "splitExprValue": {
+                        "value": "//BP",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ParallelProcessing": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "grouping": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "timeOut": {
+                        "value": "300",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R2VuZXJhbFNwbGl0dGVyL3ZlcnNpb246OjEuNS4x",
+                "metadataURI": "ctype::FlowstepVariant/cname::GeneralSplitter/version::1.5.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90971",
+                "name": "Save Payload in Property",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "expression",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "${in.body}",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "BusinessPartnerSUITEReplicateConfirmationMessage",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90973",
+                "name": "Remove Multimap Tags After Splitting",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Script_Collection_Upload_MDG_to_Catena_X",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/RemoveMultimapTagsAfterSplitting.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90951",
+                "name": "Generate UUID for Confirmation Message",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Script_Collection_Upload_MDG_to_Catena_X",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/GenerateUUID.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90954",
+                "name": "Prepare Properties",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "expression",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "${property.UUID}",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "MessageUUID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "BusinessPartnerSUITEReplicateConfirmationMessage",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//MessageProcessingLogID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "MessageProcessingLogID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//CorrelationId",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "CorrelationId",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//SeverityCode",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SeverityCode",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "expression",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "${property.UUID.replaceAll('-','').toUpperCase()}",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//note",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "note",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//messageID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "ReferenceIDMessage",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "SenderBusinessSystemID",
+                                    "defaultValue": "SenderBusinessSystemID",
+                                    "key": "SenderBusinessSystemID",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SenderBusinessSystemID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "RecipientBusinessSystemID",
+                                    "defaultValue": "RecipientBusinessSystemID",
+                                    "key": "RecipientBusinessSystemID",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "RecipientBusinessSystemID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "expression",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "${date:now:yyyy-MM-dd'T'HH:mm:ss'Z'}",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "currentDate",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90975",
+                "name": "Generate UUID for BusinessPartner MessageHeader ",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Script_Collection_Upload_MDG_to_Catena_X",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/GenerateUUID.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_2",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90964",
+                "name": "Gather 1",
+                "componentVersion": "1.2",
+                "activityType": "Gather",
+                "displayName": "Gather",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "targetXPath": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "sourceXPath": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "messageType": {
+                        "value": "SameXMLFormat",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "aggregationAlgorithm": {
+                        "value": "sap-identical-multi-mapping",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "gatherFileNames": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R2F0aGVyL3ZlcnNpb246OjEuMi4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::Gather/version::1.2.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_5",
+                "name": "Concat Business Partner To Property",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "${in.body}\n${property.BusinessPartnerSUITEReplicateConfirmationMessage}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "SubProcess_90977",
+                "name": "Exception Subprocess 1",
+                "componentVersion": "1.1",
+                "activityType": "ErrorEventSubProcessTemplate",
+                "displayName": "Exception Subprocess",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JFdmVudFN1YlByb2Nlc3NUZW1wbGF0ZS92ZXJzaW9uOjoxLjEuMA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorEventSubProcessTemplate/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90983",
+                "name": "Log Error",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "errorLogging",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Script_Collection_Upload_MDG_to_Catena_X",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/LoggingScript.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90982",
+                "name": "Build Error Body ",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "Error Occured at Local Integration Process: Iterate Download Latest Legal Entity Changelog Entry Pages\nExceptionCaught:\n${exception.message}\n\n\nStacktrace:\n${exception.stacktrace}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_90981",
+                "name": "Error End 1",
+                "activityType": "EndErrorEvent",
+                "displayName": "Error End Event",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JFbmRFdmVudA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorEndEvent",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_90978",
+                "name": "Error Start 1",
+                "activityType": "",
+                "displayName": "Error Start Event",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JTdGFydEV2ZW50",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorStartEvent",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90967",
+                "name": "Prepare Properties For Each BP And Create BusinessPartnerSUITEReplicateConfirmationMessage",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "<BusinessPartnerSUITEReplicateConfirmationMessage>\n\t\t<MessageHeader>\n\t\t<ID>${property.BPMessageID}</ID>\n\t\t<UUID>${property.UUID}</UUID>\n\t\t<ReferenceID>${property.BPReferenceID}</ReferenceID>\n                <ReferenceUUID>${property.BPReferenceUUID}</ReferenceUUID>\n\t\t<CreationDateTime>${property.currentDate}</CreationDateTime>\n\t\t<SenderBusinessSystemID>${property.SenderBusinessSystemID}</SenderBusinessSystemID>\n\t\t<RecipientBusinessSystemID>${property.RecipientBusinessSystemID}</RecipientBusinessSystemID>\n\t\t</MessageHeader>\n<BusinessPartner>\n<UUID>${property.BusinessPartner}</UUID>\n<InternalID>${property.InternalID}</InternalID>\n<ReceiverUUID>${property.BusinessPartner}</ReceiverUUID>\n</BusinessPartner>\n\t\t<Log>\n\t\t\t<Item>\n                              <SeverityCode>${property.SeverityCode}</SeverityCode>\n\t\t\t\t<Note>${property.note}; CI MessageProcessingLogID: ${property.MessageProcessingLogID}; CI CorrelationId: ${property.CorrelationId}</Note>\n\t\t\t</Item>\n\t\t</Log>\n\t</BusinessPartnerSUITEReplicateConfirmationMessage>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "expression",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "${property.UUID.replaceAll('-','').toUpperCase()}",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "BPMessageID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//BPMessageUUID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "BPReferenceUUID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//InternalID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "InternalID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//BPMessageID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "BPReferenceID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "//BPUUID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "BusinessPartner",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_90969",
+                "name": "Create Complete Confirmation Message",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "<n0:BusinessPartnerSUITEBulkReplicateConfirmation xmlns:n0=\"http://sap.com/xi/SAPGlobal20/Global\" xmlns:prx=\"urn:sap.com:proxy:QVM:/1SAI/TASC8F570FDAE62997DD2FD:758\">\n\t<MessageHeader>\n\t\t<ID>${property.ID}</ID>\n\t\t<UUID>${property.MessageUUID}</UUID>\n\t\t<ReferenceID>${property.ReferenceIDMessage}</ReferenceID>\n\t\t<CreationDateTime>${property.currentDate}</CreationDateTime>\n\t\t<SenderBusinessSystemID>${property.SenderBusinessSystemID}</SenderBusinessSystemID>\n\t\t<RecipientBusinessSystemID>${property.RecipientBusinessSystemID}</RecipientBusinessSystemID>\n\t</MessageHeader>\n\t${property.BusinessPartnerSUITEReplicateConfirmationMessage}\n</n0:BusinessPartnerSUITEBulkReplicateConfirmation>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_90948",
+                "name": "Start 1",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQ=",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.2",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Not Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMi4x",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.2.1",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "0.4.0",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "Send Confirmation Message to SAP Master Data Governance",
+            "Origin-ModifiedDate": "1726557125153",
+            "Origin-Bundle-SymbolicName": "Send_Confirmation_Message_to_SAP_Master_Data_Governance",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "Send Confirmation Message to SAP Master Data Governance",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "Send_Confirmation_Message_to_SAP_Master_Data_Governance; singleton:=true",
+            "Bundle-Version": "0.4.0",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Require-Capability": "scriptcollection.Script_Collection_Upload_MDG_to_Catena_X;resolution:=optional;bundleType:String=\"ScriptCollection\";source:String=\"reference\"",
+            "Import-Service": "com.sap.esb.webservice.audit.log.AuditLogger,com.sap.esb.security.KeyManagerFactory;multiple:=false,com.sap.esb.security.TrustManagerFactory;multiple:=false,javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\",org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false,com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false"
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": [
+            {
+                "value": "RecipientBusinessSystemID",
+                "defaultValue": "RecipientBusinessSystemID",
+                "key": "RecipientBusinessSystemID",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "SenderBusinessSystemID",
+                "defaultValue": "SenderBusinessSystemID",
+                "key": "SenderBusinessSystemID",
+                "additionalMetadata": {}
+            }
+        ]
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "SAP MDG SOAP Endpoint",
+                "defaultValue": "SAP MDG SOAP Endpoint",
+                "key": "SAP_MDG",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SOAP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP MDG Credentials",
+                "defaultValue": "SAP MDG Credentials",
+                "key": "CredentialName",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SOAP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "LocationID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SOAP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "RecipientBusinessSystemID",
+                "defaultValue": "RecipientBusinessSystemID",
+                "key": "RecipientBusinessSystemID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Prepare Properties",
+                    "id": "CallActivity_90954",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP Client No",
+                "defaultValue": "SAP Client No",
+                "key": "SAP_Client_No",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SOAP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "60000",
+                "defaultValue": "60000",
+                "key": "TimeoutMDG",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "SOAP",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SenderBusinessSystemID",
+                "defaultValue": "SenderBusinessSystemID",
+                "key": "SenderBusinessSystemID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Prepare Properties",
+                    "id": "CallActivity_90954",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "Send Confirmation Message to SAP Master Data Governance",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_Process_1": {},
+                "Participant_2": {},
+                "Participant_1": {}
+            },
+            "messageFlows": {
+                "MessageFlow_4": {},
+                "MessageFlow_90949": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNEdge_MessageFlow_90949": {},
+                "BPMNShape_Participant_2": {},
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNEdge_MessageFlow_4": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "CallActivity_90971": {
+                "name": "Save Payload in Property",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_90971",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_90951": {
+                "name": "Generate UUID for Confirmation Message",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_90951",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_90973": {
+                "name": "Remove Multimap Tags After Splitting",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_90973",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "MessageFlow_4": {
+                "name": "SOAP",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "SOAP"
+                },
+                "id": "MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_90954": {
+                "name": "Prepare Properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_90954",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_90962": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90962",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_90984": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90984",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "EndEvent_2": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "CallActivity_90975": {
+                "name": "Generate UUID for BusinessPartner MessageHeader ",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_90975",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_90985": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90985",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SubProcess_90977": {
+                "events": {
+                    "EndEvent_90981": {},
+                    "StartEvent_90978": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_90984": {},
+                    "SequenceFlow_90985": {},
+                    "SequenceFlow_90986": {}
+                },
+                "activities": {
+                    "CallActivity_90983": {},
+                    "CallActivity_90982": {}
+                },
+                "gateways": {},
+                "name": "Exception Subprocess 1",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "subProcess",
+                    "flavor": "ErrorEventSubProcessTemplate",
+                    "displayName": "Exception Subprocess"
+                },
+                "id": "SubProcess_90977",
+                "classDefinition": "sap.bpm.modelling.SubProcess"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {
+                    "SubProcess_90977": {}
+                },
+                "events": {
+                    "EndEvent_2": {},
+                    "StartEvent_90948": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_90970": {},
+                    "SequenceFlow_90972": {},
+                    "SequenceFlow_90962": {},
+                    "SequenceFlow_90952": {},
+                    "SequenceFlow_90974": {},
+                    "SequenceFlow_6": {},
+                    "SequenceFlow_90965": {},
+                    "SequenceFlow_90976": {},
+                    "SequenceFlow_90956": {},
+                    "SequenceFlow_90968": {},
+                    "SequenceFlow_90958": {}
+                },
+                "activities": {
+                    "CallActivity_90961": {},
+                    "CallActivity_90971": {},
+                    "CallActivity_90951": {},
+                    "CallActivity_90973": {},
+                    "CallActivity_90954": {},
+                    "CallActivity_90964": {},
+                    "CallActivity_90975": {},
+                    "CallActivity_5": {},
+                    "CallActivity_90967": {},
+                    "CallActivity_90969": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "Participant_2": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "OP_MDG",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_2",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "SequenceFlow_90986": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90986",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_90965": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90965",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "UploadiFlow",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "StartEvent_90978": {
+                "eventType": "error",
+                "name": "Error Start 1",
+                "parentId": "SubProcess_90977",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "errorStart",
+                    "displayName": "Error Start Event"
+                },
+                "id": "StartEvent_90978",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "SequenceFlow_90968": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90968",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_90949": {
+                "name": "ProcessDirect",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "ProcessDirect"
+                },
+                "id": "MessageFlow_90949",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_90961": {
+                "name": "Split Payload To Create Confirmation Message For All BP",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Splitter_GeneralSplitter",
+                    "displayName": "General Splitter"
+                },
+                "id": "CallActivity_90961",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_90983": {
+                "name": "Log Error",
+                "parentId": "SubProcess_90977",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_90983",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_90982": {
+                "name": "Build Error Body ",
+                "parentId": "SubProcess_90977",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_90982",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_90970": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90970",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_90972": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90972",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_90964": {
+                "name": "Gather 1",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Gather",
+                    "displayName": "Gather"
+                },
+                "id": "CallActivity_90964",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_90974": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90974",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_90952": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90952",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_5": {
+                "name": "Concat Business Partner To Property",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_5",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_90967": {
+                "name": "Prepare Properties For Each BP And Create BusinessPartnerSUITEReplicateConfirmationMessage",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_90967",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_90976": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90976",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_90969": {
+                "name": "Create Complete Confirmation Message",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_90969",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "EndEvent_90981": {
+                "eventType": "error",
+                "name": "Error End 1",
+                "parentId": "SubProcess_90977",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "errorEnd",
+                    "displayName": "Error End Event"
+                },
+                "id": "EndEvent_90981",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "SequenceFlow_90956": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90956",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_90958": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_90958",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "StartEvent_90948": {
+                "eventType": "message",
+                "name": "Start 1",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_90948",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_StartEvent_90978": {
+                "x": 878.0,
+                "y": 359.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_90978",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_90978",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_StartEvent_90948": {
+                "x": 214.0,
+                "y": 207.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_90948",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_90948",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_Participant_2": {
+                "x": 1872.0,
+                "y": -97.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_2",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": -8.0,
+                "y": 153.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_90969": {
+                "x": 1746.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_90969",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90969",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_90975": {
+                "x": 786.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/GenerateUUID.groovy;Function = ",
+                "object": "CallActivity_90975",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90975",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_90964": {
+                "x": 1266.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Message Type = SameXMLFormat\nAggregation Algorithm = sap-identical-multi-mapping",
+                "object": "CallActivity_90964",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90964",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_EndEvent_2": {
+                "x": 1906.0,
+                "y": 207.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_90973": {
+                "x": 1426.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/RemoveMultimapTagsAfterSplitting.groovy;Function = ",
+                "object": "CallActivity_90973",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90973",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_90951": {
+                "x": 306.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/GenerateUUID.groovy;Function = ",
+                "object": "CallActivity_90951",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90951",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_90961": {
+                "x": 626.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Type = GeneralSplitter\n",
+                "object": "CallActivity_90961",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90961",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_90983": {
+                "x": 1103.0,
+                "y": 353.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/LoggingScript.groovy;Function = errorLogging",
+                "object": "CallActivity_90983",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90983",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_EndEvent_90981": {
+                "x": 1270.0,
+                "y": 367.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_90981",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_90981",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_90967": {
+                "x": 946.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_90967",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90967",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_SubProcess_90977": {
+                "x": 840.0,
+                "y": 313.0,
+                "width": 526.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "SubProcess_90977",
+                "symbols": {
+                    "BPMNEdge_SequenceFlow_90986": {},
+                    "BPMNShape_StartEvent_90978": {},
+                    "BPMNEdge_SequenceFlow_90985": {},
+                    "BPMNEdge_SequenceFlow_90984": {},
+                    "BPMNShape_CallActivity_90983": {},
+                    "BPMNShape_EndEvent_90981": {},
+                    "BPMNShape_CallActivity_90982": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_SubProcess_90977",
+                "classDefinition": "sap.bpm.modelling.ui.SubProcessSymbol"
+            },
+            "BPMNShape_CallActivity_90954": {
+                "x": 466.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_90954",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90954",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_5": {
+                "x": 1106.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_5",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_5",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 192.0,
+                "y": 143.0,
+                "width": 1830.0,
+                "height": 330.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_StartEvent_90948": {},
+                    "BPMNShape_CallActivity_90969": {},
+                    "BPMNEdge_SequenceFlow_90970": {},
+                    "BPMNShape_CallActivity_90975": {},
+                    "BPMNShape_CallActivity_90964": {},
+                    "BPMNEdge_SequenceFlow_90974": {},
+                    "BPMNShape_EndEvent_2": {},
+                    "BPMNEdge_SequenceFlow_90952": {},
+                    "BPMNShape_CallActivity_90973": {},
+                    "BPMNEdge_SequenceFlow_90962": {},
+                    "BPMNShape_CallActivity_90951": {},
+                    "BPMNEdge_SequenceFlow_90972": {},
+                    "BPMNShape_CallActivity_90961": {},
+                    "BPMNEdge_SequenceFlow_90968": {},
+                    "BPMNEdge_SequenceFlow_6": {},
+                    "BPMNShape_CallActivity_90967": {},
+                    "BPMNEdge_SequenceFlow_90956": {},
+                    "BPMNShape_SubProcess_90977": {},
+                    "BPMNShape_CallActivity_5": {},
+                    "BPMNEdge_SequenceFlow_90976": {},
+                    "BPMNEdge_SequenceFlow_90965": {},
+                    "BPMNShape_CallActivity_90954": {},
+                    "BPMNEdge_SequenceFlow_90958": {},
+                    "BPMNShape_CallActivity_90971": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_90971": {
+                "x": 1586.0,
+                "y": 193.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_90971",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90971",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_90982": {
+                "x": 943.0,
+                "y": 353.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_90982",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_90982",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_90970": {
+                "object": "SequenceFlow_90970",
+                "sourceSymbol": "BPMNShape_CallActivity_90969",
+                "targetSymbol": "BPMNShape_EndEvent_2",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1846.0,223.0 1906.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90970",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90986": {
+                "object": "SequenceFlow_90986",
+                "sourceSymbol": "BPMNShape_CallActivity_90983",
+                "targetSymbol": "BPMNShape_EndEvent_90981",
+                "tooltip": "",
+                "points": "1153.5,383.0 1271.0,383.0",
+                "id": "BPMNEdge_SequenceFlow_90986",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_90949": {
+                "object": "MessageFlow_90949",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_90948",
+                "tooltip": "Name = ProcessDirect\nAdapter Type = ProcessDirect\nTransport Protocol =Not Applicable\nMessage Protocol = Not Applicable\n",
+                "id": "BPMNEdge_MessageFlow_90949",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90974": {
+                "object": "SequenceFlow_90974",
+                "sourceSymbol": "BPMNShape_CallActivity_90973",
+                "targetSymbol": "BPMNShape_CallActivity_90971",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1526.0,223.0 1586.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90974",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90952": {
+                "object": "SequenceFlow_90952",
+                "sourceSymbol": "BPMNShape_CallActivity_90951",
+                "targetSymbol": "BPMNShape_CallActivity_90954",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "406.0,223.0 466.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90952",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90985": {
+                "object": "SequenceFlow_90985",
+                "sourceSymbol": "BPMNShape_CallActivity_90982",
+                "targetSymbol": "BPMNShape_CallActivity_90983",
+                "tooltip": "",
+                "points": "993.5,381.0 1125.5,381.0",
+                "id": "BPMNEdge_SequenceFlow_90985",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90962": {
+                "object": "SequenceFlow_90962",
+                "sourceSymbol": "BPMNShape_CallActivity_90961",
+                "targetSymbol": "BPMNShape_CallActivity_90975",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "726.0,223.0 786.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90962",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90984": {
+                "object": "SequenceFlow_90984",
+                "sourceSymbol": "BPMNShape_StartEvent_90978",
+                "targetSymbol": "BPMNShape_CallActivity_90982",
+                "tooltip": "",
+                "points": "894.5,375.0 953.5,375.0",
+                "id": "BPMNEdge_SequenceFlow_90984",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90972": {
+                "object": "SequenceFlow_90972",
+                "sourceSymbol": "BPMNShape_CallActivity_90971",
+                "targetSymbol": "BPMNShape_CallActivity_90969",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1686.0,223.0 1746.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90972",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6": {
+                "object": "SequenceFlow_6",
+                "sourceSymbol": "BPMNShape_CallActivity_5",
+                "targetSymbol": "BPMNShape_CallActivity_90964",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1206.0,223.0 1266.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_6",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90968": {
+                "object": "SequenceFlow_90968",
+                "sourceSymbol": "BPMNShape_CallActivity_90967",
+                "targetSymbol": "BPMNShape_CallActivity_5",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1046.0,223.0 1106.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90968",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90956": {
+                "object": "SequenceFlow_90956",
+                "sourceSymbol": "BPMNShape_CallActivity_90954",
+                "targetSymbol": "BPMNShape_CallActivity_90961",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "566.0,223.0 626.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90956",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90976": {
+                "object": "SequenceFlow_90976",
+                "sourceSymbol": "BPMNShape_CallActivity_90975",
+                "targetSymbol": "BPMNShape_CallActivity_90967",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "886.0,223.0 946.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90976",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90965": {
+                "object": "SequenceFlow_90965",
+                "sourceSymbol": "BPMNShape_CallActivity_90964",
+                "targetSymbol": "BPMNShape_CallActivity_90973",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1366.0,223.0 1426.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90965",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_90958": {
+                "object": "SequenceFlow_90958",
+                "sourceSymbol": "BPMNShape_StartEvent_90948",
+                "targetSymbol": "BPMNShape_CallActivity_90951",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "246.0,223.0 306.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_90958",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_4": {
+                "object": "MessageFlow_4",
+                "sourceSymbol": "BPMNShape_EndEvent_2",
+                "targetSymbol": "BPMNShape_Participant_2",
+                "tooltip": "Name = SOAP\nAdapter Type = SOAP\nTransport Protocol = HTTPS\nMessage Protocol = Plain SOAP\n",
+                "id": "BPMNEdge_MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

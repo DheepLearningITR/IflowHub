@@ -1,0 +1,1613 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "com_sap_GS_Chile_MandatoryRemittance",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Sender",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 50,
+                    "y": 206,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_3",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Mandatory Remittance",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 330,
+                    "y": 160,
+                    "width": 1171,
+                    "height": 231
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 1171,
+                    "height": 204
+                }
+            },
+            {
+                "id": "EndEvent_1",
+                "diagramId": "BPMNShape_EndEvent_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 1110,
+                    "y": 75,
+                    "width": 36,
+                    "height": 36
+                }
+            },
+            {
+                "id": "CallActivity_5",
+                "diagramId": "BPMNShape_CallActivity_5",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "MandatoryRemittanceSigner",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "XMLDigitalSignMessage",
+                    "x": 490,
+                    "y": 63,
+                    "width": 141,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_4",
+                "diagramId": "BPMNShape_CallActivity_4",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Encoder",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "Base64 Encode",
+                    "x": 720,
+                    "y": 64,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_3",
+                "diagramId": "BPMNShape_CallActivity_3",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "NodeFilter",
+                    "tooltip": "Xpath = /n1:LceEnvioOblig_newline_",
+                    "type": "Activity",
+                    "flavor": "Filter",
+                    "x": 281,
+                    "y": 63,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_2",
+                "diagramId": "BPMNShape_CallActivity_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "NamespaceFilter",
+                    "tooltip": "Xpath = /p1:MandatoryRemittance/MandatoryRemittanceData/text()_newline_",
+                    "type": "Activity",
+                    "flavor": "Filter",
+                    "x": 90,
+                    "y": 63,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_1",
+                "diagramId": "BPMNShape_CallActivity_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Content Modifier",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 910,
+                    "y": 63,
+                    "width": 120,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_1",
+                "diagramId": "BPMNShape_StartEvent_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 20,
+                    "y": 75,
+                    "width": 36,
+                    "height": 36
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_1",
+                "id": "MessageFlow_1",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_1",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_1",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "SOAP",
+                    "tooltip": "Name = SOAP_newline_Adapter Type = SOAP_newline_Transport Protocol = HTTPS_newline_Message Protocol = SOAP 1.x_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_5",
+                "target": "CallActivity_4",
+                "id": "SequenceFlow_11",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_11",
+                "sourceDiagramElement": "BPMNShape_CallActivity_5",
+                "targetDiagramElement": "BPMNShape_CallActivity_4",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_4",
+                "target": "CallActivity_1",
+                "id": "SequenceFlow_8",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_8",
+                "sourceDiagramElement": "BPMNShape_CallActivity_4",
+                "targetDiagramElement": "BPMNShape_CallActivity_1",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_3",
+                "target": "CallActivity_5",
+                "id": "SequenceFlow_12",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_12",
+                "sourceDiagramElement": "BPMNShape_CallActivity_3",
+                "targetDiagramElement": "BPMNShape_CallActivity_5",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_2",
+                "target": "CallActivity_3",
+                "id": "SequenceFlow_4",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_4",
+                "sourceDiagramElement": "BPMNShape_CallActivity_2",
+                "targetDiagramElement": "BPMNShape_CallActivity_3",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_1",
+                "target": "EndEvent_1",
+                "id": "SequenceFlow_9",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_9",
+                "sourceDiagramElement": "BPMNShape_CallActivity_1",
+                "targetDiagramElement": "BPMNShape_EndEvent_1",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_1",
+                "target": "CallActivity_2",
+                "id": "SequenceFlow_1",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_1",
+                "sourceDiagramElement": "BPMNShape_StartEvent_1",
+                "targetDiagramElement": "BPMNShape_CallActivity_2",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9u",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "xmlns:p1=http://sap.com/xi/APPL/GS/CL;xmlns:n1=http://www.sii.cl/SiiLce;xmlns:test=http://sapcd.com/test;xmlns:test2=http://sapcd.com/test",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "ServerTrace": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "Mandatory Remittance",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "bundleId": {
+                    "value": "com.sap.GS.Chile.MandatoryRemittance",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System/version::1.0",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVtL3ZlcnNpb246OjEuMA=="
+            }
+        ],
+        "listOfReceiverModel": [],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_1",
+                "componentVersion": "1.2",
+                "name": {
+                    "value": "MAND_REM",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "Mandatory Remittance for Balance Sheet, General Ledger and Daily Register",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "SOAP 1.x",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.3.3",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "1.3.3",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.0.6",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.2.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "SOAP 1.x",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "X509TokenAssertion": {
+                        "value": "WssX509V3Token10",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "address": {
+                        "value": "/s4hana/glo/chilesignmandrem",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "WSSecurityType": {
+                        "value": "VerifyMessage",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "maximumBodySize": {
+                        "value": "40",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "PublicKeyAliasResponseEncryption": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapWsdlPortName": {
+                        "value": "p1:MandatoryRemittanceSOAP",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "maximumAttachmentSize": {
+                        "value": "100",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "WSSecurity": {
+                        "value": "None",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "PrivateKeyAliasResponseSigning": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SaveIncomingSignedMessage": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SenderBasicSecurityProfileCompliant": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "RecipientTokenIncludeStrategy": {
+                        "value": "Never",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapWsdlURL": {
+                        "value": "/wsdl/MandatoryRemittance.wsdl",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapOptions": {
+                        "value": "cxfRobust",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CheckTimeStamp": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "AlgorithmSuiteAssertion": {
+                        "value": "Basic128Rsa15",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapServiceName": {
+                        "value": "p1:ClMandatoryRemittance",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "userRole": {
+                        "value": "ESBMessaging.send",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "InitiatorTokenIncludeStrategy": {
+                        "value": "AlwaysToRecipient",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "senderAuthType": {
+                        "value": "RoleBased",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "clientCertificates": {
+                        "isPersisted": false
+                    }
+                },
+                "technicalCapabilities": {},
+                "properties": {
+                    "authenticationOnParticipant": "false"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6U09BUC90cDo6SFRUUC9tcDo6U09BUCAxLngvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4y",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:SOAP/tp::HTTP/mp::SOAP 1.x/direction::Sender/version::1.2",
+                "systemId": "Participant_1"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "EndEvent_1",
+                "name": "End",
+                "componentVersion": "1.1.0",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_5",
+                "name": "MandatoryRemittanceSigner",
+                "activityType": "XMLDigitalSignMessage",
+                "displayName": "XML Signer",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "keyInfoHasKeyValue": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "canonicalizationMethod": {
+                        "value": "Inclusive XML Canonicalization",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "omitXmlDeclaration": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "signatureCommitmentDescription": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureId": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "parentNamespace": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "privateKeyAlias": {
+                        "value": "chilesignaturekey",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesIdentifierDescription": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "xadesEpesSignaturePolicy": {
+                        "value": "None",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "keyInfoHasIssuerName": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesEpesDigestValue": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "parentLocalName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "contentReferenceType": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureProductionPlacePostalCode": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureProductionPlaceCity": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "xadesIdentifierName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "prefixForXmlSignatureNamespace": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "signatureProductionPlaceCountry": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureXMLNamespace": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "transformMethod": {
+                        "value": "Inclusive XML Canonicalization",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesDataObjectFormatMimeType": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureProductionPlaceState": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "xadesDataObjectFormatDescription": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "addKeyInfoReference": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesEpesIdentifierQualifier": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureCommitment": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesEpesDigestAlgorithm": {
+                        "value": "SHA-256",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "keyInfoHasX509Certificate": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesEpesDescription": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "signatureType": {
+                        "value": "Detached XML signatures",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesEpesIdentifier": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "xpathExpression": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "digestAlgorithm": {
+                        "value": "SHA1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "signatureAlgorithm": {
+                        "value": "SHA1/RSA",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "schemaResourceUri": {
+                        "value": "xsd/LceEnvioOblig_v10.xsd",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesSigningCertificateDigestAlgorithm": {
+                        "value": "SHA-256",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "Activity_Name": {
+                        "value": "MandatoryRemittanceSigner",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "parentNodeSpecification": {
+                        "value": "Specified by Name and Namespace",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "signatureXMLNamespacePrefix": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "outputEncoding": {
+                        "value": "ISO-8859-1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "keyInfoHasX509CertChain": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "xadesAddSigningCertificate": {
+                        "value": "None",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "disallowDoctypeDecl": {
+                        "value": "true",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "xadesIdentifierQualifier": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": false
+                    },
+                    "xadesAddSigningTime": {
+                        "value": "false",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "commitmentDocumentationReferenceTable": {
+                        "isPersisted": false
+                    },
+                    "xadesSignerRoleClaimedRoles": {
+                        "isPersisted": false
+                    },
+                    "xadesIdentifierDocumentationReference": {
+                        "isPersisted": false
+                    },
+                    "xadesPolicyQualifierTab": {
+                        "isPersisted": false
+                    },
+                    "xadesCertificateUri": {
+                        "isPersisted": false
+                    },
+                    "xadesDocumentationReferenceTab": {
+                        "isPersisted": false
+                    },
+                    "commitmentQualifierTable": {
+                        "isPersisted": false
+                    },
+                    "xpathToIdAttribute": {
+                        "value": [
+                            {
+                                "xpathToIdField": {
+                                    "value": "/n1:LceEnvioOblig/n1:DocumentoEnvioOblig/@ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "xpathToIdField": {
+                                    "value": "/n1:LceEnvioOblig/n1:DocumentoEnvioOblig/n1:LceCoCierre/n1:LceDiccionario/n1:DocumentoDiccionario/@ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "xpathToIdField": {
+                                    "value": "/n1:LceEnvioOblig/n1:DocumentoEnvioOblig/n1:LceCoCierre/n1:LceBalance/n1:DocumentoBalance/@ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "xpathToIdField": {
+                                    "value": "/n1:LceEnvioOblig/n1:DocumentoEnvioOblig/n1:LceCoCierre/n1:LceDiarioRes/n1:DocumentoDiarioRes/@ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "xpathToIdField": {
+                                    "value": "/n1:LceEnvioOblig/n1:DocumentoEnvioOblig/n1:LceCoCierre/n1:LceMayorRes/n1:DocumentoMayorRes/@ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "xadesSignerRoleCertifiedRoles": {
+                        "isPersisted": false
+                    }
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WE1MRGlnaXRhbFNpZ25NZXNzYWdl",
+                "metadataURI": "ctype::FlowstepVariant/cname::XMLDigitalSignMessage",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_4",
+                "name": "Encoder",
+                "activityType": "Base64 Encode",
+                "displayName": "Base64 Encode",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6QmFzZTY0IEVuY29kZQ==",
+                "metadataURI": "ctype::FlowstepVariant/cname::Base64 Encode",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_3",
+                "name": "NodeFilter",
+                "activityType": "Filter",
+                "displayName": "Filter",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "xpathType": {
+                        "value": "Node",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "/n1:LceEnvioOblig",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RmlsdGVy",
+                "metadataURI": "ctype::FlowstepVariant/cname::Filter",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_2",
+                "name": "NamespaceFilter",
+                "activityType": "Filter",
+                "displayName": "Filter",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "xpathType": {
+                        "value": "String",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "/p1:MandatoryRemittance/MandatoryRemittanceData/text()",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RmlsdGVy",
+                "metadataURI": "ctype::FlowstepVariant/cname::Filter",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_1",
+                "name": "Content Modifier",
+                "componentVersion": "1.2",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "wrapContent": {
+                        "value": "<n0:MandatoryRemittanceResponse xmlns:n0=\"http://sap.com/xi/APPL/GS/CL\">\r\n<SignedMandatoryRemittanceData>${in.body}</SignedMandatoryRemittanceData>\r\n</n0:MandatoryRemittanceResponse>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "isPersisted": false
+                    },
+                    "headerTable": {
+                        "isPersisted": false
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_1",
+                "name": "Start",
+                "componentVersion": "1.0",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQvdmVyc2lvbjo6MS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent/version::1.0",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Mandatory Remittance",
+                "componentVersion": "1.1.2",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.2",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.0",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "Mandatory Remittance",
+            "Origin-ModifiedDate": "1531378247596",
+            "Bundle-Description": "",
+            "Origin-Bundle-SymbolicName": "com.sap.GS.Chile.MandatoryRemittance",
+            "Import-Package": " org.springframework.transaction.support, org.springframework.jdbc.datasource, com.sap.esb.webservice.one.way, org.apache.camel.component.xmlsecurity.api, com.sap.esb.camel.security.xmlsecurity, com.sap.it.op.agent.trace.cxf, com.sap.esb.camel.message.storage.api, com.sap.it.op.agent.trace, com.sap.esb.size.limiter, com.sap.esb.camel.webservice.endpoint.configurer, com.sap.esb.webservice.security.crypto.api, com.sap.esb.webservice.policy.alternative.selector, org.apache.cxf.ws.security.wss4j, org.apache.wss4j.common.crypto, javax.security.auth.callback, com.sap.esb.camel.jdbc.idempotency.reorg, com.sap.it.iflow.model.runtime, com.sap.it.iflow.model, com.sap.sod.utils.idoc.soap.interceptors, com.sap.sod.utils.soap.processors, com.sap.esb.camel.jdbc.inprogress.repository, com.sap.esb.camel.jdbc.idempotency.repository, com.sap.esb.camel.security.cms, com.sap.esb.camel.endpoint.configurator.api, org.apache.camel.processor.idempotent.jdbc, org.apache.camel.spi, com.sap.esb.camel.webservice.cxfbinding, com.sap.esb.camel.mpl.access, com.sap.esb.camel.eip.splitter, com.sap.esb.camel.xmljson, com.sap.it.op.ed, com.sap.it.op.agent.ed.plugins.camel.api, javax.sql, com.sap.esb.webservice.authorization.supplier.api, org.apache.cxf.interceptor.security, net.sf.saxon.xpath, net.sf.saxon,com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,com.sap.sod.utils.cxf.interceptors,com.sap.sod.utils.encoding.processors,com.sap.sod.utils.idoc.soap,com.sap.sod.utils.soap,com.sap.sod.utils.idoc.soap.processors,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse,org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters,org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.aii.ib.bom.flib.types,com.sap.aii.mapping.api,com.sap.aii.mappingtool.flib3,com.sap.aii.mappingtool.flib7,com.sap.aii.mappingtool.tf3,com.sap.aii.mappingtool.tf3.rt,com.sap.aii.mappingtool.tf7,com.sap.aii.mappingtool.tf7.rt,com.sap.aii.mappingtool.tfapi,com.sap.esb.webservice.audit.log",
+            "Origin-Bundle-Name": "Mandatory Remittance",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "com.sap.GS.Chile.MandatoryRemittance; singleton:=true",
+            "Bundle-Version": "1.0.0",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Bundle-ClassPath": ".",
+            "Import-Service": " com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false, org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false, javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\", com.sap.esb.security.TrustManagerFactory;multiple:=false, com.sap.esb.security.KeyManagerFactory;multiple:=false, com.sap.esb.camel.endpoint.configurator.api.EndpointConfigurator;multiple:=false;filter=\"(endpointType=SFTP)\",com.sap.esb.webservice.audit.log.AuditLogger "
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": []
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [],
+    "galileiModel": {
+        "iflowName": "com_sap_GS_Chile_MandatoryRemittance",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_3": {},
+                "Participant_1": {}
+            },
+            "messageFlows": {
+                "MessageFlow_1": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_3": {},
+                "BPMNEdge_MessageFlow_1": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "EndEvent_1": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_1",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "SequenceFlow_11": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_11",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_12": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_12",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_8": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_8",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_9": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_9",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_5": {
+                "name": "MandatoryRemittanceSigner",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XMLDigitalSignMessage",
+                    "displayName": "XML Signer"
+                },
+                "id": "CallActivity_5",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "MessageFlow_1": {
+                "name": "SOAP",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "SOAP"
+                },
+                "id": "MessageFlow_1",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_4": {
+                "name": "Encoder",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Base64 Encode",
+                    "parentFlavor": "Encoder",
+                    "displayName": "Base64 Encode"
+                },
+                "id": "CallActivity_4",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_3": {
+                "name": "NodeFilter",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Filter",
+                    "displayName": "Filter"
+                },
+                "id": "CallActivity_3",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_4": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_4",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_2": {
+                "name": "NamespaceFilter",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Filter",
+                    "displayName": "Filter"
+                },
+                "id": "CallActivity_2",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_1": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_1",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_1": {
+                "name": "Content Modifier",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_1",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "StartEvent_1": {
+                "eventType": "message",
+                "name": "Start",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_1",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "Participant_3": {
+                "process": "Process_1",
+                "subProcesses": {},
+                "events": {
+                    "EndEvent_1": {},
+                    "StartEvent_1": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_11": {},
+                    "SequenceFlow_12": {},
+                    "SequenceFlow_8": {},
+                    "SequenceFlow_9": {},
+                    "SequenceFlow_4": {},
+                    "SequenceFlow_1": {}
+                },
+                "activities": {
+                    "CallActivity_1": {},
+                    "CallActivity_5": {},
+                    "CallActivity_4": {},
+                    "CallActivity_3": {},
+                    "CallActivity_2": {}
+                },
+                "gateways": {},
+                "name": "Mandatory Remittance",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_3",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Sender",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_EndEvent_1": {
+                "x": 1440.0,
+                "y": 262.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_1",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_5": {
+                "x": 820.0,
+                "y": 250.0,
+                "width": 141.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "CallActivity_5",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_5",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_4": {
+                "x": 1050.0,
+                "y": 251.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "CallActivity_4",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_4",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": 50.0,
+                "y": 206.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_3": {
+                "x": 611.0,
+                "y": 250.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Xpath = /n1:LceEnvioOblig\n",
+                "object": "CallActivity_3",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_3",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_2": {
+                "x": 420.0,
+                "y": 250.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Xpath = /p1:MandatoryRemittance/MandatoryRemittanceData/text()\n",
+                "object": "CallActivity_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_2",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_3": {
+                "x": 330.0,
+                "y": 160.0,
+                "width": 1171.0,
+                "height": 231.0,
+                "tooltip": "",
+                "object": "Participant_3",
+                "symbols": {
+                    "BPMNShape_CallActivity_4": {},
+                    "BPMNShape_CallActivity_3": {},
+                    "BPMNEdge_SequenceFlow_11": {},
+                    "BPMNShape_CallActivity_2": {},
+                    "BPMNEdge_SequenceFlow_12": {},
+                    "BPMNShape_CallActivity_1": {},
+                    "BPMNShape_EndEvent_1": {},
+                    "BPMNEdge_SequenceFlow_9": {},
+                    "BPMNEdge_SequenceFlow_8": {},
+                    "BPMNShape_CallActivity_5": {},
+                    "BPMNEdge_SequenceFlow_1": {},
+                    "BPMNEdge_SequenceFlow_4": {},
+                    "BPMNShape_StartEvent_1": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_3",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_1": {
+                "x": 1240.0,
+                "y": 250.0,
+                "width": 120.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_1",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_StartEvent_1": {
+                "x": 350.0,
+                "y": 262.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_1",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_9": {
+                "object": "SequenceFlow_9",
+                "sourceSymbol": "BPMNShape_CallActivity_1",
+                "targetSymbol": "BPMNShape_EndEvent_1",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1360.0,280.0 1370.0,280.0 1370.0,280.0 1440.0,280.0",
+                "id": "BPMNEdge_SequenceFlow_9",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_8": {
+                "object": "SequenceFlow_8",
+                "sourceSymbol": "BPMNShape_CallActivity_4",
+                "targetSymbol": "BPMNShape_CallActivity_1",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "1150.0,281.0 1206.0,281.0 1206.0,280.0 1240.0,280.0",
+                "id": "BPMNEdge_SequenceFlow_8",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_11": {
+                "object": "SequenceFlow_11",
+                "sourceSymbol": "BPMNShape_CallActivity_5",
+                "targetSymbol": "BPMNShape_CallActivity_4",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "961.0,280.0 1033.0,280.0 1033.0,281.0 1050.0,281.0",
+                "id": "BPMNEdge_SequenceFlow_11",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_1": {
+                "object": "SequenceFlow_1",
+                "sourceSymbol": "BPMNShape_StartEvent_1",
+                "targetSymbol": "BPMNShape_CallActivity_2",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "386.0,280.0 403.0,280.0 420.0,280.0",
+                "id": "BPMNEdge_SequenceFlow_1",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_12": {
+                "object": "SequenceFlow_12",
+                "sourceSymbol": "BPMNShape_CallActivity_3",
+                "targetSymbol": "BPMNShape_CallActivity_5",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "711.0,280.0 770.0,280.0 770.0,280.0 820.0,280.0",
+                "id": "BPMNEdge_SequenceFlow_12",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_4": {
+                "object": "SequenceFlow_4",
+                "sourceSymbol": "BPMNShape_CallActivity_2",
+                "targetSymbol": "BPMNShape_CallActivity_3",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "520.0,280.0 565.0,280.0 611.0,280.0",
+                "id": "BPMNEdge_SequenceFlow_4",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_1": {
+                "object": "MessageFlow_1",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_1",
+                "tooltip": "Name = SOAP\nAdapter Type = SOAP\nTransport Protocol = HTTPS\nMessage Protocol = SOAP 1.x\n",
+                "id": "BPMNEdge_MessageFlow_1",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

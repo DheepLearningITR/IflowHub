@@ -1,0 +1,1598 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "IDoc Splitter",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_2",
+                "diagramId": "BPMNShape_Participant_2",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Receiver",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 900,
+                    "y": 100,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_2_Lane0",
+                "containedIn": "Participant_2",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_14",
+                "diagramId": "BPMNShape_Participant_14",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Receiver1",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 600,
+                    "y": 310,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_14_Lane0",
+                "containedIn": "Participant_14",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 250,
+                    "y": 60,
+                    "width": 540,
+                    "height": 220
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 540,
+                    "height": 193
+                }
+            },
+            {
+                "id": "ServiceTask_11",
+                "diagramId": "BPMNShape_ServiceTask_11",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Send",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "Send",
+                    "x": 350,
+                    "y": 53,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_4",
+                "diagramId": "BPMNShape_StartEvent_4",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatetimer",
+                    "x": 32,
+                    "y": 63,
+                    "width": 36,
+                    "height": 36
+                }
+            },
+            {
+                "id": "EndEvent_2",
+                "diagramId": "BPMNShape_EndEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 480,
+                    "y": 63,
+                    "width": 40,
+                    "height": 40
+                }
+            },
+            {
+                "id": "CallActivity_5",
+                "diagramId": "BPMNShape_CallActivity_5",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set Input Message",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 110,
+                    "y": 53,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_7",
+                "diagramId": "BPMNShape_CallActivity_7",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "IDoc Splitter",
+                    "tooltip": "Type = IDoc_newline_",
+                    "type": "Activity",
+                    "flavor": "Splitter_IDoc",
+                    "x": 230,
+                    "y": 53,
+                    "width": 100,
+                    "height": 60
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "ServiceTask_11",
+                "target": "Participant_14",
+                "id": "MessageFlow_15",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_15",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_11",
+                "targetDiagramElement": "BPMNShape_Participant_14",
+                "routingDirection": "south-north",
+                "attributes": {
+                    "name": "Mail",
+                    "tooltip": "Name = Mail_newline_Adapter Type = Mail_newline_Transport Protocol =SMTP_newline_Message Protocol = None_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "EndEvent_2",
+                "target": "Participant_2",
+                "id": "MessageFlow_16",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_16",
+                "sourceDiagramElement": "BPMNShape_EndEvent_2",
+                "targetDiagramElement": "BPMNShape_Participant_2",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "IDOC",
+                    "tooltip": "Name = IDOC_newline_Adapter Type = IDOC_newline_Transport Protocol = HTTPS_newline_Message Protocol = IDoc SOAP_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_11",
+                "target": "EndEvent_2",
+                "id": "SequenceFlow_13",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_13",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_11",
+                "targetDiagramElement": "BPMNShape_EndEvent_2",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_4",
+                "target": "CallActivity_5",
+                "id": "SequenceFlow_6",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6",
+                "sourceDiagramElement": "BPMNShape_StartEvent_4",
+                "targetDiagramElement": "BPMNShape_CallActivity_5",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_5",
+                "target": "CallActivity_7",
+                "id": "SequenceFlow_8",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_8",
+                "sourceDiagramElement": "BPMNShape_CallActivity_5",
+                "targetDiagramElement": "BPMNShape_CallActivity_7",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_7",
+                "target": "ServiceTask_11",
+                "id": "SequenceFlow_12",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_12",
+                "sourceDiagramElement": "BPMNShape_CallActivity_7",
+                "targetDiagramElement": "BPMNShape_ServiceTask_11",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9u",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "Detailed explanation for this flow can be found at: Cloud Integration - Exemplars --> Documents --> HowTo- Splitter",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "DEPRECATED - IDoc Splitter",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "bundleId": {
+                    "value": "IDoc_Splitter",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_2",
+                "name": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            },
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_14",
+                "name": {
+                    "value": "Receiver1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_15",
+                "componentVersion": "1.0",
+                "name": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Receiver1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "SMTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "com.sap.it.ide.mail.ui.namespace2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "com.sap.it.ide.mail.ui.archive2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "com.sap.it.ide.mail.ui.archive2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "SMTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cc": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "server": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "Mail server address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "bcc": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "auth": {
+                        "value": "none",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "subject": {
+                        "value": "Split IDocs",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.aes.keysize": {
+                        "value": "128",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "content_encoding": {
+                        "value": "UTF-8",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "keep_attachments": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "body": {
+                        "value": "${in.body}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ssl": {
+                        "value": "off",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "timeout": {
+                        "value": "3000",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.des.keysize": {
+                        "value": "128",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "content_type": {
+                        "value": "text/plain",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.type": {
+                        "value": "none",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.algorithm": {
+                        "value": "aes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "from": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "From email address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "to": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "To email address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "user": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "attachments": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.keys": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6TWFpbC90cDo6U01UUC9tcDo6Tm9uZS9kaXJlY3Rpb246OlJlY2VpdmVyL3ZlcnNpb246OjEuMC40",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:Mail/tp::SMTP/mp::None/direction::Receiver/version::1.0.4",
+                "systemId": "Participant_14"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_16",
+                "componentVersion": "1.3",
+                "name": {
+                    "value": "IDOC",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "IDOC",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "IDoc SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.3",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "1.3",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.3.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.3.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTP/HTTPS",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "IDoc SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "IDOC",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cleanupHeaders": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "address": {
+                        "value": "http://<ServerName>:<port>/sap/bc/srt/idoc?sap-client=<ClientNumber>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "allowChunking": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "default",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "privateKeyAlias": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyHost": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyPort": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "IDocContentType": {
+                        "value": "application/x-sap.idoc",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "locationID": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CompressMessage": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "credentialName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "requestTimeout": {
+                        "value": "60000",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "authentication": {
+                        "value": "Client Certificate",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6SURPQy90cDo6SFRUUC9tcDo6SURvYyBTT0FQL2RpcmVjdGlvbjo6UmVjZWl2ZXIvdmVyc2lvbjo6MS4zLjE=",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:IDOC/tp::HTTP/mp::IDoc SOAP/direction::Receiver/version::1.3.1",
+                "systemId": "Participant_2"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "ServiceTask_11",
+                "name": "Send",
+                "activityType": "Send",
+                "displayName": "Send",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U2VuZA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::Send",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_4",
+                "name": " ",
+                "activityType": "",
+                "displayName": "Timer Start",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6aW50ZXJtZWRpYXRldGltZXI=",
+                "metadataURI": "ctype::FlowstepVariant/cname::intermediatetimer",
+                "technicalCapabilities": {},
+                "scheduler": {
+                    "externalizedKey": "",
+                    "modified": false,
+                    "noOfSchedules": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "triggerType": {
+                        "value": "simple",
+                        "defaultValue": "simple",
+                        "key": ""
+                    },
+                    "dateType": {
+                        "value": "DAILY",
+                        "defaultValue": "DAILY",
+                        "key": ""
+                    },
+                    "timeType": {
+                        "value": "TIME_INTERVAL",
+                        "defaultValue": "TIME_INTERVAL",
+                        "key": ""
+                    },
+                    "date": {
+                        "value": "09/04/2025",
+                        "defaultValue": "09/04/2025",
+                        "key": ""
+                    },
+                    "time": {
+                        "value": "11:21",
+                        "defaultValue": "11:21",
+                        "key": ""
+                    },
+                    "dayOfMonth": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "mon": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "tue": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "wed": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "thu": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "fri": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sat": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sun": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "onEveryDuration": {
+                        "value": "60",
+                        "defaultValue": "60",
+                        "key": ""
+                    },
+                    "fromInterval": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": ""
+                    },
+                    "toInterval": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "timeZone": {
+                        "value": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "defaultValue": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "key": ""
+                    },
+                    "throwExceptionOnExpiry": {
+                        "value": true,
+                        "defaultValue": true,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "second": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "minute": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "hour": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "month": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "dayOfWeek": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "day_of_month": {
+                        "value": "?",
+                        "defaultValue": "?",
+                        "key": ""
+                    },
+                    "year": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "startAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "endAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "attributeBehaviour": {
+                        "value": "isRunOnceRequired,isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "defaultValue": "isRunOnceRequired,isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "key": ""
+                    },
+                    "scheduleType": {
+                        "value": "simpleSchedule",
+                        "defaultValue": "simpleSchedule",
+                        "key": ""
+                    },
+                    "simpleRepeat": {
+                        "value": "NONE",
+                        "defaultValue": "NONE",
+                        "key": ""
+                    },
+                    "simpleSchedule": {
+                        "value": "onDeployment",
+                        "defaultValue": "onDeployment",
+                        "key": ""
+                    },
+                    "simpleRunOn": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "simpleEvery": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "simpleDaysOfWeek": {
+                        "value": "SUN",
+                        "defaultValue": "SUN",
+                        "key": ""
+                    },
+                    "multipleScheduleObject": {
+                        "value": "",
+                        "values": [
+                            ""
+                        ],
+                        "defaultValue": "",
+                        "defaultValues": [
+                            ""
+                        ],
+                        "key": ""
+                    }
+                }
+            },
+            {
+                "id": "EndEvent_2",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_5",
+                "name": "Set Input Message",
+                "componentVersion": "1.2",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "wrapContent": {
+                        "value": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<CRMXIF_PARTNER_SAVE_M03 xmlns=\"urn:sap-com:document:sap:idoc:soap:messages\">\n    <IDOC BEGIN=\"1\">\n        <EDI_DC40 SEGMENT=\"1\">\n            <TABNAM>EDI_DC40</TABNAM>\n            <DIRECT>2</DIRECT>\n            <IDOCTYP>CRMXIF_PARTNER_SAVE_M03</IDOCTYP>\n            <MESTYP>CRMXIF_PARTNER_SAVE_M</MESTYP>\n            <SNDPOR>SAPCOD</SNDPOR>\n            <SNDPRT>LS</SNDPRT>\n            <SNDPRN>0HS6M0P</SNDPRN>\n            <RCVPOR>SAPCRM</RCVPOR>\n            <RCVPRT>LS</RCVPRT>\n            <RCVPRN>Q0CCLNT558</RCVPRN>\n            <ARCKEY>urn:sap.com:msgid=16629D4F7F60E54CE10000000A4286B5</ARCKEY>\n        </EDI_DC40>\n        <E101CRMXIF_PARTNER_COMPLEX SEGMENT=\"1\">\n            <APPL_SNAME>CRMXIF_PARTNER_COMPLEX</APPL_SNAME>\n            <E101CRMXIF_PARTNER_HEADER SEGMENT=\"1\">\n                <APPL_SNAME>CRMXIF_PARTNER_HEADER</APPL_SNAME>\n                <OBJECT>BusinessPartner</OBJECT>\n                <OBJECT_TASK>M</OBJECT_TASK>\n                <E101CRMXIF_PARTNER_KEYS SEGMENT=\"1\">\n                    <APPL_SNAME>CRMXIF_PARTNER_KEYS</APPL_SNAME>\n                    <E1011006_IDENTIFICATION_KEY SEGMENT=\"1\">\n                        <APPL_SNAME>BAPIBUS1006_IDENTIFICATION_KEY</APPL_SNAME>\n                        <IDENTIFICATIONCATEGORY>BPCCOD</IDENTIFICATIONCATEGORY>\n                        <IDENTIFICATIONNUMBER>1000050</IDENTIFICATIONNUMBER>\n                    </E1011006_IDENTIFICATION_KEY>\n                </E101CRMXIF_PARTNER_KEYS>\n            </E101CRMXIF_PARTNER_HEADER>\n            <E101BUS_EI_CENTRAL_DATA SEGMENT=\"1\">\n                <APPL_SNAME>BUS_EI_CENTRAL_DATA</APPL_SNAME>\n                <E101BUS_EI_BUPA_CENTRAL SEGMENT=\"1\">\n                    <APPL_SNAME>BUS_EI_BUPA_CENTRAL</APPL_SNAME>\n                    <E101US_EI_BUPA_CENTRAL_DATA SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_CENTRAL_DATA</APPL_SNAME>\n                        <E101US_EI_BUPA_CENTRAL_MAIN SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_BUPA_CENTRAL_MAIN</APPL_SNAME>\n                            <CATEGORY>2</CATEGORY>\n                            <GROUPING>0001</GROUPING>\n                        </E101US_EI_BUPA_CENTRAL_MAIN>\n                        <E101BUS_EI_STRUC_CENTRAL SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL</APPL_SNAME>\n                        </E101BUS_EI_STRUC_CENTRAL>\n                        <E101_EI_STRUC_CENTRAL_ORGAN SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL_ORGAN</APPL_SNAME>\n                            <NAME1>Algebra Corporation</NAME1>\n                        </E101_EI_STRUC_CENTRAL_ORGAN>\n                    </E101US_EI_BUPA_CENTRAL_DATA>\n                    <E101BUPA_CENTRAL_DATA_XFLAG SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_CENTRAL_DATA_XFLAG</APPL_SNAME>\n                        <E101BUS_EI_STRUC_CENTRAL_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL_X</APPL_SNAME>\n                        </E101BUS_EI_STRUC_CENTRAL_X>\n                        <E101I_STRUC_CENTRAL_ORGAN_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL_ORGAN_X</APPL_SNAME>\n                            <NAME1>X</NAME1>\n                        </E101I_STRUC_CENTRAL_ORGAN_X>\n                    </E101BUPA_CENTRAL_DATA_XFLAG>\n                </E101BUS_EI_BUPA_CENTRAL>\n                <E101BUS_EI_ROLES SEGMENT=\"1\">\n                    <APPL_SNAME>BUS_EI_ROLES</APPL_SNAME>\n                    <CURRENT_STATE>X</CURRENT_STATE>\n                    <E101BUS_EI_BUPA_ROLES SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_ROLES</APPL_SNAME>\n                        <TASK>M</TASK>\n                        <DATA_KEY>CRM000</DATA_KEY>\n                        <E101BUS_EI_ROLE_DATA SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_ROLE_DATA</APPL_SNAME>\n                            <ROLECATEGORY>CRM000</ROLECATEGORY>\n                            <VALID_FROM>00010101</VALID_FROM>\n                            <VALID_TO>99991231</VALID_TO>\n                        </E101BUS_EI_ROLE_DATA>\n                        <E101BUS_EI_ROLE_DATA_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_ROLE_DATA_X</APPL_SNAME>\n                            <VALID_FROM>X</VALID_FROM>\n                            <VALID_TO>X</VALID_TO>\n                        </E101BUS_EI_ROLE_DATA_X>\n                    </E101BUS_EI_BUPA_ROLES>\n                </E101BUS_EI_ROLES>\n                <E101BUS_EI_INDUSTRYSECTOR SEGMENT=\"1\">\n                    <APPL_SNAME>BUS_EI_INDUSTRYSECTOR</APPL_SNAME>\n                    <E101_EI_BUPA_INDUSTRYSECTOR SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_INDUSTRYSECTOR</APPL_SNAME>\n                        <TASK>M</TASK>\n                        <E101S_EI_STRUC_INDUSTRY_KEY SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_INDUSTRY_KEY</APPL_SNAME>\n                            <KEYSYSTEM>0005</KEYSYSTEM>\n                            <IND_SECTOR>23</IND_SECTOR>\n                        </E101S_EI_STRUC_INDUSTRY_KEY>\n                        <E101EI_STRUC_INDUSTRYSECTOR SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_INDUSTRYSECTOR</APPL_SNAME>\n                            <IND_DEFAULT>X</IND_DEFAULT>\n                        </E101EI_STRUC_INDUSTRYSECTOR>\n                        <E101_STRUC_INDUSTRYSECTOR_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_INDUSTRYSECTOR_X</APPL_SNAME>\n                            <IND_DEFAULT>X</IND_DEFAULT>\n                        </E101_STRUC_INDUSTRYSECTOR_X>\n                    </E101_EI_BUPA_INDUSTRYSECTOR>\n                </E101BUS_EI_INDUSTRYSECTOR>\n                <E101BUS_EI_ADDRESS SEGMENT=\"1\">\n                    <APPL_SNAME>BUS_EI_ADDRESS</APPL_SNAME>\n                    <CURRENT_STATE>X</CURRENT_STATE>\n                    <E101BUS_EI_BUPA_ADDRESS SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_ADDRESS</APPL_SNAME>\n                        <TASK>M</TASK>\n                        <E101BUS_EI_BUPA_ADDRESS_KEY SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_BUPA_ADDRESS_KEY</APPL_SNAME>\n                        </E101BUS_EI_BUPA_ADDRESS_KEY>\n                        <E101US_EI_BUPA_ADDRESS_DATA SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_BUPA_ADDRESS_DATA</APPL_SNAME>\n                            <E101_EI_BUPA_POSTAL_ADDRESS SEGMENT=\"1\">\n                                <APPL_SNAME>BUS_EI_BUPA_POSTAL_ADDRESS</APPL_SNAME>\n                                <E101BUS_EI_STRUC_ADDRESS SEGMENT=\"1\">\n                                    <APPL_SNAME>BUS_EI_STRUC_ADDRESS</APPL_SNAME>\n                                    <CITY>Heidelberg</CITY>\n                                    <POSTL_COD1>69115</POSTL_COD1>\n                                    <STREET>Gkaltoa strasee</STREET>\n                                    <HOUSE_NO>4119</HOUSE_NO>\n                                    <COUNTRYISO>DE</COUNTRYISO>\n                                    <TIME_ZONE>CET</TIME_ZONE>\n                                    <LANGUISO>EN</LANGUISO>\n                                </E101BUS_EI_STRUC_ADDRESS>\n                                <E101BUS_EI_STRUC_ADDRESS_X SEGMENT=\"1\">\n                                    <APPL_SNAME>BUS_EI_STRUC_ADDRESS_X</APPL_SNAME>\n                                    <CITY>X</CITY>\n                                    <POSTL_COD1>X</POSTL_COD1>\n                                    <STREET>X</STREET>\n                                    <HOUSE_NO>X</HOUSE_NO>\n                                    <COUNTRYISO>X</COUNTRYISO>\n                                    <TIME_ZONE>X</TIME_ZONE>\n                                    <LANGU_ISO>X</LANGU_ISO>\n                                </E101BUS_EI_STRUC_ADDRESS_X>\n                            </E101_EI_BUPA_POSTAL_ADDRESS>\n                            <E102BUS_EI_COMMUNICATION SEGMENT=\"1\">\n                                <APPL_SNAME>BUS_EI_COMMUNICATION</APPL_SNAME>\n                                <E102BUS_EI_TEL_DATA SEGMENT=\"1\">\n                                    <APPL_SNAME>BUS_EI_TEL_DATA</APPL_SNAME>\n                                    <E102BUS_EI_BUPA_TELEPHONE SEGMENT=\"1\">\n                                        <APPL_SNAME>BUS_EI_BUPA_TELEPHONE</APPL_SNAME>\n                                        <E102S_EI_BUPA_TELEPHONE_CON SEGMENT=\"1\">\n                                            <APPL_SNAME>BUS_EI_BUPA_TELEPHONE_CON</APPL_SNAME>\n                                            <TASK>M</TASK>\n                                            <E102BUS_EI_STRUC_TEL_DATA SEGMENT=\"1\">\n                                                <APPL_SNAME>BUS_EI_STRUC_TEL_DATA</APPL_SNAME>\n                                                <COUNTRY>DE</COUNTRY>\n                                                <COUNTRYISO>DE</COUNTRYISO>\n                                                <TELEPHONE>062218191001001</TELEPHONE>\n                                                <VALID_FROM>00010101</VALID_FROM>\n                                                <VALID_TO>99991231</VALID_TO>\n                                            </E102BUS_EI_STRUC_TEL_DATA>\n                                            <E102BUS_EI_STRUC_TEL_DATAX SEGMENT=\"1\">\n                                                <APPL_SNAME>BUS_EI_STRUC_TEL_DATAX</APPL_SNAME>\n                                                <COUNTRY>X</COUNTRY>\n                                                <COUNTRYISO>X</COUNTRYISO>\n                                                <TELEPHONE>X</TELEPHONE>\n                                                <VALID_FROM>X</VALID_FROM>\n                                                <VALID_TO>X</VALID_TO>\n                                            </E102BUS_EI_STRUC_TEL_DATAX>\n                                        </E102S_EI_BUPA_TELEPHONE_CON>\n                                        <E113BUS_EI_COMM_USAGE SEGMENT=\"1\">\n                                            <APPL_SNAME>BUS_EI_COMM_USAGE</APPL_SNAME>\n                                            <E113BUS_EI_BUPA_COMMUSAGE SEGMENT=\"1\">\n                                                <APPL_SNAME>BUS_EI_BUPA_COMMUSAGE</APPL_SNAME>\n                                                <TASK>M</TASK>\n                                                <E113S_EI_BUPA_COMMUSAGE_KEY SEGMENT=\"1\">\n                                                    <APPL_SNAME>BUS_EI_BUPA_COMMUSAGE_KEY</APPL_SNAME>\n                                                    <COMM_USAGE>\n                                                    </COMM_USAGE>\n                                                    <VALID_TO>99991231</VALID_TO>\n                                                </E113S_EI_BUPA_COMMUSAGE_KEY>\n                                                <E113BUS_EI_STRUC_COMMUSAGE SEGMENT=\"1\">\n                                                    <APPL_SNAME>BUS_EI_STRUC_COMMUSAGE</APPL_SNAME>\n                                                    <VALID_FROM>00010101</VALID_FROM>\n                                                </E113BUS_EI_STRUC_COMMUSAGE>\n                                                <E113US_EI_STRUC_COMMUSAGE_X SEGMENT=\"1\">\n                                                    <APPL_SNAME>BUS_EI_STRUC_COMMUSAGE_X</APPL_SNAME>\n                                                    <VALID_FROM>X</VALID_FROM>\n                                                </E113US_EI_STRUC_COMMUSAGE_X>\n                                            </E113BUS_EI_BUPA_COMMUSAGE>\n                                        </E113BUS_EI_COMM_USAGE>\n                                    </E102BUS_EI_BUPA_TELEPHONE>\n                                </E102BUS_EI_TEL_DATA>\n                                <E102BUS_EI_URI_DATA SEGMENT=\"1\">\n                                    <APPL_SNAME>BUS_EI_URI_DATA</APPL_SNAME>\n                                    <E102BUS_EI_BUPA_URI SEGMENT=\"1\">\n                                        <APPL_SNAME>BUS_EI_BUPA_URI</APPL_SNAME>\n                                        <E102BUS_EI_BUPA_URI_CON SEGMENT=\"1\">\n                                            <APPL_SNAME>BUS_EI_BUPA_URI_CON</APPL_SNAME>\n                                            <TASK>M</TASK>\n                                            <E102BUS_EI_STRUC_URI_DATA SEGMENT=\"1\">\n                                                <APPL_SNAME>BUS_EI_STRUC_URI_DATA</APPL_SNAME>\n                                                <URI_TYPE>HPG</URI_TYPE>\n                                                <URI>www.algebra.com</URI>\n                                            </E102BUS_EI_STRUC_URI_DATA>\n                                            <E102BUS_EI_STRUC_URI_DATAX SEGMENT=\"1\">\n                                                <APPL_SNAME>BUS_EI_STRUC_URI_DATAX</APPL_SNAME>\n                                                <URI_TYPE>X</URI_TYPE>\n                                                <URI>X</URI>\n                                            </E102BUS_EI_STRUC_URI_DATAX>\n                                        </E102BUS_EI_BUPA_URI_CON>\n                                        <E123BUS_EI_COMM_USAGE SEGMENT=\"1\">\n                                            <APPL_SNAME>BUS_EI_COMM_USAGE</APPL_SNAME>\n                                            <E123BUS_EI_BUPA_COMMUSAGE SEGMENT=\"1\">\n                                                <APPL_SNAME>BUS_EI_BUPA_COMMUSAGE</APPL_SNAME>\n                                                <TASK>M</TASK>\n                                                <E123S_EI_BUPA_COMMUSAGE_KEY SEGMENT=\"1\">\n                                                    <APPL_SNAME>BUS_EI_BUPA_COMMUSAGE_KEY</APPL_SNAME>\n                                                    <COMM_USAGE>\n                                                    </COMM_USAGE>\n                                                    <VALID_TO>99991231</VALID_TO>\n                                                </E123S_EI_BUPA_COMMUSAGE_KEY>\n                                                <E123BUS_EI_STRUC_COMMUSAGE SEGMENT=\"1\">\n                                                    <APPL_SNAME>BUS_EI_STRUC_COMMUSAGE</APPL_SNAME>\n                                                    <VALID_FROM>00010101</VALID_FROM>\n                                                </E123BUS_EI_STRUC_COMMUSAGE>\n                                                <E123US_EI_STRUC_COMMUSAGE_X SEGMENT=\"1\">\n                                                    <APPL_SNAME>BUS_EI_STRUC_COMMUSAGE_X</APPL_SNAME>\n                                                    <VALID_FROM>X</VALID_FROM>\n                                                </E123US_EI_STRUC_COMMUSAGE_X>\n                                            </E123BUS_EI_BUPA_COMMUSAGE>\n                                        </E123BUS_EI_COMM_USAGE>\n                                    </E102BUS_EI_BUPA_URI>\n                                </E102BUS_EI_URI_DATA>\n                            </E102BUS_EI_COMMUNICATION>\n                            <E101BUS_EI_ADDRESSUSAGE SEGMENT=\"1\">\n                                <APPL_SNAME>BUS_EI_ADDRESSUSAGE</APPL_SNAME>\n                                <E101US_EI_BUPA_ADDRESSUSAGE SEGMENT=\"1\">\n                                    <APPL_SNAME>BUS_EI_BUPA_ADDRESSUSAGE</APPL_SNAME>\n                                    <TASK>M</TASK>\n                                    <E101S_EI_STRUC_ADDR_USE_KEY SEGMENT=\"1\">\n                                        <APPL_SNAME>BUS_EI_STRUC_ADDR_USE_KEY</APPL_SNAME>\n                                        <ADDRESSTYPE>XXDEFAULT</ADDRESSTYPE>\n                                        <VALID_TO>99991231</VALID_TO>\n                                    </E101S_EI_STRUC_ADDR_USE_KEY>\n                                    <E101S_EI_STRUC_ADDRESSUSAGE SEGMENT=\"1\">\n                                        <APPL_SNAME>BUS_EI_STRUC_ADDRESSUSAGE</APPL_SNAME>\n                                        <STANDARD>X</STANDARD>\n                                        <VALID_FROM>00010101</VALID_FROM>\n                                    </E101S_EI_STRUC_ADDRESSUSAGE>\n                                    <E101EI_STRUC_ADDRESSUSAGE_X SEGMENT=\"1\">\n                                        <APPL_SNAME>BUS_EI_STRUC_ADDRESSUSAGE_X</APPL_SNAME>\n                                        <STANDARD>X</STANDARD>\n                                        <VALID_FROM>X</VALID_FROM>\n                                    </E101EI_STRUC_ADDRESSUSAGE_X>\n                                </E101US_EI_BUPA_ADDRESSUSAGE>\n                            </E101BUS_EI_ADDRESSUSAGE>\n                        </E101US_EI_BUPA_ADDRESS_DATA>\n                    </E101BUS_EI_BUPA_ADDRESS>\n                </E101BUS_EI_ADDRESS>\n            </E101BUS_EI_CENTRAL_DATA>\n        </E101CRMXIF_PARTNER_COMPLEX>\n    </IDOC>\n    <IDOC BEGIN=\"1\">\n        <EDI_DC40 SEGMENT=\"1\">\n            <TABNAM>EDI_DC40</TABNAM>\n            <DIRECT>2</DIRECT>\n            <IDOCTYP>CRMXIF_PARTNER_SAVE_M03</IDOCTYP>\n            <MESTYP>CRMXIF_PARTNER_SAVE_M</MESTYP>\n            <SNDPOR>SAPCOD</SNDPOR>\n            <SNDPRT>LS</SNDPRT>\n            <SNDPRN>0HS6M0P</SNDPRN>\n            <RCVPOR>SAPCRM</RCVPOR>\n            <RCVPRT>LS</RCVPRT>\n            <RCVPRN>Q0CCLNT558</RCVPRN>\n            <ARCKEY>urn:sap.com:msgid=16629D4F7F60E54CE10000000A4286B6</ARCKEY>\n            <SERIAL>20120619090230</SERIAL>\n        </EDI_DC40>\n        <E101CRMXIF_PARTNER_COMPLEX SEGMENT=\"1\">\n            <APPL_SNAME>CRMXIF_PARTNER_COMPLEX</APPL_SNAME>\n            <E101CRMXIF_PARTNER_HEADER SEGMENT=\"1\">\n                <APPL_SNAME>CRMXIF_PARTNER_HEADER</APPL_SNAME>\n                <OBJECT>BusinessPartner</OBJECT>\n                <OBJECT_TASK>M</OBJECT_TASK>\n                <E101CRMXIF_PARTNER_KEYS SEGMENT=\"1\">\n                    <APPL_SNAME>CRMXIF_PARTNER_KEYS</APPL_SNAME>\n                    <E1011006_IDENTIFICATION_KEY SEGMENT=\"1\">\n                        <APPL_SNAME>BAPIBUS1006_IDENTIFICATION_KEY</APPL_SNAME>\n                        <IDENTIFICATIONCATEGORY>BPCCOD</IDENTIFICATIONCATEGORY>\n                        <IDENTIFICATIONNUMBER>1000051</IDENTIFICATIONNUMBER>\n                    </E1011006_IDENTIFICATION_KEY>\n                </E101CRMXIF_PARTNER_KEYS>\n            </E101CRMXIF_PARTNER_HEADER>\n            <E101BUS_EI_CENTRAL_DATA SEGMENT=\"1\">\n                <APPL_SNAME>BUS_EI_CENTRAL_DATA</APPL_SNAME>\n                <E101BUS_EI_BUPA_CENTRAL SEGMENT=\"1\">\n                    <APPL_SNAME>BUS_EI_BUPA_CENTRAL</APPL_SNAME>\n                    <E101US_EI_BUPA_CENTRAL_DATA SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_CENTRAL_DATA</APPL_SNAME>\n                        <E101US_EI_BUPA_CENTRAL_MAIN SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_BUPA_CENTRAL_MAIN</APPL_SNAME>\n                            <CATEGORY>1</CATEGORY>\n                            <GROUPING>0001</GROUPING>\n                        </E101US_EI_BUPA_CENTRAL_MAIN>\n                        <E101BUS_EI_STRUC_CENTRAL SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL</APPL_SNAME>\n                        </E101BUS_EI_STRUC_CENTRAL>\n                        <E101EI_STRUC_CENTRAL_PERSON SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL_PERSON</APPL_SNAME>\n                            <FIRSTNAME>Column</FIRSTNAME>\n                            <LASTNAME>Mathematica</LASTNAME>\n                            <NAMCOUNTRYISO>DE</NAMCOUNTRYISO>\n                            <SEX>2</SEX>\n                        </E101EI_STRUC_CENTRAL_PERSON>\n                    </E101US_EI_BUPA_CENTRAL_DATA>\n                    <E101BUPA_CENTRAL_DATA_XFLAG SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_CENTRAL_DATA_XFLAG</APPL_SNAME>\n                        <E101BUS_EI_STRUC_CENTRAL_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL_X</APPL_SNAME>\n                        </E101BUS_EI_STRUC_CENTRAL_X>\n                        <E101_STRUC_CENTRAL_PERSON_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_STRUC_CENTRAL_PERSON_X</APPL_SNAME>\n                            <FIRSTNAME>X</FIRSTNAME>\n                            <LASTNAME>X</LASTNAME>\n                            <NAMCOUNTRYISO>X</NAMCOUNTRYISO>\n                            <SEX>X</SEX>\n                        </E101_STRUC_CENTRAL_PERSON_X>\n                    </E101BUPA_CENTRAL_DATA_XFLAG>\n                </E101BUS_EI_BUPA_CENTRAL>\n                <E101BUS_EI_ROLES SEGMENT=\"1\">\n                    <APPL_SNAME>BUS_EI_ROLES</APPL_SNAME>\n                    <CURRENT_STATE>X</CURRENT_STATE>\n                    <E101BUS_EI_BUPA_ROLES SEGMENT=\"1\">\n                        <APPL_SNAME>BUS_EI_BUPA_ROLES</APPL_SNAME>\n                        <TASK>M</TASK>\n                        <DATA_KEY>BUP001</DATA_KEY>\n                        <E101BUS_EI_ROLE_DATA SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_ROLE_DATA</APPL_SNAME>\n                            <ROLECATEGORY>BUP001</ROLECATEGORY>\n                            <VALID_FROM>00010101</VALID_FROM>\n                            <VALID_TO>99991231</VALID_TO>\n                        </E101BUS_EI_ROLE_DATA>\n                        <E101BUS_EI_ROLE_DATA_X SEGMENT=\"1\">\n                            <APPL_SNAME>BUS_EI_ROLE_DATA_X</APPL_SNAME>\n                            <VALID_FROM>X</VALID_FROM>\n                            <VALID_TO>X</VALID_TO>\n                        </E101BUS_EI_ROLE_DATA_X>\n                    </E101BUS_EI_BUPA_ROLES>\n                </E101BUS_EI_ROLES>\n            </E101BUS_EI_CENTRAL_DATA>\n        </E101CRMXIF_PARTNER_COMPLEX>\n    </IDOC>\n</CRMXIF_PARTNER_SAVE_M03>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS4yLjM=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.2.3",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_7",
+                "name": "IDoc Splitter",
+                "componentVersion": "1.0",
+                "activityType": "IDoc",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6SURvYy92ZXJzaW9uOjoxLjAuMA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::IDoc/version::1.0.0",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.2",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.1",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "DEPRECATED - IDoc Splitter",
+            "Origin-ModifiedDate": "1633966138326",
+            "Origin-Bundle-SymbolicName": "IDoc_Splitter",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "DEPRECATED - IDoc Splitter",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "IDoc_Splitter; singleton:=true",
+            "Bundle-Version": "1.0.1",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Import-Service": "com.sap.esb.security.KeyManagerFactory;multiple:=false,com.sap.esb.security.TrustManagerFactory;multiple:=false,javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\",org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false ,com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false,com.sap.esb.webservice.audit.log.AuditLogger"
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": []
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "To email address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_15",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "From email address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_15",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "Mail server address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_15",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "IDoc Splitter",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_Process_1": {},
+                "Participant_2": {},
+                "Participant_14": {}
+            },
+            "messageFlows": {
+                "MessageFlow_16": {},
+                "MessageFlow_15": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNEdge_MessageFlow_16": {},
+                "BPMNEdge_MessageFlow_15": {},
+                "BPMNShape_Participant_2": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNShape_Participant_14": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "ServiceTask_11": {
+                "name": "Send",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Send",
+                    "displayName": "Send"
+                },
+                "id": "ServiceTask_11",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_12": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_12",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_8": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_8",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_13": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_13",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "EndEvent_2": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "Participant_14": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Receiver1",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_14",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "CallActivity_5": {
+                "name": "Set Input Message",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_5",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_6": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_7": {
+                "name": "IDoc Splitter",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Splitter_IDoc"
+                },
+                "id": "CallActivity_7",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "StartEvent_4": {
+                "eventType": "timer",
+                "name": " ",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatetimer",
+                    "displayName": "Timer Start"
+                },
+                "id": "StartEvent_4",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {},
+                "events": {
+                    "StartEvent_4": {},
+                    "EndEvent_2": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_12": {},
+                    "SequenceFlow_8": {},
+                    "SequenceFlow_13": {},
+                    "SequenceFlow_6": {}
+                },
+                "activities": {
+                    "ServiceTask_11": {},
+                    "CallActivity_5": {},
+                    "CallActivity_7": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "Participant_2": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Receiver",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_2",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "MessageFlow_16": {
+                "name": "IDOC",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "IDOC"
+                },
+                "id": "MessageFlow_16",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "MessageFlow_15": {
+                "name": "Mail",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "Mail"
+                },
+                "id": "MessageFlow_15",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_EndEvent_2": {
+                "x": 730.0,
+                "y": 150.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_ServiceTask_11": {
+                "x": 600.0,
+                "y": 140.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "ServiceTask_11",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ServiceTask_11",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_7": {
+                "x": 480.0,
+                "y": 140.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Type = IDoc\n",
+                "object": "CallActivity_7",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_7",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_StartEvent_4": {
+                "x": 282.0,
+                "y": 150.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_4",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_4",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_CallActivity_5": {
+                "x": 360.0,
+                "y": 140.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_5",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_5",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_2": {
+                "x": 900.0,
+                "y": 100.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_2",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 250.0,
+                "y": 60.0,
+                "width": 540.0,
+                "height": 220.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_EndEvent_2": {},
+                    "BPMNShape_ServiceTask_11": {},
+                    "BPMNEdge_SequenceFlow_6": {},
+                    "BPMNShape_CallActivity_7": {},
+                    "BPMNShape_StartEvent_4": {},
+                    "BPMNEdge_SequenceFlow_8": {},
+                    "BPMNShape_CallActivity_5": {},
+                    "BPMNEdge_SequenceFlow_12": {},
+                    "BPMNEdge_SequenceFlow_13": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_14": {
+                "x": 600.0,
+                "y": 310.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_14",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_14",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_6": {
+                "object": "SequenceFlow_6",
+                "sourceSymbol": "BPMNShape_StartEvent_4",
+                "targetSymbol": "BPMNShape_CallActivity_5",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "323.0,170.02983784606283 360.0,170.0",
+                "id": "BPMNEdge_SequenceFlow_6",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_16": {
+                "object": "MessageFlow_16",
+                "sourceSymbol": "BPMNShape_EndEvent_2",
+                "targetSymbol": "BPMNShape_Participant_2",
+                "tooltip": "Name = IDOC\nAdapter Type = IDOC\nTransport Protocol = HTTPS\nMessage Protocol = IDoc SOAP\n",
+                "id": "BPMNEdge_MessageFlow_16",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_8": {
+                "object": "SequenceFlow_8",
+                "sourceSymbol": "BPMNShape_CallActivity_5",
+                "targetSymbol": "BPMNShape_CallActivity_7",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "461.0,167.0 480.0,170.0",
+                "id": "BPMNEdge_SequenceFlow_8",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_15": {
+                "object": "MessageFlow_15",
+                "sourceSymbol": "BPMNShape_ServiceTask_11",
+                "targetSymbol": "BPMNShape_Participant_14",
+                "tooltip": "Name = Mail\nAdapter Type = Mail\nTransport Protocol =SMTP\nMessage Protocol = None\n",
+                "id": "BPMNEdge_MessageFlow_15",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_12": {
+                "object": "SequenceFlow_12",
+                "sourceSymbol": "BPMNShape_CallActivity_7",
+                "targetSymbol": "BPMNShape_ServiceTask_11",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "581.0,170.0 600.0,170.0",
+                "id": "BPMNEdge_SequenceFlow_12",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_13": {
+                "object": "SequenceFlow_13",
+                "sourceSymbol": "BPMNShape_ServiceTask_11",
+                "targetSymbol": "BPMNShape_EndEvent_2",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "701.0,170.0 730.0,167.0",
+                "id": "BPMNEdge_SequenceFlow_13",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

@@ -1,0 +1,1401 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "Accessing Headers in XSLT",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_2",
+                "diagramId": "BPMNShape_Participant_2",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Receiver1",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 950,
+                    "y": 100,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_2_Lane0",
+                "containedIn": "Participant_2",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 250,
+                    "y": 60,
+                    "width": 610,
+                    "height": 290
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 610,
+                    "height": 263
+                }
+            },
+            {
+                "id": "CallActivity_1",
+                "diagramId": "BPMNShape_CallActivity_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Content Modifier",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 110,
+                    "y": 51,
+                    "width": 120,
+                    "height": 60
+                }
+            },
+            {
+                "id": "EndEvent_1",
+                "diagramId": "BPMNShape_EndEvent_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 486,
+                    "y": 63,
+                    "width": 36,
+                    "height": 36
+                }
+            },
+            {
+                "id": "StartEvent_2",
+                "diagramId": "BPMNShape_StartEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatetimer",
+                    "x": 40,
+                    "y": 63,
+                    "width": 36,
+                    "height": 36
+                }
+            },
+            {
+                "id": "CallActivity_3",
+                "diagramId": "BPMNShape_CallActivity_3",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Content Modifier",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 374,
+                    "y": 113,
+                    "width": 120,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_2",
+                "diagramId": "BPMNShape_CallActivity_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "XSLT Mapping",
+                    "tooltip": "Transforms one XML structure to another",
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "x": 260,
+                    "y": 51,
+                    "width": 100,
+                    "height": 60
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "EndEvent_1",
+                "target": "Participant_2",
+                "id": "MessageFlow_2",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_2",
+                "sourceDiagramElement": "BPMNShape_EndEvent_1",
+                "targetDiagramElement": "BPMNShape_Participant_2",
+                "attributes": {
+                    "name": "Mail",
+                    "tooltip": "Name = Mail_newline_Adapter Type = Mail_newline_Transport Protocol =SMTP_newline_Message Protocol = None_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_1",
+                "target": "CallActivity_2",
+                "id": "SequenceFlow_3",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_3",
+                "sourceDiagramElement": "BPMNShape_CallActivity_1",
+                "targetDiagramElement": "BPMNShape_CallActivity_2",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_2",
+                "target": "CallActivity_1",
+                "id": "SequenceFlow_2",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_2",
+                "sourceDiagramElement": "BPMNShape_StartEvent_2",
+                "targetDiagramElement": "BPMNShape_CallActivity_1",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_3",
+                "target": "EndEvent_1",
+                "id": "SequenceFlow_5",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_5",
+                "sourceDiagramElement": "BPMNShape_CallActivity_3",
+                "targetDiagramElement": "BPMNShape_EndEvent_1",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_2",
+                "target": "CallActivity_3",
+                "id": "SequenceFlow_4",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_4",
+                "sourceDiagramElement": "BPMNShape_CallActivity_2",
+                "targetDiagramElement": "BPMNShape_CallActivity_3",
+                "routingDirection": "south-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9u",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "Detailed explanation for this flow can be found at: Cloud Integration - Exemplars --> Documents --> HowTo- Access and set Header and Property in XSLT Mappings",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "DEPRECATED - Accessing and setting Header and Property in XSLT",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "bundleId": {
+                    "value": "Accessing_Headers_in_XSLT",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_2",
+                "name": {
+                    "value": "Receiver1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_2",
+                "componentVersion": "",
+                "name": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Receiver1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "SMTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "com.sap.it.ide.mail.ui.namespace2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "com.sap.it.ide.mail.ui.archive2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "com.sap.it.ide.mail.ui.archive2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "SMTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cc": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "server": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "Mail server address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "bcc": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "auth": {
+                        "value": "none",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "subject": {
+                        "value": "Accessing and setting Header and Property in XSLT",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.aes.keysize": {
+                        "value": "128",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "content_encoding": {
+                        "value": "UTF-8",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "keep_attachments": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "body": {
+                        "value": "${in.body}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ssl": {
+                        "value": "off",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "timeout": {
+                        "value": "30000",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.des.keysize": {
+                        "value": "128",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "content_type": {
+                        "value": "text/plain",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.type": {
+                        "value": "none",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "encrypt.smime.algorithm": {
+                        "value": "aes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "from": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "From email address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "to": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "To email address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "user": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "attachments": {
+                        "isPersisted": false
+                    },
+                    "encrypt.smime.keys": {
+                        "isPersisted": false
+                    }
+                },
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpjb20uc2FwLml0LmlkZS5tYWlsLnVpLm5hbWVzcGFjZTI6TWFpbC90cDo6U01UUC9tcDo6Tm9uZS9kaXJlY3Rpb246OlJlY2VpdmVy",
+                "metadataURI": "ctype::AdapterVariant/cname::com.sap.it.ide.mail.ui.namespace2:Mail/tp::SMTP/mp::None/direction::Receiver",
+                "systemId": "Participant_2"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "CallActivity_1",
+                "name": "Content Modifier",
+                "componentVersion": "1.2",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "wrapContent": {
+                        "value": "<xml>\r\nabcd\r\n</xml>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "111111",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "Param3",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "1234",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "Param1",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_1",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_2",
+                "activityType": "",
+                "displayName": "Timer Start",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6aW50ZXJtZWRpYXRldGltZXI=",
+                "metadataURI": "ctype::FlowstepVariant/cname::intermediatetimer",
+                "technicalCapabilities": {},
+                "scheduler": {
+                    "externalizedKey": "",
+                    "modified": false,
+                    "noOfSchedules": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "triggerType": {
+                        "value": "simple",
+                        "defaultValue": "simple",
+                        "key": ""
+                    },
+                    "dateType": {
+                        "value": "DAILY",
+                        "defaultValue": "DAILY",
+                        "key": ""
+                    },
+                    "timeType": {
+                        "value": "TIME_INTERVAL",
+                        "defaultValue": "TIME_INTERVAL",
+                        "key": ""
+                    },
+                    "date": {
+                        "value": "09/04/2025",
+                        "defaultValue": "09/04/2025",
+                        "key": ""
+                    },
+                    "time": {
+                        "value": "11:01",
+                        "defaultValue": "11:01",
+                        "key": ""
+                    },
+                    "dayOfMonth": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "mon": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "tue": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "wed": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "thu": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "fri": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sat": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sun": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "onEveryDuration": {
+                        "value": "60",
+                        "defaultValue": "60",
+                        "key": ""
+                    },
+                    "fromInterval": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": ""
+                    },
+                    "toInterval": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "timeZone": {
+                        "value": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "defaultValue": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "key": ""
+                    },
+                    "throwExceptionOnExpiry": {
+                        "value": true,
+                        "defaultValue": true,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "second": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "minute": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "hour": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "month": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "dayOfWeek": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "day_of_month": {
+                        "value": "?",
+                        "defaultValue": "?",
+                        "key": ""
+                    },
+                    "year": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "startAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "endAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "attributeBehaviour": {
+                        "value": "isRunOnceRequired,isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "defaultValue": "isRunOnceRequired,isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "key": ""
+                    },
+                    "scheduleType": {
+                        "value": "simpleSchedule",
+                        "defaultValue": "simpleSchedule",
+                        "key": ""
+                    },
+                    "simpleRepeat": {
+                        "value": "NONE",
+                        "defaultValue": "NONE",
+                        "key": ""
+                    },
+                    "simpleSchedule": {
+                        "value": "onDeployment",
+                        "defaultValue": "onDeployment",
+                        "key": ""
+                    },
+                    "simpleRunOn": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "simpleEvery": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "simpleDaysOfWeek": {
+                        "value": "SUN",
+                        "defaultValue": "SUN",
+                        "key": ""
+                    },
+                    "multipleScheduleObject": {
+                        "value": "",
+                        "values": [
+                            ""
+                        ],
+                        "defaultValue": "",
+                        "defaultValues": [
+                            ""
+                        ],
+                        "key": ""
+                    }
+                }
+            },
+            {
+                "id": "CallActivity_3",
+                "name": "Content Modifier",
+                "componentVersion": "1.2",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "wrapContent": {
+                        "value": "header value-\r\n\tParam1:  ${header.Param1}\r\nproperty value-\r\n\tParam2:  ${property.Param2}\r\n\tParam3:  ${property.Param3}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "isPersisted": false
+                    },
+                    "headerTable": {
+                        "isPersisted": false
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_2",
+                "name": "XSLT Mapping",
+                "componentVersion": "1.1",
+                "activityType": "XSLTMapping",
+                "displayName": "XSLT Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappingoutputformat": {
+                        "value": "Bytes",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingHeaderNameKey": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/mapping/editHeader.xsl",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingSource": {
+                        "value": "mappingSrcIflow",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6WFNMVE1hcHBpbmcvdmVyc2lvbjo6MS4x",
+                "metadataURI": "ctype::FlowstepVariant/cname::XSLTMapping/version::1.1",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4x",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.1",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.1",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "DEPRECATED - Accessing and setting Header and Property in XSLT",
+            "Origin-ModifiedDate": "1633966137886",
+            "Origin-Bundle-SymbolicName": "Accessing_Headers_in_XSLT",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,com.sap.sod.utils.cxf.interceptors,com.sap.sod.utils.encoding.processors,com.sap.sod.utils.idoc.soap,com.sap.sod.utils.soap,com.sap.sod.utils.idoc.soap.processors,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse,org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters,org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.aii.ib.bom.flib.types,com.sap.aii.mapping.api,com.sap.aii.mappingtool.flib3,com.sap.aii.mappingtool.flib7,com.sap.aii.mappingtool.tf3,com.sap.aii.mappingtool.tf3.rt,com.sap.aii.mappingtool.tf7,com.sap.aii.mappingtool.tf7.rt,com.sap.aii.mappingtool.tfapi,com.sap.esb.webservice.audit.log",
+            "Origin-Bundle-Name": "DEPRECATED - Accessing and setting Header and Property in XSLT",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "Accessing_Headers_in_XSLT; singleton:=true",
+            "Bundle-Version": "1.0.1",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Import-Service": "com.sap.esb.webservice.audit.log.AuditLogger "
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": []
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "To email address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_2",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "From email address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_2",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "Mail server address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_2",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "Accessing Headers in XSLT",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_Process_1": {},
+                "Participant_2": {}
+            },
+            "messageFlows": {
+                "MessageFlow_2": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_2": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNEdge_MessageFlow_2": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "EndEvent_1": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_1",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "MessageFlow_2": {
+                "name": "Mail",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "Mail"
+                },
+                "id": "MessageFlow_2",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_3": {
+                "name": "Content Modifier",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_3",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_4": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_4",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_2": {
+                "name": "XSLT Mapping",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "XSLTMapping",
+                    "displayName": "XSLT Mapping"
+                },
+                "id": "CallActivity_2",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_5": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_5",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_2": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_2",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_3": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_3",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_1": {
+                "name": "Content Modifier",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_1",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "StartEvent_2": {
+                "eventType": "timer",
+                "name": "",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatetimer",
+                    "displayName": "Timer Start"
+                },
+                "id": "StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {},
+                "events": {
+                    "EndEvent_1": {},
+                    "StartEvent_2": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_4": {},
+                    "SequenceFlow_5": {},
+                    "SequenceFlow_2": {},
+                    "SequenceFlow_3": {}
+                },
+                "activities": {
+                    "CallActivity_1": {},
+                    "CallActivity_3": {},
+                    "CallActivity_2": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "Participant_2": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Receiver1",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_2",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_EndEvent_1": {
+                "x": 736.0,
+                "y": 150.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_1",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_StartEvent_2": {
+                "x": 290.0,
+                "y": 150.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_Participant_2": {
+                "x": 950.0,
+                "y": 100.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_2",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_3": {
+                "x": 624.0,
+                "y": 200.0,
+                "width": 120.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_3",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_3",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_2": {
+                "x": 510.0,
+                "y": 138.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Transforms one XML structure to another",
+                "object": "CallActivity_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_2",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 250.0,
+                "y": 60.0,
+                "width": 610.0,
+                "height": 290.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_EndEvent_1": {},
+                    "BPMNShape_StartEvent_2": {},
+                    "BPMNEdge_SequenceFlow_5": {},
+                    "BPMNEdge_SequenceFlow_2": {},
+                    "BPMNShape_CallActivity_3": {},
+                    "BPMNShape_CallActivity_2": {},
+                    "BPMNEdge_SequenceFlow_4": {},
+                    "BPMNShape_CallActivity_1": {},
+                    "BPMNEdge_SequenceFlow_3": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_1": {
+                "x": 360.0,
+                "y": 138.0,
+                "width": 120.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_1",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_5": {
+                "object": "SequenceFlow_5",
+                "sourceSymbol": "BPMNShape_CallActivity_3",
+                "targetSymbol": "BPMNShape_EndEvent_1",
+                "tooltip": "",
+                "points": "744.0,230.0 828.0,230.0 828.0,186.0",
+                "id": "BPMNEdge_SequenceFlow_5",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_2": {
+                "object": "SequenceFlow_2",
+                "sourceSymbol": "BPMNShape_StartEvent_2",
+                "targetSymbol": "BPMNShape_CallActivity_1",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "326.0,168.0 343.0,168.0 360.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_2",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_4": {
+                "object": "SequenceFlow_4",
+                "sourceSymbol": "BPMNShape_CallActivity_2",
+                "targetSymbol": "BPMNShape_CallActivity_3",
+                "tooltip": "",
+                "sourceDirection": 0,
+                "targetDirection": 1,
+                "points": "560.0,198.0 560.0,230.0 624.0,230.0",
+                "id": "BPMNEdge_SequenceFlow_4",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_3": {
+                "object": "SequenceFlow_3",
+                "sourceSymbol": "BPMNShape_CallActivity_1",
+                "targetSymbol": "BPMNShape_CallActivity_2",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "480.0,168.0 495.0,168.0 510.0,168.0",
+                "id": "BPMNEdge_SequenceFlow_3",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_2": {
+                "object": "MessageFlow_2",
+                "sourceSymbol": "BPMNShape_EndEvent_1",
+                "targetSymbol": "BPMNShape_Participant_2",
+                "tooltip": "Name = Mail\nAdapter Type = Mail\nTransport Protocol =SMTP\nMessage Protocol = None\n",
+                "id": "BPMNEdge_MessageFlow_2",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

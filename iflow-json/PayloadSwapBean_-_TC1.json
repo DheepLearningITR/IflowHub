@@ -1,0 +1,1510 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "TEST_RM_PayloadSwapBean",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Sender",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 46,
+                    "y": 147,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_10",
+                "diagramId": "BPMNShape_Participant_Process_10",
+                "bpmnElementId": "Participant_Process_10",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process 1",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 246,
+                    "y": 137,
+                    "width": 548,
+                    "height": 137
+                }
+            },
+            {
+                "id": "Process_10_Lane0",
+                "containedIn": "Process_10",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 548,
+                    "height": 110
+                }
+            },
+            {
+                "id": "StartEvent_11",
+                "diagramId": "BPMNShape_StartEvent_11",
+                "containedIn": "Process_10",
+                "partitionedIn": "Process_10_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 20,
+                    "y": 37,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_20",
+                "diagramId": "BPMNShape_CallActivity_20",
+                "containedIn": "Process_10",
+                "partitionedIn": "Process_10_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Payload Swap Bean",
+                    "tooltip": "Script = /script/PayloadSwapBean.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 272,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "EndEvent_12",
+                "diagramId": "BPMNShape_EndEvent_12",
+                "containedIn": "Process_10",
+                "partitionedIn": "Process_10_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 432,
+                    "y": 37,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_14",
+                "diagramId": "BPMNShape_CallActivity_14",
+                "containedIn": "Process_10",
+                "partitionedIn": "Process_10_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 112,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_11",
+                "id": "MessageFlow_19",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_19",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_11",
+                "attributes": {
+                    "name": "Mail",
+                    "tooltip": "Name = Mail_newline_Adapter Type = Mail_newline_Transport Protocol =IMAP_newline_Message Protocol = Not Applicable_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_11",
+                "target": "CallActivity_14",
+                "id": "SequenceFlow_13",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_13",
+                "sourceDiagramElement": "BPMNShape_StartEvent_11",
+                "targetDiagramElement": "BPMNShape_CallActivity_14",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_20",
+                "target": "EndEvent_12",
+                "id": "SequenceFlow_21",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_21",
+                "sourceDiagramElement": "BPMNShape_CallActivity_20",
+                "targetDiagramElement": "BPMNShape_EndEvent_12",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_14",
+                "target": "CallActivity_20",
+                "id": "SequenceFlow_15",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_15",
+                "sourceDiagramElement": "BPMNShape_CallActivity_14",
+                "targetDiagramElement": "BPMNShape_CallActivity_20",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "componentVersion": "1.2",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9uL3ZlcnNpb246OjEuMi40",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration/version::1.2.4",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "httpSessionHandling": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlMaxAge": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "corsEnabled": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "exposedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "bundleId": {
+                    "value": "PayloadSwapBean_-_TC1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaderList": {
+                    "value": "Content-Type",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedOrigins": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlAllowCredentials": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "PayloadSwapBean - TC1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedMethods": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_19",
+                "componentVersion": "1.12",
+                "name": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "IMAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.12.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.12.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.12.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "IMAP4",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "Mail",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "server": {
+                        "value": "imap.gmail.com:993",
+                        "defaultValue": "imap.gmail.com:993",
+                        "key": "email_address",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "disconnect": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyProtocol": {
+                        "value": "socks5",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "lockDuration": {
+                        "value": "60",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "archiveMailFolder": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "auth": {
+                        "value": "loginPlain",
+                        "defaultValue": "loginPlain",
+                        "key": "email_auth",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "none",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyAlias": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "selectionReadFlag": {
+                        "value": "unread",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "removeAttachments": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyHost": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ssl": {
+                        "value": "imaps",
+                        "defaultValue": "imaps",
+                        "key": "email_protection",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "timeout": {
+                        "value": "3000",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "forwardOriginalMail": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyPort": {
+                        "value": "8080",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "postProcessing": {
+                        "value": "mark",
+                        "defaultValue": "mark",
+                        "key": "email_post_processing",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "folder": {
+                        "value": "PayloadSwapBean",
+                        "defaultValue": "PayloadSwapBean",
+                        "key": "email_folder",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "scheduleKey": {
+                        "value": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEverySecond</cell><cell>10</cell></row><row><cell>timeType</cell><cell>TIME_SECOND_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>throwExceptionOnExpiry</cell><cell>true</cell></row><row><cell>second</cell><cell>0/10</cell></row><row><cell>minute</cell><cell>*</cell></row><row><cell>hour</cell><cell>0-24</cell></row><row><cell>day_of_month</cell><cell>?</cell></row><row><cell>month</cell><cell>*</cell></row><row><cell>dayOfWeek</cell><cell>*</cell></row><row><cell>year</cell><cell>*</cell></row><row><cell>startAt</cell><cell></cell></row><row><cell>endAt</cell><cell></cell></row><row><cell>attributeBehaviour</cell><cell>isScheduleOnDayRequired,isScheduleRecurRequired</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0/10+*+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                        "defaultValue": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEverySecond</cell><cell>10</cell></row><row><cell>timeType</cell><cell>TIME_SECOND_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>throwExceptionOnExpiry</cell><cell>true</cell></row><row><cell>second</cell><cell>0/10</cell></row><row><cell>minute</cell><cell>*</cell></row><row><cell>hour</cell><cell>0-24</cell></row><row><cell>day_of_month</cell><cell>?</cell></row><row><cell>month</cell><cell>*</cell></row><row><cell>dayOfWeek</cell><cell>*</cell></row><row><cell>year</cell><cell>*</cell></row><row><cell>startAt</cell><cell></cell></row><row><cell>endAt</cell><cell></cell></row><row><cell>attributeBehaviour</cell><cell>isScheduleOnDayRequired,isScheduleRecurRequired</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0/10+*+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                        "key": "email_scheduler",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "locationId": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mimeDecodeHeaders": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "maxMessagesPerPoll": {
+                        "value": "20",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "tokenCredential": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "user": {
+                        "value": "gmailCI",
+                        "defaultValue": "gmailCI",
+                        "key": "email_credential",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "scheduler": {
+                    "externalizedKey": "email_scheduler",
+                    "modified": false,
+                    "noOfSchedules": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "triggerType": {
+                        "value": "cron",
+                        "defaultValue": "cron",
+                        "key": ""
+                    },
+                    "dateType": {
+                        "value": "DAILY",
+                        "defaultValue": "DAILY",
+                        "key": ""
+                    },
+                    "timeType": {
+                        "value": "TIME_SECOND_INTERVAL",
+                        "defaultValue": "TIME_SECOND_INTERVAL",
+                        "key": ""
+                    },
+                    "date": {
+                        "value": "09/02/2025",
+                        "defaultValue": "09/02/2025",
+                        "key": ""
+                    },
+                    "time": {
+                        "value": "15:52",
+                        "defaultValue": "15:52",
+                        "key": ""
+                    },
+                    "dayOfMonth": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "mon": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "tue": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "wed": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "thu": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "fri": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sat": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "sun": {
+                        "value": false,
+                        "defaultValue": false,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "onEveryDuration": {
+                        "value": "10",
+                        "defaultValue": "10",
+                        "key": ""
+                    },
+                    "fromInterval": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": ""
+                    },
+                    "toInterval": {
+                        "value": "24",
+                        "defaultValue": "24",
+                        "key": ""
+                    },
+                    "timeZone": {
+                        "value": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "defaultValue": "( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)",
+                        "key": ""
+                    },
+                    "additionalMetadata": {},
+                    "throwExceptionOnExpiry": {
+                        "value": true,
+                        "defaultValue": true,
+                        "key": "",
+                        "iflowBooleanType": "BOOL_TYPE_STRING"
+                    },
+                    "second": {
+                        "value": "0/10",
+                        "defaultValue": "0/10",
+                        "key": ""
+                    },
+                    "minute": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "hour": {
+                        "value": "0-24",
+                        "defaultValue": "0-24",
+                        "key": ""
+                    },
+                    "month": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "dayOfWeek": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "day_of_month": {
+                        "value": "?",
+                        "defaultValue": "?",
+                        "key": ""
+                    },
+                    "year": {
+                        "value": "*",
+                        "defaultValue": "*",
+                        "key": ""
+                    },
+                    "startAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "endAt": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "attributeBehaviour": {
+                        "value": "isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "defaultValue": "isScheduleOnDayRequired,isScheduleRecurRequired",
+                        "key": ""
+                    },
+                    "scheduleType": {
+                        "value": "simpleSchedule",
+                        "defaultValue": "simpleSchedule",
+                        "key": ""
+                    },
+                    "simpleRepeat": {
+                        "value": "NONE",
+                        "defaultValue": "NONE",
+                        "key": ""
+                    },
+                    "simpleSchedule": {
+                        "value": "onDeployment",
+                        "defaultValue": "onDeployment",
+                        "key": ""
+                    },
+                    "simpleRunOn": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": ""
+                    },
+                    "simpleEvery": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": ""
+                    },
+                    "simpleDaysOfWeek": {
+                        "value": "SUN",
+                        "defaultValue": "SUN",
+                        "key": ""
+                    },
+                    "multipleScheduleObject": {
+                        "value": "",
+                        "values": [
+                            ""
+                        ],
+                        "defaultValue": "",
+                        "defaultValues": [
+                            ""
+                        ],
+                        "key": ""
+                    }
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6TWFpbC90cDo6SU1BUC9tcDo6Tm90IEFwcGxpY2FibGUvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4xMi4w",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:Mail/tp::IMAP/mp::Not Applicable/direction::Sender/version::1.12.0",
+                "systemId": "Participant_1"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "StartEvent_11",
+                "name": "Start",
+                "componentVersion": "1.0",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQvdmVyc2lvbjo6MS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent/version::1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_20",
+                "name": "Payload Swap Bean",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "com.sap.integration.cloud.utilities.MessageTransformations.Utilities",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/PayloadSwapBean.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_12",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_14",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "constant",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "PAYLOAD-NAME",
+                                    "defaultValue": "PAYLOAD-NAME",
+                                    "key": "key_type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "swap.keyName",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "input",
+                                    "defaultValue": "input",
+                                    "key": "key_value",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "swap.keyValue",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjA=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.0",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_10",
+                "name": "Integration Process 1",
+                "componentVersion": "1.2",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Not Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMi4x",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.2.1",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.0",
+            "SAP-BundleType": "IntegrationFlow",
+            "Bundle-Name": "PayloadSwapBean - TC1",
+            "SAP-RuntimeProfile": "iflmap",
+            "Origin-ModifiedDate": "1736411820440",
+            "Origin-Bundle-SymbolicName": "PayloadSwapBean_-_TC1",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "PayloadSwapBean - TC1",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "PayloadSwapBean_-_TC1",
+            "Bundle-Version": "1.0.0",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Require-Capability": "scriptcollection.com.sap.integration.cloud.utilities.MessageTransformations.Utilities;resolution:=optional;bundleType:String=\"ScriptCollection\";source:String=\"reference\""
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": [
+            {
+                "value": "PAYLOAD-NAME",
+                "defaultValue": "PAYLOAD-NAME",
+                "key": "key_type",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "input",
+                "defaultValue": "input",
+                "key": "key_value",
+                "additionalMetadata": {}
+            }
+        ]
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "mark",
+                "defaultValue": "mark",
+                "key": "email_post_processing",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEverySecond</cell><cell>10</cell></row><row><cell>timeType</cell><cell>TIME_SECOND_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>throwExceptionOnExpiry</cell><cell>true</cell></row><row><cell>second</cell><cell>0/10</cell></row><row><cell>minute</cell><cell>*</cell></row><row><cell>hour</cell><cell>0-24</cell></row><row><cell>day_of_month</cell><cell>?</cell></row><row><cell>month</cell><cell>*</cell></row><row><cell>dayOfWeek</cell><cell>*</cell></row><row><cell>year</cell><cell>*</cell></row><row><cell>startAt</cell><cell></cell></row><row><cell>endAt</cell><cell></cell></row><row><cell>attributeBehaviour</cell><cell>isScheduleOnDayRequired,isScheduleRecurRequired</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0/10+*+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                "defaultValue": "<row><cell>dayValue</cell><cell></cell></row><row><cell>monthValue</cell><cell></cell></row><row><cell>yearValue</cell><cell></cell></row><row><cell>dateType</cell><cell>DAILY</cell></row><row><cell>secondValue</cell><cell>0</cell></row><row><cell>minutesValue</cell><cell></cell></row><row><cell>hourValue</cell><cell></cell></row><row><cell>toInterval</cell><cell>24</cell></row><row><cell>fromInterval</cell><cell>0</cell></row><row><cell>OnEverySecond</cell><cell>10</cell></row><row><cell>timeType</cell><cell>TIME_SECOND_INTERVAL</cell></row><row><cell>timeZone</cell><cell>( UTC 0:00 ) Greenwich Mean Time(Etc/GMT)</cell></row><row><cell>throwExceptionOnExpiry</cell><cell>true</cell></row><row><cell>second</cell><cell>0/10</cell></row><row><cell>minute</cell><cell>*</cell></row><row><cell>hour</cell><cell>0-24</cell></row><row><cell>day_of_month</cell><cell>?</cell></row><row><cell>month</cell><cell>*</cell></row><row><cell>dayOfWeek</cell><cell>*</cell></row><row><cell>year</cell><cell>*</cell></row><row><cell>startAt</cell><cell></cell></row><row><cell>endAt</cell><cell></cell></row><row><cell>attributeBehaviour</cell><cell>isScheduleOnDayRequired,isScheduleRecurRequired</cell></row><row><cell>triggerType</cell><cell>cron</cell></row><row><cell>noOfSchedules</cell><cell>1</cell></row><row><cell>schedule1</cell><cell>0/10+*+0-23+?+*+*+*&amp;trigger.timeZone=Etc/GMT</cell></row>",
+                "key": "email_scheduler",
+                "dataType": "custom:schedule"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "imap.gmail.com:993",
+                "defaultValue": "imap.gmail.com:993",
+                "key": "email_address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "PAYLOAD-NAME",
+                "defaultValue": "PAYLOAD-NAME",
+                "key": "key_type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_14",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "PayloadSwapBean",
+                "defaultValue": "PayloadSwapBean",
+                "key": "email_folder",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "gmailCI",
+                "defaultValue": "gmailCI",
+                "key": "email_credential",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "loginPlain",
+                "defaultValue": "loginPlain",
+                "key": "email_auth",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "input",
+                "defaultValue": "input",
+                "key": "key_value",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_14",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "imaps",
+                "defaultValue": "imaps",
+                "key": "email_protection",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Mail",
+                    "id": "MessageFlow_19",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "TEST_RM_PayloadSwapBean",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_Process_10": {},
+                "Participant_1": {}
+            },
+            "messageFlows": {
+                "MessageFlow_19": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNEdge_MessageFlow_19": {},
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_Process_10": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "SequenceFlow_15": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_15",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "StartEvent_11": {
+                "eventType": "message",
+                "name": "Start",
+                "parentId": "Process_10",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_11",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "MessageFlow_19": {
+                "name": "Mail",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "Mail"
+                },
+                "id": "MessageFlow_19",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "Participant_Process_10": {
+                "process": "Process_10",
+                "subProcesses": {},
+                "events": {
+                    "StartEvent_11": {},
+                    "EndEvent_12": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_15": {},
+                    "SequenceFlow_13": {},
+                    "SequenceFlow_21": {}
+                },
+                "activities": {
+                    "CallActivity_20": {},
+                    "CallActivity_14": {}
+                },
+                "gateways": {},
+                "name": "Integration Process 1",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_10"
+                },
+                "id": "Participant_Process_10",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "SequenceFlow_13": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_13",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Sender",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "CallActivity_20": {
+                "name": "Payload Swap Bean",
+                "parentId": "Process_10",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_20",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_21": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_21",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "EndEvent_12": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_10",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_12",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "CallActivity_14": {
+                "name": "Set properties",
+                "parentId": "Process_10",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_14",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_StartEvent_11": {
+                "x": 266.0,
+                "y": 201.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_11",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_11",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_CallActivity_20": {
+                "x": 518.0,
+                "y": 187.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/PayloadSwapBean.groovy;Function = ",
+                "object": "CallActivity_20",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_20",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": 46.0,
+                "y": 147.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_EndEvent_12": {
+                "x": 678.0,
+                "y": 201.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_12",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_12",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_14": {
+                "x": 358.0,
+                "y": 187.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_14",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_14",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_Process_10": {
+                "x": 246.0,
+                "y": 137.0,
+                "width": 548.0,
+                "height": 137.0,
+                "tooltip": "",
+                "object": "Participant_Process_10",
+                "symbols": {
+                    "BPMNShape_StartEvent_11": {},
+                    "BPMNEdge_SequenceFlow_15": {},
+                    "BPMNShape_CallActivity_20": {},
+                    "BPMNEdge_SequenceFlow_21": {},
+                    "BPMNEdge_SequenceFlow_13": {},
+                    "BPMNShape_EndEvent_12": {},
+                    "BPMNShape_CallActivity_14": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_10",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_MessageFlow_19": {
+                "object": "MessageFlow_19",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_11",
+                "tooltip": "Name = Mail\nAdapter Type = Mail\nTransport Protocol =IMAP\nMessage Protocol = Not Applicable\n",
+                "id": "BPMNEdge_MessageFlow_19",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_15": {
+                "object": "SequenceFlow_15",
+                "sourceSymbol": "BPMNShape_CallActivity_14",
+                "targetSymbol": "BPMNShape_CallActivity_20",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "458.0,217.0 518.0,217.0",
+                "id": "BPMNEdge_SequenceFlow_15",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_21": {
+                "object": "SequenceFlow_21",
+                "sourceSymbol": "BPMNShape_CallActivity_20",
+                "targetSymbol": "BPMNShape_EndEvent_12",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "618.0,217.0 678.0,217.0",
+                "id": "BPMNEdge_SequenceFlow_21",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_13": {
+                "object": "SequenceFlow_13",
+                "sourceSymbol": "BPMNShape_StartEvent_11",
+                "targetSymbol": "BPMNShape_CallActivity_14",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "298.0,217.0 358.0,217.0",
+                "id": "BPMNEdge_SequenceFlow_13",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

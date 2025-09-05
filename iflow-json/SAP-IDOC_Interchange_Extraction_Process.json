@@ -1,0 +1,3446 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "IDOC Interchange Extraction Process",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Sender",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 17,
+                    "y": 20,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 217,
+                    "y": 10,
+                    "width": 708,
+                    "height": 137
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 708,
+                    "height": 110
+                }
+            },
+            {
+                "id": "CallActivity_63",
+                "diagramId": "BPMNShape_CallActivity_63",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set extraction value mapping key fields",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 272,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_2",
+                "diagramId": "BPMNShape_StartEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 20,
+                    "y": 37,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "EndEvent_2",
+                "diagramId": "BPMNShape_EndEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 592,
+                    "y": 37,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_60",
+                "diagramId": "BPMNShape_CallActivity_60",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Extract header parameters",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 112,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_66",
+                "diagramId": "BPMNShape_CallActivity_66",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Value mapping of extracted header parameters",
+                    "tooltip": "Script = /script/extractionValueMapping.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 432,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_2",
+                "id": "MessageFlow_4",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_4",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_2",
+                "attributes": {
+                    "name": "ProcessDirect",
+                    "tooltip": "Name = ProcessDirect_newline_Adapter Type = ProcessDirect_newline_Transport Protocol =Not Applicable_newline_Message Protocol = Not Applicable_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_63",
+                "target": "CallActivity_66",
+                "id": "SequenceFlow_64",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_64",
+                "sourceDiagramElement": "BPMNShape_CallActivity_63",
+                "targetDiagramElement": "BPMNShape_CallActivity_66",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_2",
+                "target": "CallActivity_60",
+                "id": "SequenceFlow_59",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_59",
+                "sourceDiagramElement": "BPMNShape_StartEvent_2",
+                "targetDiagramElement": "BPMNShape_CallActivity_60",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_60",
+                "target": "CallActivity_63",
+                "id": "SequenceFlow_74",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_74",
+                "sourceDiagramElement": "BPMNShape_CallActivity_60",
+                "targetDiagramElement": "BPMNShape_CallActivity_63",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_66",
+                "target": "EndEvent_2",
+                "id": "SequenceFlow_67",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_67",
+                "sourceDiagramElement": "BPMNShape_CallActivity_66",
+                "targetDiagramElement": "BPMNShape_EndEvent_2",
+                "routingDirection": "east-west",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "componentVersion": "1.2",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9uL3ZlcnNpb246OjEuMi4y",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration/version::1.2.2",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "httpSessionHandling": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlMaxAge": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "corsEnabled": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "exposedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "bundleId": {
+                    "value": "SAP-IDOC_Interchange_Extraction_Process",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaderList": {
+                    "value": ".*",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedOrigins": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlAllowCredentials": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "SAP-IDOC Interchange Extraction Flow",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedMethods": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_4",
+                "componentVersion": "1.1",
+                "name": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "SAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "address": {
+                        "value": "/tpm/extraction-flow/{{SAP_EDI_Document_Standard}}",
+                        "defaultValue": "/tpm/extraction-flow/{{SAP_EDI_Document_Standard}}",
+                        "key": "",
+                        "partialParameters": [
+                            {
+                                "value": "SAP_IDoc",
+                                "defaultValue": "SAP_IDoc",
+                                "key": "SAP_EDI_Document_Standard",
+                                "additionalMetadata": {}
+                            }
+                        ],
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpQcm9jZXNzRGlyZWN0L3ZlbmRvcjo6U0FQL3RwOjpOb3QgQXBwbGljYWJsZS9tcDo6Tm90IEFwcGxpY2FibGUvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4xLjI=",
+                "metadataURI": "ctype::AdapterVariant/cname::ProcessDirect/vendor::SAP/tp::Not Applicable/mp::Not Applicable/direction::Sender/version::1.1.2",
+                "systemId": "Participant_1"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "CallActivity_63",
+                "name": "Set extraction value mapping key fields",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "SAP_EDI_Sender_ID",
+                                    "defaultValue": "SAP_EDI_Sender_ID",
+                                    "key": "SAP_B2B_EVM_Condition",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_B2B_EVM_Conditions",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "header",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "SAP_EDI_Document_Standard",
+                                    "defaultValue": "SAP_EDI_Document_Standard",
+                                    "key": "SAP_B2B_EVM_Name",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_B2B_EVM_Name",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "SAP_EDI_Message_Version,SAP_EDI_Message_Code,SAP_EDI_Message_Type",
+                                    "defaultValue": "SAP_EDI_Message_Version,SAP_EDI_Message_Code,SAP_EDI_Message_Type",
+                                    "key": "SAP_B2B_EVM_SourceParameters",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_B2B_EVM_SourceParameters",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "SAP_EDI_Message_Version,SAP_EDI_Message_Type,SAP_EDI_Sender_ID,SAP_EDI_GS_Sender_ID,SAP_EDI_Sender_Partner_Type,SAP_EDI_GS_Receiver_ID,SAP_EDI_Receiver_Partner_Type",
+                                    "defaultValue": "SAP_EDI_Message_Version,SAP_EDI_Message_Type,SAP_EDI_Sender_ID,SAP_EDI_GS_Sender_ID,SAP_EDI_Sender_Partner_Type,SAP_EDI_GS_Receiver_ID,SAP_EDI_Receiver_Partner_Type",
+                                    "key": "SAP_B2B_EVM_TargetParameters",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_B2B_EVM_TargetParameters",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_2",
+                "name": "Start",
+                "componentVersion": "1.0",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQvdmVyc2lvbjo6MS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent/version::1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_2",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_60",
+                "name": "Extract header parameters",
+                "componentVersion": "1.5",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "replace(concat((//*:EDI_DC40/*:CREDAT)[1], (//*:EDI_DC40/*:CRETIM)[1]), '^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$', '$1-$2-$3T$4:$5:$6')",
+                                    "defaultValue": "replace(concat((//*:EDI_DC40/*:CREDAT)[1], (//*:EDI_DC40/*:CRETIM)[1]), '^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$', '$1-$2-$3T$4:$5:$6')",
+                                    "key": "SAP_EDI_Interchange_DateTime",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Interchange_DateTime",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:MANDT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:MANDT)[1]",
+                                    "key": "SAP_EDI_Client",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Client",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                                    "key": "SAP_EDI_Interchange_Control_Number",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Interchange_Control_Number",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                                    "key": "SAP_EDI_Message_Number",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Message_Control_Number",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:DOCREL)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:DOCREL)[1]",
+                                    "key": "SAP_EDI_Message_Version",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Message_Version",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:STATUS)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:STATUS)[1]",
+                                    "key": "SAP_EDI_Status",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Status",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "if ((//*:EDI_DC40/*:DIRECT)[1] = '1') then 'OUTBOUND' else if ((//*:EDI_DC40/*:DIRECT)[1] = '2') then 'INBOUND' else ()",
+                                    "defaultValue": "if ((//*:EDI_DC40/*:DIRECT)[1] = '1') then 'OUTBOUND' else if ((//*:EDI_DC40/*:DIRECT)[1] = '2') then 'INBOUND' else ()",
+                                    "key": "SAP_EDI_Direction",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Direction",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "if ((//*:EDI_DC40/*:OUTMOD)[1] = '4') then 'collect' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '3') then 'collectAndSubsystem' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '1') then 'passSubsystem' else 'pass'",
+                                    "defaultValue": "if ((//*:EDI_DC40/*:OUTMOD)[1] = '4') then 'collect' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '3') then 'collectAndSubsystem' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '1') then 'passSubsystem' else 'pass'",
+                                    "key": "SAP_EDI_Output_Mode",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Output_Mode",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:EXPRSS)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:EXPRSS)[1]",
+                                    "key": "SAP_EDI_Processing_Priority_Code",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Processing_Priority_Code",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:TEST)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:TEST)[1]",
+                                    "key": "SAP_EDI_Usage_Indicator",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Usage_Indicator",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:IDOCTYP)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:IDOCTYP)[1]",
+                                    "key": "SAP_EDI_Idoc_Type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Idoc_Type",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:CIMTYP)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:CIMTYP)[1]",
+                                    "key": "SAP_EDI_Customer_Extension",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Customer_Extension",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "concat( if( (//*:EDI_DC40/*:CIMTYP)[1] != '' ) then concat((//*:EDI_DC40/*:CIMTYP)[1], '.') else (), (//*:EDI_DC40/*:MESTYP)[1], if( (//*:EDI_DC40/*:IDOCTYP)[1] != '' ) then concat( '.', (//*:EDI_DC40/*:IDOCTYP)[1] ) else ())",
+                                    "defaultValue": "concat( if( (//*:EDI_DC40/*:CIMTYP)[1] != '' ) then concat((//*:EDI_DC40/*:CIMTYP)[1], '.') else (), (//*:EDI_DC40/*:MESTYP)[1], if( (//*:EDI_DC40/*:IDOCTYP)[1] != '' ) then concat( '.', (//*:EDI_DC40/*:IDOCTYP)[1] ) else ())",
+                                    "key": "SAP_EDI_Message_Type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Message_Type",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:MESCOD)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:MESCOD)[1]",
+                                    "key": "SAP_EDI_Message_Code",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Message_Code",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:MESFCT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:MESFCT)[1]",
+                                    "key": "SAP_EDI_Message_Function",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Message_Function",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:STD)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:STD)[1]",
+                                    "key": "SAP_EDI_Standard_Flag",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Standard_Flag",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:STDVRS)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:STDVRS)[1]",
+                                    "key": "SAP_EDI_Standard_Version",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Standard_Version",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:STDMES)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:STDMES)[1]",
+                                    "key": "SAP_EDI_Standard_Message_Type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Standard_Message_Type",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SNDPOR)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SNDPOR)[1]",
+                                    "key": "SAP_EDI_GS_Sender_ID",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_GS_Sender_ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SNDPRT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SNDPRT)[1]",
+                                    "key": "SAP_EDI_Sender_Partner_Type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_Partner_Type",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SNDPFC)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SNDPFC)[1]",
+                                    "key": "SAP_EDI_Sender_Partner_Function",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_Partner_Function",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SNDPRN)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SNDPRN)[1]",
+                                    "key": "SAP_EDI_Sender_ID",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SNDSAD)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SNDSAD)[1]",
+                                    "key": "SAP_EDI_Sender_Routing_Address",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_Routing_Address",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SNDLAD)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SNDLAD)[1]",
+                                    "key": "SAP_EDI_Sender_Logical_Addess",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_Logical_Addess",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:RCVPOR)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:RCVPOR)[1]",
+                                    "key": "SAP_EDI_GS_Receiver_ID",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_GS_Receiver_ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:RCVPRT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:RCVPRT)[1]",
+                                    "key": "SAP_EDI_Receiver_Partner_Type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Receiver_Partner_Type",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:RCVPFC)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:RCVPFC)[1]",
+                                    "key": "SAP_EDI_Receiver_Partner_Function",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Receiver_Partner_Function",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:RCVPRN)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:RCVPRN)[1]",
+                                    "key": "SAP_EDI_Receiver_ID",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Receiver_ID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:RCVSAD)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:RCVSAD)[1]",
+                                    "key": "SAP_EDI_Receiver_Routing_Address",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Receiver_Routing_Address",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:RCVLAD)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:RCVLAD)[1]",
+                                    "key": "SAP_EDI_Receiver_Logical_Address",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Receiver_Logical_Address",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:CREDAT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:CREDAT)[1]",
+                                    "key": "SAP_EDI_Interchange_Date",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Interchange_Date",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:CRETIM)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:CRETIM)[1]",
+                                    "key": "SAP_EDI_Interchange_Time",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Interchange_Time",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:REFINT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:REFINT)[1]",
+                                    "key": "SAP_EDI_Transmission_File",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Transmission_File",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:REFGRP)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:REFGRP)[1]",
+                                    "key": "SAP_EDI_Sender_Group_Reference_Number",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_Group_Reference_Number",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:REFMES)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:REFMES)[1]",
+                                    "key": "SAP_EDI_Sender_Message_Reference_Number",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Sender_Message_Reference_Number",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:MANDT)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:MANDT)[1]",
+                                    "key": "SAP_EDI_Archiving_Indicator",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Archiving_Indicator",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "xpath",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "(//*:EDI_DC40/*:SERIAL)[1]",
+                                    "defaultValue": "(//*:EDI_DC40/*:SERIAL)[1]",
+                                    "key": "SAP_EDI_Serialization",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_EDI_Serialization",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS41LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.5.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_66",
+                "name": "Value mapping of extracted header parameters",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Reusable_Groovy_Scripts_B2BIFactory",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/extractionValueMapping.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4z",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.3",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.0",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "SAP-IDOC Interchange Extraction Flow",
+            "Origin-ModifiedDate": "1724146948470",
+            "Origin-Bundle-SymbolicName": "SAP-IDOC_Interchange_Extraction_Process",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "SAP-IDOC Interchange Extraction Flow",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "SAP-IDOC_Interchange_Extraction_Process",
+            "Bundle-Version": "1.0.0",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Import-Service": "com.sap.esb.webservice.audit.log.AuditLogger,com.sap.esb.security.KeyManagerFactory;multiple:=false,com.sap.esb.security.TrustManagerFactory;multiple:=false,javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\",org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false,com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false",
+            "Require-Capability": "scriptcollection.Reusable_Groovy_Scripts_B2BIFactory;resolution:=optional;bundleType:String=\"ScriptCollection\";source:String=\"reference\""
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": [
+            {
+                "value": "(//*:EDI_DC40/*:STD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STD)[1]",
+                "key": "SAP_EDI_Standard_Flag",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SNDPRN)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPRN)[1]",
+                "key": "SAP_EDI_Sender_ID",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "concat( if( (//*:EDI_DC40/*:CIMTYP)[1] != '' ) then concat((//*:EDI_DC40/*:CIMTYP)[1], '.') else (), (//*:EDI_DC40/*:MESTYP)[1], if( (//*:EDI_DC40/*:IDOCTYP)[1] != '' ) then concat( '.', (//*:EDI_DC40/*:IDOCTYP)[1] ) else ())",
+                "defaultValue": "concat( if( (//*:EDI_DC40/*:CIMTYP)[1] != '' ) then concat((//*:EDI_DC40/*:CIMTYP)[1], '.') else (), (//*:EDI_DC40/*:MESTYP)[1], if( (//*:EDI_DC40/*:IDOCTYP)[1] != '' ) then concat( '.', (//*:EDI_DC40/*:IDOCTYP)[1] ) else ())",
+                "key": "SAP_EDI_Message_Type",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:TEST)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:TEST)[1]",
+                "key": "SAP_EDI_Usage_Indicator",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "replace(concat((//*:EDI_DC40/*:CREDAT)[1], (//*:EDI_DC40/*:CRETIM)[1]), '^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$', '$1-$2-$3T$4:$5:$6')",
+                "defaultValue": "replace(concat((//*:EDI_DC40/*:CREDAT)[1], (//*:EDI_DC40/*:CRETIM)[1]), '^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$', '$1-$2-$3T$4:$5:$6')",
+                "key": "SAP_EDI_Interchange_DateTime",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SNDPRT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPRT)[1]",
+                "key": "SAP_EDI_Sender_Partner_Type",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:MESCOD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MESCOD)[1]",
+                "key": "SAP_EDI_Message_Code",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SERIAL)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SERIAL)[1]",
+                "key": "SAP_EDI_Serialization",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:IDOCTYP)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:IDOCTYP)[1]",
+                "key": "SAP_EDI_Idoc_Type",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:REFMES)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:REFMES)[1]",
+                "key": "SAP_EDI_Sender_Message_Reference_Number",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SNDLAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDLAD)[1]",
+                "key": "SAP_EDI_Sender_Logical_Addess",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:REFINT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:REFINT)[1]",
+                "key": "SAP_EDI_Transmission_File",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "key": "SAP_EDI_Interchange_Control_Number",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:CIMTYP)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:CIMTYP)[1]",
+                "key": "SAP_EDI_Customer_Extension",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:CREDAT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:CREDAT)[1]",
+                "key": "SAP_EDI_Interchange_Date",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SNDPFC)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPFC)[1]",
+                "key": "SAP_EDI_Sender_Partner_Function",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:DOCREL)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:DOCREL)[1]",
+                "key": "SAP_EDI_Message_Version",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "SAP_EDI_Sender_ID",
+                "defaultValue": "SAP_EDI_Sender_ID",
+                "key": "SAP_B2B_EVM_Condition",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "SAP_EDI_Message_Version,SAP_EDI_Message_Code,SAP_EDI_Message_Type",
+                "defaultValue": "SAP_EDI_Message_Version,SAP_EDI_Message_Code,SAP_EDI_Message_Type",
+                "key": "SAP_B2B_EVM_SourceParameters",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:RCVPOR)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPOR)[1]",
+                "key": "SAP_EDI_GS_Receiver_ID",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:STDMES)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STDMES)[1]",
+                "key": "SAP_EDI_Standard_Message_Type",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:STATUS)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STATUS)[1]",
+                "key": "SAP_EDI_Status",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:RCVLAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVLAD)[1]",
+                "key": "SAP_EDI_Receiver_Logical_Address",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SNDSAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDSAD)[1]",
+                "key": "SAP_EDI_Sender_Routing_Address",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "if ((//*:EDI_DC40/*:OUTMOD)[1] = '4') then 'collect' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '3') then 'collectAndSubsystem' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '1') then 'passSubsystem' else 'pass'",
+                "defaultValue": "if ((//*:EDI_DC40/*:OUTMOD)[1] = '4') then 'collect' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '3') then 'collectAndSubsystem' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '1') then 'passSubsystem' else 'pass'",
+                "key": "SAP_EDI_Output_Mode",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:REFGRP)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:REFGRP)[1]",
+                "key": "SAP_EDI_Sender_Group_Reference_Number",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:RCVSAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVSAD)[1]",
+                "key": "SAP_EDI_Receiver_Routing_Address",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "if ((//*:EDI_DC40/*:DIRECT)[1] = '1') then 'OUTBOUND' else if ((//*:EDI_DC40/*:DIRECT)[1] = '2') then 'INBOUND' else ()",
+                "defaultValue": "if ((//*:EDI_DC40/*:DIRECT)[1] = '1') then 'OUTBOUND' else if ((//*:EDI_DC40/*:DIRECT)[1] = '2') then 'INBOUND' else ()",
+                "key": "SAP_EDI_Direction",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:EXPRSS)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:EXPRSS)[1]",
+                "key": "SAP_EDI_Processing_Priority_Code",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:MANDT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MANDT)[1]",
+                "key": "SAP_EDI_Archiving_Indicator",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "SAP_EDI_Message_Version,SAP_EDI_Message_Type,SAP_EDI_Sender_ID,SAP_EDI_GS_Sender_ID,SAP_EDI_Sender_Partner_Type,SAP_EDI_GS_Receiver_ID,SAP_EDI_Receiver_Partner_Type",
+                "defaultValue": "SAP_EDI_Message_Version,SAP_EDI_Message_Type,SAP_EDI_Sender_ID,SAP_EDI_GS_Sender_ID,SAP_EDI_Sender_Partner_Type,SAP_EDI_GS_Receiver_ID,SAP_EDI_Receiver_Partner_Type",
+                "key": "SAP_B2B_EVM_TargetParameters",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "SAP_EDI_Document_Standard",
+                "defaultValue": "SAP_EDI_Document_Standard",
+                "key": "SAP_B2B_EVM_Name",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:RCVPRN)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPRN)[1]",
+                "key": "SAP_EDI_Receiver_ID",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "key": "SAP_EDI_Message_Number",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:MESFCT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MESFCT)[1]",
+                "key": "SAP_EDI_Message_Function",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:RCVPFC)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPFC)[1]",
+                "key": "SAP_EDI_Receiver_Partner_Function",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:MANDT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MANDT)[1]",
+                "key": "SAP_EDI_Client",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:CRETIM)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:CRETIM)[1]",
+                "key": "SAP_EDI_Interchange_Time",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:STDVRS)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STDVRS)[1]",
+                "key": "SAP_EDI_Standard_Version",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:RCVPRT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPRT)[1]",
+                "key": "SAP_EDI_Receiver_Partner_Type",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "(//*:EDI_DC40/*:SNDPOR)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPOR)[1]",
+                "key": "SAP_EDI_GS_Sender_ID",
+                "additionalMetadata": {}
+            }
+        ]
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:STD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STD)[1]",
+                "key": "SAP_EDI_Standard_Flag",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SNDPRN)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPRN)[1]",
+                "key": "SAP_EDI_Sender_ID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "concat( if( (//*:EDI_DC40/*:CIMTYP)[1] != '' ) then concat((//*:EDI_DC40/*:CIMTYP)[1], '.') else (), (//*:EDI_DC40/*:MESTYP)[1], if( (//*:EDI_DC40/*:IDOCTYP)[1] != '' ) then concat( '.', (//*:EDI_DC40/*:IDOCTYP)[1] ) else ())",
+                "defaultValue": "concat( if( (//*:EDI_DC40/*:CIMTYP)[1] != '' ) then concat((//*:EDI_DC40/*:CIMTYP)[1], '.') else (), (//*:EDI_DC40/*:MESTYP)[1], if( (//*:EDI_DC40/*:IDOCTYP)[1] != '' ) then concat( '.', (//*:EDI_DC40/*:IDOCTYP)[1] ) else ())",
+                "key": "SAP_EDI_Message_Type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:TEST)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:TEST)[1]",
+                "key": "SAP_EDI_Usage_Indicator",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "replace(concat((//*:EDI_DC40/*:CREDAT)[1], (//*:EDI_DC40/*:CRETIM)[1]), '^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$', '$1-$2-$3T$4:$5:$6')",
+                "defaultValue": "replace(concat((//*:EDI_DC40/*:CREDAT)[1], (//*:EDI_DC40/*:CRETIM)[1]), '^(\\d{4})(\\d{2})(\\d{2})(\\d{2})(\\d{2})(\\d{2})$', '$1-$2-$3T$4:$5:$6')",
+                "key": "SAP_EDI_Interchange_DateTime",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SNDPRT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPRT)[1]",
+                "key": "SAP_EDI_Sender_Partner_Type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:MESCOD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MESCOD)[1]",
+                "key": "SAP_EDI_Message_Code",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SERIAL)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SERIAL)[1]",
+                "key": "SAP_EDI_Serialization",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:IDOCTYP)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:IDOCTYP)[1]",
+                "key": "SAP_EDI_Idoc_Type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:REFMES)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:REFMES)[1]",
+                "key": "SAP_EDI_Sender_Message_Reference_Number",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SNDLAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDLAD)[1]",
+                "key": "SAP_EDI_Sender_Logical_Addess",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:REFINT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:REFINT)[1]",
+                "key": "SAP_EDI_Transmission_File",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "key": "SAP_EDI_Interchange_Control_Number",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:CIMTYP)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:CIMTYP)[1]",
+                "key": "SAP_EDI_Customer_Extension",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:CREDAT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:CREDAT)[1]",
+                "key": "SAP_EDI_Interchange_Date",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SNDPFC)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPFC)[1]",
+                "key": "SAP_EDI_Sender_Partner_Function",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:DOCREL)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:DOCREL)[1]",
+                "key": "SAP_EDI_Message_Version",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP_EDI_Sender_ID",
+                "defaultValue": "SAP_EDI_Sender_ID",
+                "key": "SAP_B2B_EVM_Condition",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set extraction value mapping key fields",
+                    "id": "CallActivity_63",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP_EDI_Message_Version,SAP_EDI_Message_Code,SAP_EDI_Message_Type",
+                "defaultValue": "SAP_EDI_Message_Version,SAP_EDI_Message_Code,SAP_EDI_Message_Type",
+                "key": "SAP_B2B_EVM_SourceParameters",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set extraction value mapping key fields",
+                    "id": "CallActivity_63",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:RCVPOR)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPOR)[1]",
+                "key": "SAP_EDI_GS_Receiver_ID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:STDMES)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STDMES)[1]",
+                "key": "SAP_EDI_Standard_Message_Type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:STATUS)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STATUS)[1]",
+                "key": "SAP_EDI_Status",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:RCVLAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVLAD)[1]",
+                "key": "SAP_EDI_Receiver_Logical_Address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SNDSAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDSAD)[1]",
+                "key": "SAP_EDI_Sender_Routing_Address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "if ((//*:EDI_DC40/*:OUTMOD)[1] = '4') then 'collect' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '3') then 'collectAndSubsystem' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '1') then 'passSubsystem' else 'pass'",
+                "defaultValue": "if ((//*:EDI_DC40/*:OUTMOD)[1] = '4') then 'collect' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '3') then 'collectAndSubsystem' else if ((//*:EDI_DC40/*:OUTMOD)[1] = '1') then 'passSubsystem' else 'pass'",
+                "key": "SAP_EDI_Output_Mode",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:REFGRP)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:REFGRP)[1]",
+                "key": "SAP_EDI_Sender_Group_Reference_Number",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:RCVSAD)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVSAD)[1]",
+                "key": "SAP_EDI_Receiver_Routing_Address",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "if ((//*:EDI_DC40/*:DIRECT)[1] = '1') then 'OUTBOUND' else if ((//*:EDI_DC40/*:DIRECT)[1] = '2') then 'INBOUND' else ()",
+                "defaultValue": "if ((//*:EDI_DC40/*:DIRECT)[1] = '1') then 'OUTBOUND' else if ((//*:EDI_DC40/*:DIRECT)[1] = '2') then 'INBOUND' else ()",
+                "key": "SAP_EDI_Direction",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:EXPRSS)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:EXPRSS)[1]",
+                "key": "SAP_EDI_Processing_Priority_Code",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:MANDT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MANDT)[1]",
+                "key": "SAP_EDI_Archiving_Indicator",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP_EDI_Message_Version,SAP_EDI_Message_Type,SAP_EDI_Sender_ID,SAP_EDI_GS_Sender_ID,SAP_EDI_Sender_Partner_Type,SAP_EDI_GS_Receiver_ID,SAP_EDI_Receiver_Partner_Type",
+                "defaultValue": "SAP_EDI_Message_Version,SAP_EDI_Message_Type,SAP_EDI_Sender_ID,SAP_EDI_GS_Sender_ID,SAP_EDI_Sender_Partner_Type,SAP_EDI_GS_Receiver_ID,SAP_EDI_Receiver_Partner_Type",
+                "key": "SAP_B2B_EVM_TargetParameters",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set extraction value mapping key fields",
+                    "id": "CallActivity_63",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP_EDI_Document_Standard",
+                "defaultValue": "SAP_EDI_Document_Standard",
+                "key": "SAP_B2B_EVM_Name",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set extraction value mapping key fields",
+                    "id": "CallActivity_63",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP_IDoc",
+                "defaultValue": "SAP_IDoc",
+                "key": "SAP_EDI_Document_Standard",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "ProcessDirect",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:RCVPRN)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPRN)[1]",
+                "key": "SAP_EDI_Receiver_ID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:DOCNUM)[1]",
+                "key": "SAP_EDI_Message_Number",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:MESFCT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MESFCT)[1]",
+                "key": "SAP_EDI_Message_Function",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:RCVPFC)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPFC)[1]",
+                "key": "SAP_EDI_Receiver_Partner_Function",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:MANDT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:MANDT)[1]",
+                "key": "SAP_EDI_Client",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:CRETIM)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:CRETIM)[1]",
+                "key": "SAP_EDI_Interchange_Time",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:STDVRS)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:STDVRS)[1]",
+                "key": "SAP_EDI_Standard_Version",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:RCVPRT)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:RCVPRT)[1]",
+                "key": "SAP_EDI_Receiver_Partner_Type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "(//*:EDI_DC40/*:SNDPOR)[1]",
+                "defaultValue": "(//*:EDI_DC40/*:SNDPOR)[1]",
+                "key": "SAP_EDI_GS_Sender_ID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Extract header parameters",
+                    "id": "CallActivity_60",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "IDOC Interchange Extraction Process",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_Process_1": {},
+                "Participant_1": {}
+            },
+            "messageFlows": {
+                "MessageFlow_4": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNEdge_MessageFlow_4": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "SequenceFlow_59": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_59",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_63": {
+                "name": "Set extraction value mapping key fields",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_63",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_67": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_67",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_4": {
+                "name": "ProcessDirect",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "ProcessDirect"
+                },
+                "id": "MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "EndEvent_2": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "CallActivity_60": {
+                "name": "Extract header parameters",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_60",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "StartEvent_2": {
+                "eventType": "message",
+                "name": "Start",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {},
+                "events": {
+                    "EndEvent_2": {},
+                    "StartEvent_2": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_59": {},
+                    "SequenceFlow_67": {},
+                    "SequenceFlow_74": {},
+                    "SequenceFlow_64": {}
+                },
+                "activities": {
+                    "CallActivity_63": {},
+                    "CallActivity_60": {},
+                    "CallActivity_66": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "CallActivity_66": {
+                "name": "Value mapping of extracted header parameters",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_66",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_74": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_74",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_64": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_64",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Sender",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_EndEvent_2": {
+                "x": 809.0,
+                "y": 74.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_66": {
+                "x": 649.0,
+                "y": 60.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/extractionValueMapping.groovy;Function = ",
+                "object": "CallActivity_66",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_66",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_StartEvent_2": {
+                "x": 237.0,
+                "y": 74.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_CallActivity_63": {
+                "x": 489.0,
+                "y": 60.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_63",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_63",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": 17.0,
+                "y": 20.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 217.0,
+                "y": 10.0,
+                "width": 708.0,
+                "height": 137.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_CallActivity_66": {},
+                    "BPMNShape_EndEvent_2": {},
+                    "BPMNShape_StartEvent_2": {},
+                    "BPMNEdge_SequenceFlow_59": {},
+                    "BPMNShape_CallActivity_63": {},
+                    "BPMNEdge_SequenceFlow_67": {},
+                    "BPMNShape_CallActivity_60": {},
+                    "BPMNEdge_SequenceFlow_74": {},
+                    "BPMNEdge_SequenceFlow_64": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_60": {
+                "x": 329.0,
+                "y": 60.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_60",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_60",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_59": {
+                "object": "SequenceFlow_59",
+                "sourceSymbol": "BPMNShape_StartEvent_2",
+                "targetSymbol": "BPMNShape_CallActivity_60",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "269.0,90.0 329.0,90.0",
+                "id": "BPMNEdge_SequenceFlow_59",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_67": {
+                "object": "SequenceFlow_67",
+                "sourceSymbol": "BPMNShape_CallActivity_66",
+                "targetSymbol": "BPMNShape_EndEvent_2",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "749.0,90.0 809.0,90.0",
+                "id": "BPMNEdge_SequenceFlow_67",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_74": {
+                "object": "SequenceFlow_74",
+                "sourceSymbol": "BPMNShape_CallActivity_60",
+                "targetSymbol": "BPMNShape_CallActivity_63",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "429.0,90.0 489.0,90.0",
+                "id": "BPMNEdge_SequenceFlow_74",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_64": {
+                "object": "SequenceFlow_64",
+                "sourceSymbol": "BPMNShape_CallActivity_63",
+                "targetSymbol": "BPMNShape_CallActivity_66",
+                "tooltip": "",
+                "sourceDirection": 3,
+                "targetDirection": 1,
+                "points": "589.0,90.0 649.0,90.0",
+                "id": "BPMNEdge_SequenceFlow_64",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_4": {
+                "object": "MessageFlow_4",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_2",
+                "tooltip": "Name = ProcessDirect\nAdapter Type = ProcessDirect\nTransport Protocol =Not Applicable\nMessage Protocol = Not Applicable\n",
+                "id": "BPMNEdge_MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

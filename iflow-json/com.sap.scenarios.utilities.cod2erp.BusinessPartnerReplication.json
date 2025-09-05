@@ -1,0 +1,1694 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "com.sap.scenarios.utilities.cod2erp.BusinessPartnerReplicati",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "COD",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 40,
+                    "y": 100,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_4",
+                "diagramId": "BPMNShape_Participant_4",
+                "isDirty": false,
+                "attributes": {
+                    "name": "ERP",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 902,
+                    "y": 100,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_4_Lane0",
+                "containedIn": "Participant_4",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 250,
+                    "y": 60,
+                    "width": 540,
+                    "height": 220
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 540,
+                    "height": 193
+                }
+            },
+            {
+                "id": "CallActivity_1",
+                "diagramId": "BPMNShape_CallActivity_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "COD_ERP_Utilities_BusinessPartnerReplication",
+                    "tooltip": "Name = COD_ERP_Utilities_BusinessPartnerReplication_newline_Type = Mapping_newline_",
+                    "type": "Activity",
+                    "flavor": "MessageMapping",
+                    "x": 203,
+                    "y": 23,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "EndEvent_1",
+                "diagramId": "BPMNShape_EndEvent_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 486,
+                    "y": 63,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "StartEvent_1",
+                "diagramId": "BPMNShape_StartEvent_1",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 20,
+                    "y": 63,
+                    "width": 32,
+                    "height": 32
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_1",
+                "id": "MessageFlow_1",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_1",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_1",
+                "attributes": {
+                    "name": "SOAP",
+                    "tooltip": "Name = SOAP_newline_Adapter Type = SOAP_newline_Transport Protocol = HTTPS_newline_Message Protocol = SOAP 1.x_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "EndEvent_1",
+                "target": "Participant_4",
+                "id": "MessageFlow_3",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_3",
+                "sourceDiagramElement": "BPMNShape_EndEvent_1",
+                "targetDiagramElement": "BPMNShape_Participant_4",
+                "attributes": {
+                    "name": "SOAP",
+                    "tooltip": "Name = SOAP_newline_Adapter Type = SOAP_newline_Transport Protocol = HTTPS_newline_Message Protocol = Plain SOAP_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_1",
+                "target": "EndEvent_1",
+                "id": "SequenceFlow_2",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_2",
+                "sourceDiagramElement": "BPMNShape_CallActivity_1",
+                "targetDiagramElement": "BPMNShape_EndEvent_1",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_1",
+                "target": "CallActivity_1",
+                "id": "SequenceFlow_1",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_1",
+                "sourceDiagramElement": "BPMNShape_StartEvent_1",
+                "targetDiagramElement": "BPMNShape_CallActivity_1",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9u",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "ServerTrace": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "Business Partner Replication to SAP ERP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "bundleId": {
+                    "value": "com.sap.scenarios.utilities.cod2erp.BusinessPartnerReplication",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "COD",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_4",
+                "name": {
+                    "value": "ERP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_1",
+                "componentVersion": "1.2",
+                "name": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "COD",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "SOAP 1.x",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "1.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.0.5",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.2.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "SOAP 1.x",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "X509TokenAssertion": {
+                        "value": "WssX509V3Token10",
+                        "defaultValue": "WssX509V3Token10",
+                        "key": "COD_X509TokenAssertion_6",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "address": {
+                        "value": "/Utilities/cod2erp/BPReplication",
+                        "defaultValue": "/Utilities/cod2erp/BPReplication",
+                        "key": "COD_Sender_address_28",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "WSSecurityType": {
+                        "value": "VerifyMessage",
+                        "defaultValue": "VerifyMessage",
+                        "key": "COD_WSSecurityType_10",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "maximumBodySize": {
+                        "value": "40",
+                        "defaultValue": "40",
+                        "key": "COD_Sender_maximumBodySize_29",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "PublicKeyAliasResponseEncryption": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapWsdlPortName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "maximumAttachmentSize": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "COD_Sender_maximumAttachmentSize_30",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "WSSecurity": {
+                        "value": "None",
+                        "defaultValue": "None",
+                        "key": "COD_WSSecurity_14",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "PrivateKeyAliasResponseSigning": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SaveIncomingSignedMessage": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": "COD_SaveIncomingSignedMessage_7",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "SenderBasicSecurityProfileCompliant": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": "COD_SenderBasicSecurityProfileCompliant_8",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "RecipientTokenIncludeStrategy": {
+                        "value": "Never",
+                        "defaultValue": "Never",
+                        "key": "COD_RecipientTokenIncludeStrategy_9",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "soapWsdlURL": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapOptions": {
+                        "value": "cxfRobust",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CheckTimeStamp": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": "COD_CheckTimeStamp_11",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "AlgorithmSuiteAssertion": {
+                        "value": "Basic128Rsa15",
+                        "defaultValue": "Basic128Rsa15",
+                        "key": "COD_AlgorithmSuiteAssertion_12",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "soapServiceName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "userRole": {
+                        "value": "ESBMessaging.send",
+                        "defaultValue": "ESBMessaging.send",
+                        "key": "COD_Sender_userRole_31",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "InitiatorTokenIncludeStrategy": {
+                        "value": "AlwaysToRecipient",
+                        "defaultValue": "AlwaysToRecipient",
+                        "key": "COD_InitiatorTokenIncludeStrategy_13",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "senderAuthType": {
+                        "value": "ClientCertificate",
+                        "defaultValue": "ClientCertificate",
+                        "key": "COD_senderAuthType_22",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "clientCertificates": {
+                        "value": [
+                            {
+                                "clientCertificate.subjectDN": {
+                                    "value": "cn/=Subject",
+                                    "defaultValue": "cn/=Subject",
+                                    "key": "Subject",
+                                    "additionalMetadata": {}
+                                },
+                                "clientCertificate.issuerDN": {
+                                    "value": "cn/=Issuer",
+                                    "defaultValue": "cn/=Issuer",
+                                    "key": "Issuer",
+                                    "additionalMetadata": {}
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    }
+                },
+                "technicalCapabilities": {},
+                "properties": {
+                    "authenticationOnParticipant": "false"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6U09BUC90cDo6SFRUUC9tcDo6U09BUCAxLngvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4y",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:SOAP/tp::HTTP/mp::SOAP 1.x/direction::Sender/version::1.2",
+                "systemId": "Participant_1"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_3",
+                "componentVersion": "1.6",
+                "name": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "ERP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Plain SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.5.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.3.5",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.5.1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "SAP RM",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "SOAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cleanupHeaders": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": "ERP_cleanupHeaders_0",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "address": {
+                        "value": "{{Protocol-Hostname-Port}}/sap/bc/srt/xip/sap/utiliites_cod_erp_bp_replicati/{{Client}}/bp_replication_cod2erp/bp_replication_cod2erp",
+                        "defaultValue": "{{Protocol-Hostname-Port}}/sap/bc/srt/xip/sap/utiliites_cod_erp_bp_replicati/{{Client}}/bp_replication_cod2erp/bp_replication_cod2erp",
+                        "key": "",
+                        "partialParameters": [
+                            {
+                                "value": "https://erphost:erpport",
+                                "defaultValue": "https://erphost:erpport",
+                                "key": "Protocol-Hostname-Port",
+                                "additionalMetadata": {}
+                            },
+                            {
+                                "value": "erpclient",
+                                "defaultValue": "erpclient",
+                                "key": "Client",
+                                "additionalMetadata": {}
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "allowChunking": {
+                        "value": "1",
+                        "defaultValue": "1",
+                        "key": "ERP_allowChunking_2",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "default",
+                        "defaultValue": "default",
+                        "key": "ERP_proxyType_3",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "soapWsdlPortName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "operationName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "privateKeyAlias": {
+                        "value": "PrivateKey",
+                        "defaultValue": "PrivateKey",
+                        "key": "privatekey",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "proxyHost": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "location_id": {
+                        "value": "LocationID",
+                        "defaultValue": "LocationID",
+                        "key": "LocationID",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "proxyPort": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "soapWsdlURL": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CompressMessage": {
+                        "value": "0",
+                        "defaultValue": "0",
+                        "key": "ERP_CompressMessage_1",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "soapServiceName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "credentialName": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "Artifactname",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "requestTimeout": {
+                        "value": "60000",
+                        "defaultValue": "60000",
+                        "key": "ERP_requestTimeout_4",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "authentication": {
+                        "value": "Client Certificate",
+                        "defaultValue": "Client Certificate",
+                        "key": "ERP_authentication_30",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6U09BUC90cDo6SFRUUC9tcDo6UGxhaW4gU09BUC9kaXJlY3Rpb246OlJlY2VpdmVyL3ZlcnNpb246OjEuNg==",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:SOAP/tp::HTTP/mp::Plain SOAP/direction::Receiver/version::1.6",
+                "systemId": "Participant_4"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "CallActivity_1",
+                "name": "COD_ERP_Utilities_BusinessPartnerReplication",
+                "activityType": "MessageMapping",
+                "displayName": "Message Mapping",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "mappinguri": {
+                        "value": "dir://mmap/src/main/resources/mapping/COD_ERP_Utilities_BusinessPartnerReplication.mmap",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingname": {
+                        "value": "COD_ERP_Utilities_BusinessPartnerReplication",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "mappingpath": {
+                        "value": "/COD_ERP_Utilities_BusinessPartnerReplication.mmap",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZU1hcHBpbmc=",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageMapping",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_1",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_1",
+                "name": "Start",
+                "componentVersion": "1.0",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQvdmVyc2lvbjo6MS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent/version::1.0",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4x",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.1",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.4.4",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "Business Partner Replication to SAP ERP",
+            "Origin-ModifiedDate": "1708576802346",
+            "Origin-Bundle-SymbolicName": "com.sap.scenarios.utilities.cod2erp.BusinessPartnerReplication",
+            "Import-Package": " com.sap.esb.webservice.one.way, com.sap.it.api.mapping, com.sap.aii.mapping.value.api, com.sap.esb.size.limiter, com.sap.esb.camel.webservice.endpoint.configurer, com.sap.esb.webservice.security.crypto.api, com.sap.esb.webservice.policy.alternative.selector, org.apache.cxf.ws.security.wss4j, org.apache.wss4j.common.crypto, javax.security.auth.callback, com.sap.esb.camel.jdbc.idempotency.reorg, com.sap.it.iflow.model.runtime, com.sap.it.iflow.model, com.sap.sod.utils.idoc.soap.interceptors, com.sap.sod.utils.soap.processors, com.sap.it.rt.scc.proxy, com.sap.esb.camel.jdbc.inprogress.repository, com.sap.esb.camel.jdbc.idempotency.repository, com.sap.esb.camel.security.cms, com.sap.esb.camel.endpoint.configurator.api, org.apache.camel.processor.idempotent.jdbc, org.apache.camel.spi, com.sap.esb.camel.mpl.access, com.sap.esb.camel.eip.splitter, com.sap.esb.camel.xmljson, com.sap.it.op.ed, com.sap.it.op.agent.ed.plugins.camel.api, com.sap.esb.webservice.authorization.supplier.api, org.apache.cxf.interceptor.security, net.sf.saxon.xpath, net.sf.saxon,com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,com.sap.sod.utils.cxf.interceptors,com.sap.sod.utils.encoding.processors,com.sap.sod.utils.idoc.soap,com.sap.sod.utils.soap,com.sap.sod.utils.idoc.soap.processors,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse,org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters,org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.aii.ib.bom.flib.types,com.sap.aii.mapping.api,com.sap.aii.mappingtool.flib3,com.sap.aii.mappingtool.flib7,com.sap.aii.mappingtool.tf3,com.sap.aii.mappingtool.tf3.rt,com.sap.aii.mappingtool.tf7,com.sap.aii.mappingtool.tf7.rt,com.sap.aii.mappingtool.tfapi,com.sap.esb.webservice.audit.log",
+            "Origin-Bundle-Name": "Business Partner Replication to SAP ERP",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "com.sap.scenarios.utilities.cod2erp.BusinessPartnerReplication; singleton:=true",
+            "Bundle-Version": "1.4.4",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Bundle-ClassPath": ".,/mapping/COD_ERP_Utilities_BusinessPartnerReplication.jar",
+            "Import-Service": " com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false, org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false, javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\", com.sap.esb.security.TrustManagerFactory;multiple:=false, com.sap.esb.security.KeyManagerFactory;multiple:=false, com.sap.esb.camel.endpoint.configurator.api.EndpointConfigurator;multiple:=false;filter=\"(endpointType=SFTP)\",com.sap.esb.webservice.audit.log.AuditLogger "
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": []
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "Never",
+                "defaultValue": "Never",
+                "key": "COD_RecipientTokenIncludeStrategy_9",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "cn/=Issuer",
+                "defaultValue": "cn/=Issuer",
+                "key": "Issuer",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1",
+                "defaultValue": "1",
+                "key": "ERP_cleanupHeaders_0",
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1",
+                "defaultValue": "1",
+                "key": "COD_SenderBasicSecurityProfileCompliant_8",
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "LocationID",
+                "defaultValue": "LocationID",
+                "key": "LocationID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "40",
+                "defaultValue": "40",
+                "key": "COD_Sender_maximumBodySize_29",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "default",
+                "defaultValue": "default",
+                "key": "ERP_proxyType_3",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "PrivateKey",
+                "defaultValue": "PrivateKey",
+                "key": "privatekey",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "0",
+                "defaultValue": "0",
+                "key": "COD_SaveIncomingSignedMessage_7",
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Client Certificate",
+                "defaultValue": "Client Certificate",
+                "key": "ERP_authentication_30",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "erpclient",
+                "defaultValue": "erpclient",
+                "key": "Client",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Basic128Rsa15",
+                "defaultValue": "Basic128Rsa15",
+                "key": "COD_AlgorithmSuiteAssertion_12",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Basic",
+                "defaultValue": "Basic",
+                "key": "ERP_authentication_5",
+                "dataType": "xsd:string"
+            },
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "https://erphost:erpport",
+                "defaultValue": "https://erphost:erpport",
+                "key": "Protocol-Hostname-Port",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "None",
+                "defaultValue": "None",
+                "key": "COD_WSSecurity_14",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "WssX509V3Token10",
+                "defaultValue": "WssX509V3Token10",
+                "key": "COD_X509TokenAssertion_6",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "1",
+                "defaultValue": "1",
+                "key": "ERP_allowChunking_2",
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "VerifyMessage",
+                "defaultValue": "VerifyMessage",
+                "key": "COD_WSSecurityType_10",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "ClientCertificate",
+                "defaultValue": "ClientCertificate",
+                "key": "COD_senderAuthType_22",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "ESBMessaging.send",
+                "defaultValue": "ESBMessaging.send",
+                "key": "COD_Sender_userRole_31",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "cn/=Subject",
+                "defaultValue": "cn/=Subject",
+                "key": "Subject",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "AlwaysToRecipient",
+                "defaultValue": "AlwaysToRecipient",
+                "key": "COD_InitiatorTokenIncludeStrategy_13",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "0",
+                "defaultValue": "0",
+                "key": "COD_CheckTimeStamp_11",
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "COD_Sender_maximumAttachmentSize_30",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "/Utilities/cod2erp/BPReplication",
+                "defaultValue": "/Utilities/cod2erp/BPReplication",
+                "key": "COD_Sender_address_28",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_1",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "",
+                "defaultValue": "",
+                "key": "Artifactname",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "0",
+                "defaultValue": "0",
+                "key": "ERP_CompressMessage_1",
+                "dataType": "xsd:boolean"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "60000",
+                "defaultValue": "60000",
+                "key": "ERP_requestTimeout_4",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "",
+                    "id": "MessageFlow_3",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "com.sap.scenarios.utilities.cod2erp.BusinessPartnerReplicati",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_4": {},
+                "Participant_Process_1": {},
+                "Participant_1": {}
+            },
+            "messageFlows": {
+                "MessageFlow_3": {},
+                "MessageFlow_1": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_4": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNEdge_MessageFlow_1": {},
+                "BPMNEdge_MessageFlow_3": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "CallActivity_1": {
+                "name": "COD_ERP_Utilities_BusinessPartnerReplication",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "MessageMapping",
+                    "displayName": "Message Mapping"
+                },
+                "id": "CallActivity_1",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "EndEvent_1": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_1",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "Participant_4": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "ERP",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_4",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "StartEvent_1": {
+                "eventType": "message",
+                "name": "Start",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_1",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "MessageFlow_3": {
+                "name": "SOAP",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "SOAP"
+                },
+                "id": "MessageFlow_3",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {},
+                "events": {
+                    "EndEvent_1": {},
+                    "StartEvent_1": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_2": {},
+                    "SequenceFlow_1": {}
+                },
+                "activities": {
+                    "CallActivity_1": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "MessageFlow_1": {
+                "name": "SOAP",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "SOAP"
+                },
+                "id": "MessageFlow_1",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "COD",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "SequenceFlow_2": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_2",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_1": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_1",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_EndEvent_1": {
+                "x": 736.0,
+                "y": 150.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_1",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": 40.0,
+                "y": 100.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_4": {
+                "x": 902.0,
+                "y": 100.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_4",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_4",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 250.0,
+                "y": 60.0,
+                "width": 540.0,
+                "height": 220.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_EndEvent_1": {},
+                    "BPMNEdge_SequenceFlow_2": {},
+                    "BPMNEdge_SequenceFlow_1": {},
+                    "BPMNShape_CallActivity_1": {},
+                    "BPMNShape_StartEvent_1": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_1": {
+                "x": 453.0,
+                "y": 110.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Name = COD_ERP_Utilities_BusinessPartnerReplication\nType = Mapping\n",
+                "object": "CallActivity_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_1",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_StartEvent_1": {
+                "x": 270.0,
+                "y": 150.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_1",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_2": {
+                "object": "SequenceFlow_2",
+                "sourceSymbol": "BPMNShape_CallActivity_1",
+                "targetSymbol": "BPMNShape_EndEvent_1",
+                "tooltip": "",
+                "points": "503.0,140.0 644.5,140.0 644.5,166.0 752.0,166.0",
+                "id": "BPMNEdge_SequenceFlow_2",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_1": {
+                "object": "SequenceFlow_1",
+                "sourceSymbol": "BPMNShape_StartEvent_1",
+                "targetSymbol": "BPMNShape_CallActivity_1",
+                "tooltip": "",
+                "points": "286.0,166.0 377.75,166.0 377.75,140.0 503.0,140.0",
+                "id": "BPMNEdge_SequenceFlow_1",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_1": {
+                "object": "MessageFlow_1",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_1",
+                "tooltip": "Name = SOAP\nAdapter Type = SOAP\nTransport Protocol = HTTPS\nMessage Protocol = SOAP 1.x\n",
+                "id": "BPMNEdge_MessageFlow_1",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_3": {
+                "object": "MessageFlow_3",
+                "sourceSymbol": "BPMNShape_EndEvent_1",
+                "targetSymbol": "BPMNShape_Participant_4",
+                "tooltip": "Name = SOAP\nAdapter Type = SOAP\nTransport Protocol = HTTPS\nMessage Protocol = Plain SOAP\n",
+                "id": "BPMNEdge_MessageFlow_3",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

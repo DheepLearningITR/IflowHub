@@ -1,0 +1,1396 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "OT_Ariba_Integration_01",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_74425737",
+                "diagramId": "BPMNShape_Participant_74425737",
+                "isDirty": false,
+                "attributes": {
+                    "name": "CPI",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 10,
+                    "y": 43,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_74425737_Lane0",
+                "containedIn": "Participant_74425737",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_74425609",
+                "diagramId": "BPMNShape_Participant_74425609",
+                "isDirty": false,
+                "attributes": {
+                    "name": "SAP_GTS_XI",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 629,
+                    "y": 312,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_74425609_Lane0",
+                "containedIn": "Participant_74425609",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 142,
+                    "y": 10,
+                    "width": 918,
+                    "height": 276
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 918,
+                    "height": 249
+                }
+            },
+            {
+                "id": "EndEvent_74425658",
+                "diagramId": "BPMNShape_EndEvent_74425658",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "terminate",
+                    "x": 793,
+                    "y": 52,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_74425729",
+                "diagramId": "BPMNShape_CallActivity_74425729",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Delay 120 sec",
+                    "tooltip": "Script = /script/script5.groovy;Function = ",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 261,
+                    "y": 46,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "ServiceTask_74425733",
+                "diagramId": "BPMNShape_ServiceTask_74425733",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Send 1",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "Send",
+                    "x": 487,
+                    "y": 46,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_74425738",
+                "diagramId": "BPMNShape_StartEvent_74425738",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start 1",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 52,
+                    "y": 60,
+                    "width": 32,
+                    "height": 32
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "ServiceTask_74425733",
+                "target": "Participant_74425609",
+                "id": "MessageFlow_74425610",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_74425610",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_74425733",
+                "targetDiagramElement": "BPMNShape_Participant_74425609",
+                "attributes": {
+                    "name": "XI",
+                    "tooltip": "Name = XI_newline_Adapter Type = XI_newline_Transport Protocol =HTTP_newline_Message Protocol = XI_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "Participant_74425737",
+                "target": "StartEvent_74425738",
+                "id": "MessageFlow_74425740",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_74425740",
+                "sourceDiagramElement": "BPMNShape_Participant_74425737",
+                "targetDiagramElement": "BPMNShape_StartEvent_74425738",
+                "attributes": {
+                    "name": "ProcessDirect",
+                    "tooltip": "Name = ProcessDirect_newline_Adapter Type = ProcessDirect_newline_Transport Protocol =Not Applicable_newline_Message Protocol = Not Applicable_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_74425729",
+                "target": "ServiceTask_74425733",
+                "id": "SequenceFlow_74425735",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_74425735",
+                "sourceDiagramElement": "BPMNShape_CallActivity_74425729",
+                "targetDiagramElement": "BPMNShape_ServiceTask_74425733",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_74425733",
+                "target": "EndEvent_74425658",
+                "id": "SequenceFlow_74425736",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_74425736",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_74425733",
+                "targetDiagramElement": "BPMNShape_EndEvent_74425658",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_74425738",
+                "target": "CallActivity_74425729",
+                "id": "SequenceFlow_74425739",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_74425739",
+                "sourceDiagramElement": "BPMNShape_StartEvent_74425738",
+                "targetDiagramElement": "BPMNShape_CallActivity_74425729",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "componentVersion": "1.1",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9uL3ZlcnNpb246OjEuMS4xNQ==",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration/version::1.1.15",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedHeaderList": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "httpSessionHandling": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "Send SanctionsLists to SAP GTS",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "bundleId": {
+                    "value": "Send_SanctionsLists_to_SAP_S4_HANA_GTS_copy",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_74425737",
+                "name": {
+                    "value": "CPI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_74425609",
+                "name": {
+                    "value": "SAP_GTS_XI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_74425610",
+                "componentVersion": "1.11",
+                "name": {
+                    "value": "XI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "SAP_GTS_XI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "XI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "HTTP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "XI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.11.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.11.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.11.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "HTTP/HTTPS",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "XI 3.0",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "XI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "cleanupHeaders": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "Address": {
+                        "value": "http://{{SAP GTS Host}}/sap/xi/engine?type=receiver&sap-client={{SAP GTS Client}}",
+                        "defaultValue": "http://{{SAP GTS Host}}/sap/xi/engine?type=receiver&sap-client={{SAP GTS Client}}",
+                        "key": "",
+                        "partialParameters": [
+                            {
+                                "value": "<SAP GTS Host>",
+                                "defaultValue": "<SAP GTS Host>",
+                                "key": "SAP GTS Host",
+                                "additionalMetadata": {}
+                            },
+                            {
+                                "value": "<SAP GTS Client>",
+                                "defaultValue": "<SAP GTS Client>",
+                                "key": "SAP GTS Client",
+                                "additionalMetadata": {}
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "ClientCertificateAlias": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CommunicationPartyReceiver": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CommunicationComponentSender": {
+                        "value": "<GTS Communication Component Sender>",
+                        "defaultValue": "<GTS Communication Component Sender>",
+                        "key": "CommunicationComponent_Sender",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "useDeadLetterQueue": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "location_id": {
+                        "value": "<SAP Cloud Connector LocationID>",
+                        "defaultValue": "<SAP Cloud Connector LocationID>",
+                        "key": "SAP Cloud Connector Location ID",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "proxyPort": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CompressMessage": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "sendHttpResponseCode": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "CommunicationComponentReceiver": {
+                        "value": "<SAP GTS System ID>",
+                        "defaultValue": "<SAP GTS System ID>",
+                        "key": "CommunicationComponent_Receiver",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "AuthenticationType": {
+                        "value": "BasicAuthentication",
+                        "defaultValue": "BasicAuthentication",
+                        "key": "AuthenticationType",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    },
+                    "ServiceInterfaceReceiver": {
+                        "value": "SanctionedPartyListUpdateIn",
+                        "defaultValue": "SanctionedPartyListUpdateIn",
+                        "key": "ServiceInterface",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "CommunicationPartySender": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "BasicAuthCredentialName": {
+                        "value": "<SAP GTS Credential Artefact>",
+                        "defaultValue": "<SAP GTS Credential Artefact>",
+                        "key": "SAP GTS Credentials",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "MaxRetryInterval": {
+                        "value": "60",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyType": {
+                        "value": "sapcc",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "AllowChunking": {
+                        "value": "0",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "XiMessageIdDetermination": {
+                        "value": "Generate",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "proxyHost": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "SourceForXiMessageId": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ExponentialBackoff": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "TempStorage": {
+                        "value": "DataStore",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "EncryptRMPersistence": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "ServiceInterfaceNamespaceReceiver": {
+                        "value": "<Service Interface Namespace, e.g. http://sap.com/xi/GTS>",
+                        "defaultValue": "<Service Interface Namespace, e.g. http://sap.com/xi/GTS>",
+                        "key": "ServiceInterface_Namespace",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "QualityOfService": {
+                        "value": "ExactlyOnce",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "RetryInterval": {
+                        "value": "1",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true",
+                    "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.manual-proxy:Manual Proxy Connectivity)": "false"
+                },
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpzYXA6WEkvdHA6OkhUVFAvbXA6OlhJL2RpcmVjdGlvbjo6UmVjZWl2ZXIvdmVyc2lvbjo6MS4xMS4w",
+                "metadataURI": "ctype::AdapterVariant/cname::sap:XI/tp::HTTP/mp::XI/direction::Receiver/version::1.11.0",
+                "systemId": "Participant_74425609"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_74425740",
+                "componentVersion": "1.1",
+                "name": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "CPI",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "SAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "address": {
+                        "value": "/send_list_to_gts_via_xi",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpQcm9jZXNzRGlyZWN0L3ZlbmRvcjo6U0FQL3RwOjpOb3QgQXBwbGljYWJsZS9tcDo6Tm90IEFwcGxpY2FibGUvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4xLjI=",
+                "metadataURI": "ctype::AdapterVariant/cname::ProcessDirect/vendor::SAP/tp::Not Applicable/mp::Not Applicable/direction::Sender/version::1.1.2",
+                "systemId": "Participant_74425737"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "EndEvent_74425658",
+                "name": "End",
+                "activityType": "TerminateEvent",
+                "displayName": "Terminate Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6VGVybWluYXRlRW5kRXZlbnQ=",
+                "metadataURI": "ctype::FlowstepVariant/cname::TerminateEndEvent",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_74425729",
+                "name": "Delay 120 sec",
+                "componentVersion": "1.0",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/script5.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMC4x",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.0.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "ServiceTask_74425733",
+                "name": "Send 1",
+                "componentVersion": "1.0",
+                "activityType": "Send",
+                "displayName": "Send",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U2VuZC92ZXJzaW9uOjoxLjAuNA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::Send/version::1.0.4",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_74425738",
+                "name": "Start 1",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQ=",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Required",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4z",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.3",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-ArtifactTrait": "",
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.2",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "Send SanctionsLists to SAP GTS",
+            "Origin-ModifiedDate": "1724957270960",
+            "Origin-Bundle-SymbolicName": "Send_SanctionsLists_to_SAP_S4_HANA_GTS_copy",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "Send SanctionsLists to SAP GTS",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "Send_SanctionsLists_to_SAP_S4_HANA_GTS_copy",
+            "Bundle-Version": "1.0.2",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Import-Service": "com.sap.esb.webservice.audit.log.AuditLogger,com.sap.esb.security.KeyManagerFactory;multiple:=false,com.sap.esb.security.TrustManagerFactory;multiple:=false,javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\",org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false,com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false"
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": []
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "<SAP GTS Host>",
+                "defaultValue": "<SAP GTS Host>",
+                "key": "SAP GTS Host",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<Service Interface Namespace, e.g. http://sap.com/xi/GTS>",
+                "defaultValue": "<Service Interface Namespace, e.g. http://sap.com/xi/GTS>",
+                "key": "ServiceInterface_Namespace",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<GTS Communication Component Sender>",
+                "defaultValue": "<GTS Communication Component Sender>",
+                "key": "CommunicationComponent_Sender",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SanctionedPartyListUpdateIn",
+                "defaultValue": "SanctionedPartyListUpdateIn",
+                "key": "ServiceInterface",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<SAP Cloud Connector LocationID>",
+                "defaultValue": "<SAP Cloud Connector LocationID>",
+                "key": "SAP Cloud Connector Location ID",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<SAP GTS Credential Artefact>",
+                "defaultValue": "<SAP GTS Credential Artefact>",
+                "key": "SAP GTS Credentials",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<SAP GTS Client>",
+                "defaultValue": "<SAP GTS Client>",
+                "key": "SAP GTS Client",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "<SAP GTS System ID>",
+                "defaultValue": "<SAP GTS System ID>",
+                "key": "CommunicationComponent_Receiver",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "BasicAuthentication",
+                "defaultValue": "BasicAuthentication",
+                "key": "AuthenticationType",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "XI",
+                    "id": "MessageFlow_74425610",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "OT_Ariba_Integration_01",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_74425609": {},
+                "Participant_Process_1": {},
+                "Participant_74425737": {}
+            },
+            "messageFlows": {
+                "MessageFlow_74425610": {},
+                "MessageFlow_74425740": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_74425737": {},
+                "BPMNEdge_MessageFlow_74425610": {},
+                "BPMNShape_Participant_74425609": {},
+                "BPMNEdge_MessageFlow_74425740": {},
+                "BPMNShape_Participant_Process_1": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "SequenceFlow_74425736": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_74425736",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_74425739": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_74425739",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "EndEvent_74425658": {
+                "eventType": "terminate",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "terminate",
+                    "displayName": "Terminate Message"
+                },
+                "id": "EndEvent_74425658",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "Participant_74425737": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "CPI",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_74425737",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "StartEvent_74425738": {
+                "eventType": "message",
+                "name": "Start 1",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_74425738",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "Participant_74425609": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "SAP_GTS_XI",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_74425609",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {},
+                "events": {
+                    "EndEvent_74425658": {},
+                    "StartEvent_74425738": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_74425736": {},
+                    "SequenceFlow_74425739": {},
+                    "SequenceFlow_74425735": {}
+                },
+                "activities": {
+                    "CallActivity_74425729": {},
+                    "ServiceTask_74425733": {}
+                },
+                "gateways": {},
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "MessageFlow_74425610": {
+                "name": "XI",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "XI"
+                },
+                "id": "MessageFlow_74425610",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "CallActivity_74425729": {
+                "name": "Delay 120 sec",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_74425729",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "ServiceTask_74425733": {
+                "name": "Send 1",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Send",
+                    "displayName": "Send"
+                },
+                "id": "ServiceTask_74425733",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_74425735": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_74425735",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_74425740": {
+                "name": "ProcessDirect",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "ProcessDirect"
+                },
+                "id": "MessageFlow_74425740",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_Participant_74425737": {
+                "x": -882.0,
+                "y": -261.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_74425737",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_74425737",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_EndEvent_74425658": {
+                "x": 43.0,
+                "y": -215.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_74425658",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_74425658",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_Participant_74425609": {
+                "x": -263.0,
+                "y": 8.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_74425609",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_74425609",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_74425729": {
+                "x": -489.0,
+                "y": -221.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/script5.groovy;Function = ",
+                "object": "CallActivity_74425729",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_74425729",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": -750.0,
+                "y": -294.0,
+                "width": 918.0,
+                "height": 276.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNEdge_SequenceFlow_74425739": {},
+                    "BPMNShape_EndEvent_74425658": {},
+                    "BPMNShape_CallActivity_74425729": {},
+                    "BPMNShape_StartEvent_74425738": {},
+                    "BPMNShape_ServiceTask_74425733": {},
+                    "BPMNEdge_SequenceFlow_74425735": {},
+                    "BPMNEdge_SequenceFlow_74425736": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_StartEvent_74425738": {
+                "x": -698.0,
+                "y": -207.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_74425738",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_74425738",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_ServiceTask_74425733": {
+                "x": -263.0,
+                "y": -221.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "ServiceTask_74425733",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ServiceTask_74425733",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_74425739": {
+                "object": "SequenceFlow_74425739",
+                "sourceSymbol": "BPMNShape_StartEvent_74425738",
+                "targetSymbol": "BPMNShape_CallActivity_74425729",
+                "tooltip": "",
+                "points": "-682.0,-191.0 -439.0,-191.0",
+                "id": "BPMNEdge_SequenceFlow_74425739",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_74425610": {
+                "object": "MessageFlow_74425610",
+                "sourceSymbol": "BPMNShape_ServiceTask_74425733",
+                "targetSymbol": "BPMNShape_Participant_74425609",
+                "tooltip": "Name = XI\nAdapter Type = XI\nTransport Protocol =HTTP\nMessage Protocol = XI\n",
+                "id": "BPMNEdge_MessageFlow_74425610",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_74425740": {
+                "object": "MessageFlow_74425740",
+                "sourceSymbol": "BPMNShape_Participant_74425737",
+                "targetSymbol": "BPMNShape_StartEvent_74425738",
+                "tooltip": "Name = ProcessDirect\nAdapter Type = ProcessDirect\nTransport Protocol =Not Applicable\nMessage Protocol = Not Applicable\n",
+                "id": "BPMNEdge_MessageFlow_74425740",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_74425735": {
+                "object": "SequenceFlow_74425735",
+                "sourceSymbol": "BPMNShape_CallActivity_74425729",
+                "targetSymbol": "BPMNShape_ServiceTask_74425733",
+                "tooltip": "",
+                "points": "-439.0,-191.0 -213.0,-191.0",
+                "id": "BPMNEdge_SequenceFlow_74425735",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_74425736": {
+                "object": "SequenceFlow_74425736",
+                "sourceSymbol": "BPMNShape_ServiceTask_74425733",
+                "targetSymbol": "BPMNShape_EndEvent_74425658",
+                "tooltip": "",
+                "points": "-213.0,-191.0 -60.0,-191.0 -60.0,-199.0 59.0,-199.0",
+                "id": "BPMNEdge_SequenceFlow_74425736",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}

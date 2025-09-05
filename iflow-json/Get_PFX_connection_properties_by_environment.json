@@ -1,0 +1,4289 @@
+{
+    "version": "1.35",
+    "bpmnModel": {
+        "iflowName": "wait-aggregator",
+        "__type": "iflow",
+        "orientation": "Vertical",
+        "isDirty": false,
+        "shapes": [
+            {
+                "id": "Participant_1",
+                "diagramId": "BPMNShape_Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Sender",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 49,
+                    "y": 72,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_1_Lane0",
+                "containedIn": "Participant_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Participant_6461659",
+                "diagramId": "BPMNShape_Participant_6461659",
+                "isDirty": false,
+                "attributes": {
+                    "name": "ErrorReceiver1",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "System",
+                    "x": 506,
+                    "y": 597,
+                    "width": 100,
+                    "height": 140
+                }
+            },
+            {
+                "id": "Participant_6461659_Lane0",
+                "containedIn": "Participant_6461659",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 100,
+                    "height": 113
+                }
+            },
+            {
+                "id": "Process_1",
+                "diagramId": "BPMNShape_Participant_Process_1",
+                "bpmnElementId": "Participant_Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Integration Process",
+                    "tooltip": "",
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "x": 178,
+                    "y": 46,
+                    "width": 1584,
+                    "height": 500
+                }
+            },
+            {
+                "id": "Process_1_Lane0",
+                "containedIn": "Process_1",
+                "isDirty": false,
+                "attributes": {
+                    "name": " ",
+                    "tooltip": "",
+                    "type": "Lane",
+                    "flavor": "singleInstance",
+                    "x": 0,
+                    "y": 27,
+                    "width": 1584,
+                    "height": 473
+                }
+            },
+            {
+                "id": "ParallelGateway_6461695",
+                "diagramId": "BPMNShape_ParallelGateway_6461695",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Join",
+                    "tooltip": "",
+                    "type": "Gateway",
+                    "flavor": "parallel",
+                    "parentFlavor": "Join",
+                    "x": 1064,
+                    "y": 134,
+                    "width": 50,
+                    "height": 40
+                }
+            },
+            {
+                "id": "EndEvent_2",
+                "diagramId": "BPMNShape_EndEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "End",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "x": 1468,
+                    "y": 117,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_6461639",
+                "diagramId": "BPMNShape_CallActivity_6461639",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 866,
+                    "y": 56,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "SubProcess_6461517",
+                "diagramId": "BPMNShape_SubProcess_6461517",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Exception Subprocess",
+                    "tooltip": "",
+                    "type": "subProcess",
+                    "flavor": "ErrorEventSubProcessTemplate",
+                    "x": 29,
+                    "y": 316,
+                    "width": 597,
+                    "height": 137
+                }
+            },
+            {
+                "id": "ServiceTask_6461656",
+                "diagramId": "BPMNShape_ServiceTask_6461656",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_6461517",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Write error log",
+                    "tooltip": "",
+                    "type": "Activity",
+                    "flavor": "ExternalCall",
+                    "x": 299,
+                    "y": 38,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_6461518",
+                "diagramId": "BPMNShape_StartEvent_6461518",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_6461517",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Error Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "errorStart",
+                    "x": 35,
+                    "y": 54,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "EndEvent_6461655",
+                "diagramId": "BPMNShape_EndEvent_6461655",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_6461517",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Error End 1",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "errorEnd",
+                    "x": 480,
+                    "y": 54,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_6461661",
+                "diagramId": "BPMNShape_CallActivity_6461661",
+                "containedIn": "Process_1",
+                "partitionedIn": "SubProcess_6461517",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Build error log",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 132,
+                    "y": 35,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461696",
+                "diagramId": "BPMNShape_CallActivity_6461696",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Gather",
+                    "tooltip": "Message Type = PlainText_newline_Aggregation Algorithm = concatenate-strategy",
+                    "type": "Activity",
+                    "flavor": "Gather",
+                    "x": 1149,
+                    "y": 117,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461652",
+                "diagramId": "BPMNShape_CallActivity_6461652",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 875,
+                    "y": 223,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461634",
+                "diagramId": "BPMNShape_CallActivity_6461634",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "get value",
+                    "tooltip": "Script = /script/Utilities.groovy;Function = setDynamicProperties",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 716,
+                    "y": 47,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "StartEvent_2",
+                "diagramId": "BPMNShape_StartEvent_2",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Start",
+                    "tooltip": "",
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "x": 57,
+                    "y": 56,
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "id": "CallActivity_6461650",
+                "diagramId": "BPMNShape_CallActivity_6461650",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "get value",
+                    "tooltip": "Script = /script/Utilities.groovy;Function = setDynamicProperties",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 716,
+                    "y": 232,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461692",
+                "diagramId": "BPMNShape_CallActivity_6461692",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 389,
+                    "y": 223,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "ParallelGateway_6461685",
+                "diagramId": "BPMNShape_ParallelGateway_6461685",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Parallel Multicast 1",
+                    "tooltip": "",
+                    "type": "Gateway",
+                    "flavor": "parallel",
+                    "parentFlavor": "Multicast",
+                    "x": 299,
+                    "y": 47,
+                    "width": 40,
+                    "height": 40
+                }
+            },
+            {
+                "id": "CallActivity_6461665",
+                "diagramId": "BPMNShape_CallActivity_6461665",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "get mapping",
+                    "tooltip": "Script = /script/Utilities.groovy;Function = setValueMappingToProperty",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 555,
+                    "y": 47,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461643",
+                "diagramId": "BPMNShape_CallActivity_6461643",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "get value",
+                    "tooltip": "Script = /script/Utilities.groovy;Function = setDynamicProperties",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 716,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461686",
+                "diagramId": "BPMNShape_CallActivity_6461686",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 389,
+                    "y": 39,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461641",
+                "diagramId": "BPMNShape_CallActivity_6461641",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "get mapping",
+                    "tooltip": "Script = /script/Utilities.groovy;Function = setValueMappingToProperty",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 555,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461663",
+                "diagramId": "BPMNShape_CallActivity_6461663",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 141,
+                    "y": 39,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461648",
+                "diagramId": "BPMNShape_CallActivity_6461648",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "get mapping",
+                    "tooltip": "Script = /script/Utilities.groovy;Function = setValueMappingToProperty",
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "x": 555,
+                    "y": 232,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461646",
+                "diagramId": "BPMNShape_CallActivity_6461646",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 875,
+                    "y": 139,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461684",
+                "diagramId": "BPMNShape_CallActivity_6461684",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Set properties",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 389,
+                    "y": 124,
+                    "width": 100,
+                    "height": 60
+                }
+            },
+            {
+                "id": "CallActivity_6461681",
+                "diagramId": "BPMNShape_CallActivity_6461681",
+                "containedIn": "Process_1",
+                "partitionedIn": "Process_1_Lane0",
+                "isDirty": false,
+                "attributes": {
+                    "name": "Build response msg",
+                    "tooltip": "Modifies incoming message with additional information _newline_",
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "x": 1301,
+                    "y": 116,
+                    "width": 100,
+                    "height": 60
+                }
+            }
+        ],
+        "connectors": [
+            {
+                "source": "Participant_1",
+                "target": "StartEvent_2",
+                "id": "MessageFlow_4",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_4",
+                "sourceDiagramElement": "BPMNShape_Participant_1",
+                "targetDiagramElement": "BPMNShape_StartEvent_2",
+                "attributes": {
+                    "name": "ProcessDirect",
+                    "tooltip": "Name = ProcessDirect_newline_Adapter Type = ProcessDirect_newline_Transport Protocol =Not Applicable_newline_Message Protocol = Not Applicable_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_6461656",
+                "target": "Participant_6461659",
+                "id": "MessageFlow_6461660",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_MessageFlow_6461660",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_6461656",
+                "targetDiagramElement": "BPMNShape_Participant_6461659",
+                "attributes": {
+                    "name": "ProcessDirect",
+                    "tooltip": "Name = ProcessDirect_newline_Adapter Type = ProcessDirect_newline_Transport Protocol =Not Applicable_newline_Message Protocol = Not Applicable_newline_",
+                    "type": "Connection",
+                    "flavor": "message",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ParallelGateway_6461695",
+                "target": "CallActivity_6461696",
+                "id": "SequenceFlow_6461700",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461700",
+                "sourceDiagramElement": "BPMNShape_ParallelGateway_6461695",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461696",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461639",
+                "target": "ParallelGateway_6461695",
+                "id": "SequenceFlow_6461697",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461697",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461639",
+                "targetDiagramElement": "BPMNShape_ParallelGateway_6461695",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ServiceTask_6461656",
+                "target": "EndEvent_6461655",
+                "id": "SequenceFlow_6461658",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461658",
+                "sourceDiagramElement": "BPMNShape_ServiceTask_6461656",
+                "targetDiagramElement": "BPMNShape_EndEvent_6461655",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_6461518",
+                "target": "CallActivity_6461661",
+                "id": "SequenceFlow_6461657",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461657",
+                "sourceDiagramElement": "BPMNShape_StartEvent_6461518",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461661",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461661",
+                "target": "ServiceTask_6461656",
+                "id": "SequenceFlow_6461662",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461662",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461661",
+                "targetDiagramElement": "BPMNShape_ServiceTask_6461656",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461696",
+                "target": "CallActivity_6461681",
+                "id": "SequenceFlow_6461701",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461701",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461696",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461681",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461652",
+                "target": "ParallelGateway_6461695",
+                "id": "SequenceFlow_6461699",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461699",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461652",
+                "targetDiagramElement": "BPMNShape_ParallelGateway_6461695",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461634",
+                "target": "CallActivity_6461639",
+                "id": "SequenceFlow_6461668",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461668",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461634",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461639",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "StartEvent_2",
+                "target": "CallActivity_6461663",
+                "id": "SequenceFlow_6461600",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461600",
+                "sourceDiagramElement": "BPMNShape_StartEvent_2",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461663",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461650",
+                "target": "CallActivity_6461652",
+                "id": "SequenceFlow_6461674",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461674",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461650",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461652",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461692",
+                "target": "CallActivity_6461648",
+                "id": "SequenceFlow_6461694",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461694",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461692",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461648",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ParallelGateway_6461685",
+                "target": "CallActivity_6461684",
+                "id": "SequenceFlow_6461690",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461690",
+                "sourceDiagramElement": "BPMNShape_ParallelGateway_6461685",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461684",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ParallelGateway_6461685",
+                "target": "CallActivity_6461692",
+                "id": "SequenceFlow_6461693",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461693",
+                "sourceDiagramElement": "BPMNShape_ParallelGateway_6461685",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461692",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "ParallelGateway_6461685",
+                "target": "CallActivity_6461686",
+                "id": "SequenceFlow_6461688",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461688",
+                "sourceDiagramElement": "BPMNShape_ParallelGateway_6461685",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461686",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461665",
+                "target": "CallActivity_6461634",
+                "id": "SequenceFlow_6461667",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461667",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461665",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461634",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461643",
+                "target": "CallActivity_6461646",
+                "id": "SequenceFlow_6461671",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461671",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461643",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461646",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461686",
+                "target": "CallActivity_6461665",
+                "id": "SequenceFlow_6461689",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461689",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461686",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461665",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461641",
+                "target": "CallActivity_6461643",
+                "id": "SequenceFlow_6461670",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461670",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461641",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461643",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461663",
+                "target": "ParallelGateway_6461685",
+                "id": "SequenceFlow_6461687",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461687",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461663",
+                "targetDiagramElement": "BPMNShape_ParallelGateway_6461685",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461648",
+                "target": "CallActivity_6461650",
+                "id": "SequenceFlow_6461673",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461673",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461648",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461650",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461646",
+                "target": "ParallelGateway_6461695",
+                "id": "SequenceFlow_6461698",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461698",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461646",
+                "targetDiagramElement": "BPMNShape_ParallelGateway_6461695",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461684",
+                "target": "CallActivity_6461641",
+                "id": "SequenceFlow_6461691",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461691",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461684",
+                "targetDiagramElement": "BPMNShape_CallActivity_6461641",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            },
+            {
+                "source": "CallActivity_6461681",
+                "target": "EndEvent_2",
+                "id": "SequenceFlow_6461682",
+                "isDirty": false,
+                "diagramId": "BPMNEdge_SequenceFlow_6461682",
+                "sourceDiagramElement": "BPMNShape_CallActivity_6461681",
+                "targetDiagramElement": "BPMNShape_EndEvent_2",
+                "attributes": {
+                    "name": "",
+                    "type": "Connection",
+                    "flavor": "none",
+                    "x": 0,
+                    "y": 0,
+                    "width": 0,
+                    "height": 0
+                }
+            }
+        ]
+    },
+    "propertyViewModel": {
+        "defaultIntegrationFlowModel": {
+            "ITYPE": "DEFAULT_INTEGRATION_FLOW",
+            "id": "Collobaration_1",
+            "name": "Collobaration_1",
+            "componentVersion": "1.2",
+            "displayName": "Integration Flow",
+            "hashedMetadataURI": "Y3R5cGU6OklGbG93VmFyaWFudC9jbmFtZTo6SUZsb3dDb25maWd1cmF0aW9uL3ZlcnNpb246OjEuMi4y",
+            "metadataURI": "ctype::IFlowVariant/cname::IFlowConfiguration/version::1.2.2",
+            "allAttributes": {
+                "namespaceMapping": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "Description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": false
+                },
+                "httpSessionHandling": {
+                    "value": "None",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlMaxAge": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "returnExceptionToSender": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "log": {
+                    "value": "All events",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "corsEnabled": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "exposedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "bundleId": {
+                    "value": "Get_PFX_connection_properties_by_environment",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaderList": {
+                    "value": "*",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "ServerTrace": {
+                    "value": "false",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "allowedOrigins": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "accessControlAllowCredentials": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "name": {
+                    "value": "Get Pricefx connection properties by environment",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedHeaders": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                },
+                "productProfiles": {
+                    "value": "iflmap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allowedMethods": {
+                    "value": "",
+                    "values": [],
+                    "defaultValue": "",
+                    "key": "",
+                    "isPersisted": true
+                }
+            },
+            "allTableAttributes": {},
+            "properties": {},
+            "technicalCapabilities": {
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.debug-trace-configuration:Debug Trace Configuration)": "false",
+                "$profile.isCapabilitySupported(com.sap.it.capability.igwpro.mpl-log-level-configuration:Mpl Log Level Configuration)": "false"
+            },
+            "uiControlCapabilities": {
+                "$action.enableAlwaysWithRoleCheck()": "WebToolingWorkspace.Write"
+            }
+        },
+        "listOfSenderModel": [
+            {
+                "ITYPE": "SENDER",
+                "id": "Participant_1",
+                "name": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointSender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "isAuthenticationRelevant": false,
+                "systemSenderAuth": [],
+                "enableBasicAuthentication": {
+                    "value": false,
+                    "defaultValue": false,
+                    "key": "",
+                    "iflowBooleanType": "BOOL_TYPE_STRING"
+                },
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfReceiverModel": [
+            {
+                "ITYPE": "RECEIVER",
+                "id": "Participant_6461659",
+                "name": {
+                    "value": "ErrorReceiver1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "type": {
+                    "value": "EndpointRecevier",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "systemType": {
+                    "value": "System",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "typeIDs": [
+                    {
+                        "typeId": ""
+                    }
+                ],
+                "metadataURI": "ctype::FlowstepVariant/cname::System",
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6U3lzdGVt"
+            }
+        ],
+        "listOfDefaultRouteModel": [],
+        "listOfDefaultChannelModel": [
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_4",
+                "componentVersion": "1.1",
+                "name": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "Sender",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "SAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "address": {
+                        "value": "/getPFXConnectionProp",
+                        "defaultValue": "/getPFXConnectionProp",
+                        "key": "incoming-path",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpQcm9jZXNzRGlyZWN0L3ZlbmRvcjo6U0FQL3RwOjpOb3QgQXBwbGljYWJsZS9tcDo6Tm90IEFwcGxpY2FibGUvZGlyZWN0aW9uOjpTZW5kZXIvdmVyc2lvbjo6MS4xLjI=",
+                "metadataURI": "ctype::AdapterVariant/cname::ProcessDirect/vendor::SAP/tp::Not Applicable/mp::Not Applicable/direction::Sender/version::1.1.2",
+                "systemId": "Participant_1"
+            },
+            {
+                "ITYPE": "DEFAULT_CHANNEL",
+                "id": "MessageFlow_6461660",
+                "componentVersion": "1.0",
+                "name": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "direction": {
+                    "value": "Receiver",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "system": {
+                    "value": "ErrorReceiver1",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "description": {
+                    "value": "",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterType": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocol": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentNS": {
+                    "value": "sap",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVId": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "componentSWCVName": {
+                    "value": "external",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolVersion": {
+                    "value": "1.1.2",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "transportProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "messageProtocolDisplayName": {
+                    "value": "Not Applicable",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "adapterDisplayName": {
+                    "value": "ProcessDirect",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "vendor": {
+                    "value": "SAP",
+                    "defaultValue": "",
+                    "key": ""
+                },
+                "allAttributes": {
+                    "address": {
+                        "value": "/sendLogToMail",
+                        "defaultValue": "/sendLogToMail",
+                        "key": "error-process",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "technicalCapabilities": {},
+                "properties": {},
+                "hashedMetadataURI": "Y3R5cGU6OkFkYXB0ZXJWYXJpYW50L2NuYW1lOjpQcm9jZXNzRGlyZWN0L3ZlbmRvcjo6U0FQL3RwOjpOb3QgQXBwbGljYWJsZS9tcDo6Tm90IEFwcGxpY2FibGUvZGlyZWN0aW9uOjpSZWNlaXZlci92ZXJzaW9uOjoxLjAuMw==",
+                "metadataURI": "ctype::AdapterVariant/cname::ProcessDirect/vendor::SAP/tp::Not Applicable/mp::Not Applicable/direction::Receiver/version::1.0.3",
+                "systemId": "Participant_6461659"
+            }
+        ],
+        "listOfDefaultFlowElementModel": [
+            {
+                "id": "ParallelGateway_6461695",
+                "name": "Join",
+                "componentVersion": "1.0",
+                "activityType": "parallel",
+                "displayName": "Join",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6Sm9pbi92ZXJzaW9uOjoxLjAuMA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::Join/version::1.0.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_2",
+                "name": "End",
+                "componentVersion": "1.1",
+                "activityType": "",
+                "displayName": "End Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZUVuZEV2ZW50L3ZlcnNpb246OjEuMS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageEndEvent/version::1.1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461639",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "constant",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "property",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "value",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "pfxHost",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "SubProcess_6461517",
+                "name": "Exception Subprocess",
+                "componentVersion": "1.0",
+                "activityType": "ErrorEventSubProcessTemplate",
+                "displayName": "Exception Subprocess",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JFdmVudFN1YlByb2Nlc3NUZW1wbGF0ZS92ZXJzaW9uOjoxLjAuMg==",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorEventSubProcessTemplate/version::1.0.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "ServiceTask_6461656",
+                "name": "Write error log",
+                "componentVersion": "1.0",
+                "activityType": "ExternalCall",
+                "displayName": "Request Reply",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXh0ZXJuYWxDYWxsL3ZlcnNpb246OjEuMC40",
+                "metadataURI": "ctype::FlowstepVariant/cname::ExternalCall/version::1.0.4",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_6461518",
+                "name": "Error Start",
+                "activityType": "",
+                "displayName": "Error Start Event",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JTdGFydEV2ZW50",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorStartEvent",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "EndEvent_6461655",
+                "name": "Error End 1",
+                "activityType": "EndErrorEvent",
+                "displayName": "Error End Event",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RXJyb3JFbmRFdmVudA==",
+                "metadataURI": "ctype::FlowstepVariant/cname::ErrorEndEvent",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461661",
+                "name": "Build error log",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "{\n\"processName\": \"Get PFX connection properties by environment\",\n\"errorId\": \"${property.SAP_ErrorModelStepID}\",\n\"messageId\": \"${property.SAP_MessageProcessingLogID}\",\n\"message\": \"${exception.message}\"\n}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461696",
+                "name": "Gather",
+                "componentVersion": "1.2",
+                "activityType": "Gather",
+                "displayName": "Gather",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "targetXPath": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "sourceXPath": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "messageType": {
+                        "value": "PlainText",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "aggregationAlgorithm": {
+                        "value": "concatenate-strategy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "gatherFileNames": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R2F0aGVyL3ZlcnNpb246OjEuMi4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::Gather/version::1.2.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461652",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "property",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "value",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "pfxAccessToken",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461634",
+                "name": "get value",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "setDynamicProperties",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/Utilities.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "StartEvent_2",
+                "name": "Start",
+                "componentVersion": "1.0",
+                "activityType": "",
+                "displayName": "Start Message",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TWVzc2FnZVN0YXJ0RXZlbnQvdmVyc2lvbjo6MS4w",
+                "metadataURI": "ctype::FlowstepVariant/cname::MessageStartEvent/version::1.0",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461650",
+                "name": "get value",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "setDynamicProperties",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/Utilities.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461692",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "constant",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "property",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "pfxEnv",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "key",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "AccessToken",
+                                    "defaultValue": "AccessToken",
+                                    "key": "targetid-accesstoken",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "targetId",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "ParallelGateway_6461685",
+                "name": "Parallel Multicast 1",
+                "componentVersion": "1.1",
+                "activityType": "parallel",
+                "displayName": "Parallel Multicast",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {},
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "routingConditions": [
+                    {
+                        "ITYPE": "DEFAULT_ROUTE",
+                        "id": "SequenceFlow_6461690",
+                        "componentVersion": "1.0",
+                        "name": "Branch 2",
+                        "properties": {
+                            "flowstepGeneralTabRequired": "true"
+                        },
+                        "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6c2FwOk11bHRpY2FzdFJvdXRlL3ZlcnNpb246OjEuMC4w",
+                        "metadataURI": "ctype::FlowstepVariant/cname::sap:MulticastRoute/version::1.0.0"
+                    },
+                    {
+                        "ITYPE": "DEFAULT_ROUTE",
+                        "id": "SequenceFlow_6461693",
+                        "componentVersion": "1.0",
+                        "name": "Branch 3",
+                        "properties": {
+                            "flowstepGeneralTabRequired": "true"
+                        },
+                        "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6c2FwOk11bHRpY2FzdFJvdXRlL3ZlcnNpb246OjEuMC4w",
+                        "metadataURI": "ctype::FlowstepVariant/cname::sap:MulticastRoute/version::1.0.0"
+                    },
+                    {
+                        "ITYPE": "DEFAULT_ROUTE",
+                        "id": "SequenceFlow_6461688",
+                        "componentVersion": "1.0",
+                        "name": "Branch 1",
+                        "properties": {
+                            "flowstepGeneralTabRequired": "true"
+                        },
+                        "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6c2FwOk11bHRpY2FzdFJvdXRlL3ZlcnNpb246OjEuMC4w",
+                        "metadataURI": "ctype::FlowstepVariant/cname::sap:MulticastRoute/version::1.0.0"
+                    }
+                ],
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6TXVsdGljYXN0L3ZlcnNpb246OjEuMS4x",
+                "metadataURI": "ctype::FlowstepVariant/cname::Multicast/version::1.1.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461665",
+                "name": "get mapping",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "setValueMappingToProperty",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/Utilities.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461643",
+                "name": "get value",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "setDynamicProperties",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/Utilities.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461686",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "constant",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "header",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "pfxEnv",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "key",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Host",
+                                    "defaultValue": "Host",
+                                    "key": "targetid-host",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "targetId",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461641",
+                "name": "get mapping",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "setValueMappingToProperty",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/Utilities.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461663",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "${property.dummy}",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "header",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "pfxEnv",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "pfxEnv",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Pricefx",
+                                    "defaultValue": "Pricefx",
+                                    "key": "source-agency-id",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "sourceAgency",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Environment",
+                                    "defaultValue": "Environment",
+                                    "key": "source-id",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "sourceId",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Pricefx",
+                                    "defaultValue": "Pricefx",
+                                    "key": "target-agency-id",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "targetAgency",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "header",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "pfxEnv",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_ApplicationID",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "SAP Integration Suite",
+                                    "defaultValue": "SAP Integration Suite",
+                                    "key": "messageheader-sender",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_Sender",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Pricefx",
+                                    "defaultValue": "Pricefx",
+                                    "key": "messageheader-receiver",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_Receiver",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Pricefx connection prop",
+                                    "defaultValue": "Pricefx connection prop",
+                                    "key": "messageheader-type",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "SAP_MessageType",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461648",
+                "name": "get mapping",
+                "componentVersion": "1.1",
+                "activityType": "GroovyScript",
+                "displayName": "Groovy Script",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "scriptFunction": {
+                        "value": "setValueMappingToProperty",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "scriptBundleId": {
+                        "value": "Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "script": {
+                        "value": "/script/Utilities.groovy",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6R3Jvb3Z5U2NyaXB0L3ZlcnNpb246OjEuMS4y",
+                "metadataURI": "ctype::FlowstepVariant/cname::GroovyScript/version::1.1.2",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461646",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "constant",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "property",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "value",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "pfxCredential",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461684",
+                "name": "Set properties",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "constant",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "property",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "pfxEnv",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "key",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "java.lang.String",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            },
+                            {
+                                "Action": {
+                                    "value": "Create",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Type": {
+                                    "value": "constant",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Value": {
+                                    "value": "Credential",
+                                    "defaultValue": "Credential",
+                                    "key": "targetid-credential",
+                                    "additionalMetadata": {}
+                                },
+                                "Default": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Name": {
+                                    "value": "targetId",
+                                    "defaultValue": "",
+                                    "key": ""
+                                },
+                                "Datatype": {
+                                    "value": "",
+                                    "defaultValue": "",
+                                    "key": ""
+                                }
+                            }
+                        ],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            },
+            {
+                "id": "CallActivity_6461681",
+                "name": "Build response msg",
+                "componentVersion": "1.6",
+                "activityType": "Enricher",
+                "displayName": "Content Modifier",
+                "ITYPE": "DEFAULT_FLOWSTEP",
+                "allAttributes": {
+                    "bodyType": {
+                        "value": "expression",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    },
+                    "wrapContent": {
+                        "value": "<pfxConnection>\n<AccessToken>${property.pfxAccessToken}</AccessToken>\n<Host>${property.pfxHost}</Host>\n<Credential>${property.pfxCredential}</Credential>\n</pfxConnection>",
+                        "defaultValue": "",
+                        "key": "",
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {
+                    "propertyTable": {
+                        "value": [],
+                        "isPersisted": true
+                    },
+                    "headerTable": {
+                        "value": [],
+                        "isPersisted": true
+                    }
+                },
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dzdGVwVmFyaWFudC9jbmFtZTo6RW5yaWNoZXIvdmVyc2lvbjo6MS42LjE=",
+                "metadataURI": "ctype::FlowstepVariant/cname::Enricher/version::1.6.1",
+                "technicalCapabilities": {}
+            }
+        ],
+        "listOfDefaultProcessModel": [
+            {
+                "id": "Process_1",
+                "name": "Integration Process",
+                "componentVersion": "1.1",
+                "displayName": "Integration Process",
+                "ITYPE": "DEFAULT_PROCESS",
+                "allAttributes": {
+                    "transactionTimeout": {
+                        "value": "30",
+                        "defaultValue": "30",
+                        "key": "txn-timeout",
+                        "additionalMetadata": {},
+                        "isPersisted": true
+                    },
+                    "transactionalHandling": {
+                        "value": "Not Required",
+                        "defaultValue": "Not Required",
+                        "key": "txn-handling",
+                        "additionalMetadata": {
+                            "isCombobox": "true"
+                        },
+                        "isPersisted": true
+                    }
+                },
+                "allTableAttributes": {},
+                "properties": {
+                    "flowstepGeneralTabRequired": "true"
+                },
+                "hashedMetadataURI": "Y3R5cGU6OkZsb3dFbGVtZW50VmFyaWFudC9jbmFtZTo6SW50ZWdyYXRpb25Qcm9jZXNzL3ZlcnNpb246OjEuMS4z",
+                "metadataURI": "ctype::FlowElementVariant/cname::IntegrationProcess/version::1.1.3",
+                "technicalCapabilities": {
+                    "$profile.isCapabilitySupported(com.sap.it.capability.technical:cp.jms.messaging.service)": "true"
+                }
+            }
+        ],
+        "manifestContent": {
+            "SAP-RuntimeProfileName": "Cloud Integration",
+            "SAP-ContentMode": "ConfigureOnly",
+            "Manifest-Version": "1.0",
+            "Origin-Bundle-Version": "1.0.0",
+            "SAP-BundleType": "IntegrationFlow",
+            "SAP-RuntimeProfile": "iflmap",
+            "Bundle-Name": "Get Pricefx connection properties by environment",
+            "Origin-ModifiedDate": "1754634088466",
+            "Origin-Bundle-SymbolicName": "Get_PFX_connection_properties_by_environment",
+            "Import-Package": "com.sap.esb.application.services.cxf.interceptor,com.sap.esb.security,com.sap.it.op.agent.api,com.sap.it.op.agent.collector.camel,com.sap.it.op.agent.collector.cxf,com.sap.it.op.agent.mpl,javax.jms,javax.jws,javax.wsdl,javax.xml.bind.annotation,javax.xml.namespace,javax.xml.ws,org.apache.camel;version=\"2.8\",org.apache.camel.builder;version=\"2.8\",org.apache.camel.builder.xml;version=\"2.8\",org.apache.camel.component.cxf,org.apache.camel.model;version=\"2.8\",org.apache.camel.processor;version=\"2.8\",org.apache.camel.processor.aggregate;version=\"2.8\",org.apache.camel.spring.spi;version=\"2.8\",org.apache.commons.logging,org.apache.cxf.binding,org.apache.cxf.binding.soap,org.apache.cxf.binding.soap.spring,org.apache.cxf.bus,org.apache.cxf.bus.resource,org.apache.cxf.bus.spring,org.apache.cxf.buslifecycle,org.apache.cxf.catalog,org.apache.cxf.configuration.jsse;version=\"2.5\",org.apache.cxf.configuration.spring,org.apache.cxf.endpoint,org.apache.cxf.headers,org.apache.cxf.interceptor,org.apache.cxf.management.counters;version=\"2.5\",org.apache.cxf.message,org.apache.cxf.phase,org.apache.cxf.resource,org.apache.cxf.service.factory,org.apache.cxf.service.model,org.apache.cxf.transport,org.apache.cxf.transport.common.gzip,org.apache.cxf.transport.http,org.apache.cxf.transport.http.policy,org.apache.cxf.workqueue,org.apache.cxf.ws.rm.persistence,org.apache.cxf.wsdl11,org.osgi.framework;version=\"1.6.0\",org.slf4j;version=\"1.6\",org.springframework.beans.factory.config;version=\"3.0\",com.sap.esb.camel.security.cms,org.apache.camel.spi,com.sap.esb.webservice.audit.log,com.sap.esb.camel.endpoint.configurator.api,com.sap.esb.camel.jdbc.idempotency.reorg,javax.sql,org.apache.camel.processor.idempotent.jdbc,org.osgi.service.blueprint;version=\"[1.0.0,2.0.0)\"",
+            "Origin-Bundle-Name": "Get Pricefx connection properties by environment",
+            "Bundle-ManifestVersion": "2",
+            "Bundle-SymbolicName": "Get_PFX_connection_properties_by_environment",
+            "Bundle-Version": "1.0.0",
+            "WorkspaceProfile": "iflmap",
+            "SAP-NodeType": "IFLMAP",
+            "Require-Capability": "scriptcollection.Common_Groovy_Library_for_SAP_S4HANA_Integration_with_Pricefx;resolution:=optional;bundleType:String=\"ScriptCollection\";source:String=\"reference\"",
+            "Import-Service": "com.sap.esb.webservice.audit.log.AuditLogger,com.sap.esb.security.KeyManagerFactory;multiple:=false,com.sap.esb.security.TrustManagerFactory;multiple:=false,javax.sql.DataSource;multiple:=false;filter=\"(dataSourceName=default)\",org.apache.cxf.ws.rm.persistence.RMStore;multiple:=false,com.sap.esb.camel.security.cms.SignatureSplitter;multiple:=false"
+        },
+        "isModelRefreshedForMigration": false,
+        "listOfflowStepExternalizedProps": [
+            {
+                "value": "Not Required",
+                "defaultValue": "Not Required",
+                "key": "txn-handling",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                }
+            },
+            {
+                "value": "30",
+                "defaultValue": "30",
+                "key": "txn-timeout",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Pricefx",
+                "defaultValue": "Pricefx",
+                "key": "source-agency-id",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Environment",
+                "defaultValue": "Environment",
+                "key": "source-id",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Pricefx",
+                "defaultValue": "Pricefx",
+                "key": "target-agency-id",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Host",
+                "defaultValue": "Host",
+                "key": "targetid-host",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Credential",
+                "defaultValue": "Credential",
+                "key": "targetid-credential",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "AccessToken",
+                "defaultValue": "AccessToken",
+                "key": "targetid-accesstoken",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "SAP Integration Suite",
+                "defaultValue": "SAP Integration Suite",
+                "key": "messageheader-sender",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Pricefx",
+                "defaultValue": "Pricefx",
+                "key": "messageheader-receiver",
+                "additionalMetadata": {}
+            },
+            {
+                "value": "Pricefx connection prop",
+                "defaultValue": "Pricefx connection prop",
+                "key": "messageheader-type",
+                "additionalMetadata": {}
+            }
+        ]
+    },
+    "editActionModel": {
+        "actionsNotAllowed": "NONE",
+        "reason": ""
+    },
+    "listOfExternalizedPropertiesModel": [
+        {
+            "propertyObj": {
+                "value": "Not Required",
+                "defaultValue": "Not Required",
+                "key": "txn-handling",
+                "additionalMetadata": {
+                    "isCombobox": "true"
+                },
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Integration Process",
+                    "id": "Process_1",
+                    "IType": "DEFAULT_PROCESS",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "30",
+                "defaultValue": "30",
+                "key": "txn-timeout",
+                "dataType": "xsd:integer"
+            },
+            "listOfReferences": [
+                {
+                    "name": "Integration Process",
+                    "id": "Process_1",
+                    "IType": "DEFAULT_PROCESS",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "/getPFXConnectionProp",
+                "defaultValue": "/getPFXConnectionProp",
+                "key": "incoming-path",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "ProcessDirect",
+                    "id": "MessageFlow_4",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Pricefx",
+                "defaultValue": "Pricefx",
+                "key": "source-agency-id",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461663",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Environment",
+                "defaultValue": "Environment",
+                "key": "source-id",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461663",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Pricefx",
+                "defaultValue": "Pricefx",
+                "key": "target-agency-id",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461663",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Host",
+                "defaultValue": "Host",
+                "key": "targetid-host",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461686",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Credential",
+                "defaultValue": "Credential",
+                "key": "targetid-credential",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461684",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "AccessToken",
+                "defaultValue": "AccessToken",
+                "key": "targetid-accesstoken",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461692",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "SAP Integration Suite",
+                "defaultValue": "SAP Integration Suite",
+                "key": "messageheader-sender",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461663",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Pricefx",
+                "defaultValue": "Pricefx",
+                "key": "messageheader-receiver",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461663",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "Pricefx connection prop",
+                "defaultValue": "Pricefx connection prop",
+                "key": "messageheader-type",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "activityType": "Enricher",
+                    "name": "Set properties",
+                    "id": "CallActivity_6461663",
+                    "IType": "DEFAULT_FLOWSTEP",
+                    "displayName": "Content Modifier",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        },
+        {
+            "propertyObj": {
+                "value": "/sendLogToMail",
+                "defaultValue": "/sendLogToMail",
+                "key": "error-process",
+                "dataType": "xsd:string"
+            },
+            "listOfReferences": [
+                {
+                    "name": "ProcessDirect",
+                    "id": "MessageFlow_6461660",
+                    "IType": "DEFAULT_CHANNEL",
+                    "refCount": 1
+                }
+            ],
+            "isTable": false
+        }
+    ],
+    "galileiModel": {
+        "iflowName": "wait-aggregator",
+        "isDirty": false,
+        "model": {
+            "diagrams": {
+                "Diagram": {}
+            },
+            "participants": {
+                "Participant_6461659": {},
+                "Participant_Process_1": {},
+                "Participant_1": {}
+            },
+            "messageFlows": {
+                "MessageFlow_4": {},
+                "MessageFlow_6461660": {}
+            },
+            "id": "Model",
+            "classDefinition": "sap.bpm.modelling.Model"
+        },
+        "diagram": {
+            "symbols": {
+                "BPMNShape_Participant_1": {},
+                "BPMNShape_Participant_Process_1": {},
+                "BPMNShape_Participant_6461659": {},
+                "BPMNEdge_MessageFlow_4": {},
+                "BPMNEdge_MessageFlow_6461660": {}
+            },
+            "id": "Diagram",
+            "classDefinition": "sap.bpm.modelling.ui.Diagram"
+        },
+        "domainElements": {
+            "SequenceFlow_6461691": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461691",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461690": {
+                "name": "Branch 2",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461690",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461693": {
+                "name": "Branch 3",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461693",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "MessageFlow_4": {
+                "name": "ProcessDirect",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "ProcessDirect"
+                },
+                "id": "MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "SequenceFlow_6461699": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461699",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461698": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461698",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_6461639": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461639",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_6461657": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461657",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SubProcess_6461517": {
+                "events": {
+                    "StartEvent_6461518": {},
+                    "EndEvent_6461655": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_6461658": {},
+                    "SequenceFlow_6461657": {},
+                    "SequenceFlow_6461662": {}
+                },
+                "activities": {
+                    "ServiceTask_6461656": {},
+                    "CallActivity_6461661": {}
+                },
+                "gateways": {},
+                "name": "Exception Subprocess",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "subProcess",
+                    "flavor": "ErrorEventSubProcessTemplate",
+                    "displayName": "Exception Subprocess"
+                },
+                "id": "SubProcess_6461517",
+                "classDefinition": "sap.bpm.modelling.SubProcess"
+            },
+            "SequenceFlow_6461694": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461694",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461697": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461697",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "StartEvent_6461518": {
+                "eventType": "error",
+                "name": "Error Start",
+                "parentId": "SubProcess_6461517",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "errorStart",
+                    "displayName": "Error Start Event"
+                },
+                "id": "StartEvent_6461518",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "SequenceFlow_6461658": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461658",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_6461634": {
+                "name": "get value",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_6461634",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "StartEvent_2": {
+                "eventType": "message",
+                "name": "Start",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatecatch",
+                    "displayName": "Start Message"
+                },
+                "id": "StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.StartEvent"
+            },
+            "Participant_1": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "Sender",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "SENDER"
+                },
+                "id": "Participant_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "MessageFlow_6461660": {
+                "name": "ProcessDirect",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "message",
+                    "displayName": "ProcessDirect"
+                },
+                "id": "MessageFlow_6461660",
+                "classDefinition": "sap.bpm.modelling.MessageFlow"
+            },
+            "ServiceTask_6461656": {
+                "name": "Write error log",
+                "parentId": "SubProcess_6461517",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "ExternalCall",
+                    "displayName": "Request Reply"
+                },
+                "id": "ServiceTask_6461656",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_6461682": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461682",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461600": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461600",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461688": {
+                "name": "Branch 1",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461688",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461687": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461687",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461689": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461689",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "ParallelGateway_6461685": {
+                "name": "Parallel Multicast 1",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Gateway",
+                    "flavor": "parallel",
+                    "parentFlavor": "Multicast",
+                    "displayName": "Parallel Multicast"
+                },
+                "id": "ParallelGateway_6461685",
+                "classDefinition": "sap.bpm.modelling.ParallelGateway"
+            },
+            "CallActivity_6461665": {
+                "name": "get mapping",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_6461665",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461663": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461663",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "Participant_6461659": {
+                "subProcesses": {},
+                "events": {},
+                "sequenceFlows": {},
+                "activities": {},
+                "gateways": {},
+                "name": "ErrorReceiver1",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "System",
+                    "iType": "RECEIVER"
+                },
+                "id": "Participant_6461659",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "EndEvent_6461655": {
+                "eventType": "error",
+                "name": "Error End 1",
+                "parentId": "SubProcess_6461517",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "errorEnd",
+                    "displayName": "Error End Event"
+                },
+                "id": "EndEvent_6461655",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "CallActivity_6461661": {
+                "name": "Build error log",
+                "parentId": "SubProcess_6461517",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461661",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "ParallelGateway_6461695": {
+                "name": "Join",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Gateway",
+                    "flavor": "parallel",
+                    "parentFlavor": "Join",
+                    "displayName": "Join"
+                },
+                "id": "ParallelGateway_6461695",
+                "classDefinition": "sap.bpm.modelling.ParallelGateway"
+            },
+            "SequenceFlow_6461671": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461671",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461670": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461670",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "EndEvent_2": {
+                "eventType": "message",
+                "name": "End",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Event",
+                    "flavor": "intermediatethrow",
+                    "displayName": "End Message"
+                },
+                "id": "EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.EndEvent"
+            },
+            "SequenceFlow_6461673": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461673",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461674": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461674",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_6461652": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461652",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461696": {
+                "name": "Gather",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Gather",
+                    "displayName": "Gather"
+                },
+                "id": "CallActivity_6461696",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "Participant_Process_1": {
+                "process": "Process_1",
+                "subProcesses": {
+                    "SubProcess_6461517": {}
+                },
+                "events": {
+                    "StartEvent_2": {},
+                    "EndEvent_2": {}
+                },
+                "sequenceFlows": {
+                    "SequenceFlow_6461691": {},
+                    "SequenceFlow_6461690": {},
+                    "SequenceFlow_6461693": {},
+                    "SequenceFlow_6461682": {},
+                    "SequenceFlow_6461671": {},
+                    "SequenceFlow_6461670": {},
+                    "SequenceFlow_6461699": {},
+                    "SequenceFlow_6461600": {},
+                    "SequenceFlow_6461688": {},
+                    "SequenceFlow_6461698": {},
+                    "SequenceFlow_6461687": {},
+                    "SequenceFlow_6461668": {},
+                    "SequenceFlow_6461701": {},
+                    "SequenceFlow_6461689": {},
+                    "SequenceFlow_6461667": {},
+                    "SequenceFlow_6461700": {},
+                    "SequenceFlow_6461673": {},
+                    "SequenceFlow_6461694": {},
+                    "SequenceFlow_6461697": {},
+                    "SequenceFlow_6461674": {}
+                },
+                "activities": {
+                    "CallActivity_6461639": {},
+                    "CallActivity_6461665": {},
+                    "CallActivity_6461643": {},
+                    "CallActivity_6461686": {},
+                    "CallActivity_6461663": {},
+                    "CallActivity_6461652": {},
+                    "CallActivity_6461641": {},
+                    "CallActivity_6461696": {},
+                    "CallActivity_6461648": {},
+                    "CallActivity_6461646": {},
+                    "CallActivity_6461634": {},
+                    "CallActivity_6461684": {},
+                    "CallActivity_6461650": {},
+                    "CallActivity_6461692": {},
+                    "CallActivity_6461681": {}
+                },
+                "gateways": {
+                    "ParallelGateway_6461695": {},
+                    "ParallelGateway_6461685": {}
+                },
+                "name": "Integration Process",
+                "customData": {
+                    "type": "Pool",
+                    "flavor": "Process",
+                    "process": "Process_1"
+                },
+                "id": "Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.Participant"
+            },
+            "CallActivity_6461650": {
+                "name": "get value",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_6461650",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461692": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461692",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "SequenceFlow_6461668": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461668",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461701": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461701",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461700": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461700",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461667": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461667",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "SequenceFlow_6461662": {
+                "name": "",
+                "customData": {
+                    "type": "Connection",
+                    "flavor": "none"
+                },
+                "id": "SequenceFlow_6461662",
+                "classDefinition": "sap.bpm.modelling.SequenceFlow"
+            },
+            "CallActivity_6461643": {
+                "name": "get value",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_6461643",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461686": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461686",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461641": {
+                "name": "get mapping",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_6461641",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461648": {
+                "name": "get mapping",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "GroovyScript",
+                    "parentFlavor": "Script",
+                    "displayName": "Groovy Script"
+                },
+                "id": "CallActivity_6461648",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461646": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461646",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461684": {
+                "name": "Set properties",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461684",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            },
+            "CallActivity_6461681": {
+                "name": "Build response msg",
+                "parentId": "Process_1",
+                "customData": {
+                    "type": "Activity",
+                    "flavor": "Enricher",
+                    "displayName": "Content Modifier"
+                },
+                "id": "CallActivity_6461681",
+                "classDefinition": "sap.bpm.modelling.CallActivity"
+            }
+        },
+        "diagramElements": {
+            "BPMNShape_ParallelGateway_6461685": {
+                "x": 477.0,
+                "y": 120.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "ParallelGateway_6461685",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ParallelGateway_6461685",
+                "classDefinition": "sap.bpm.modelling.ui.GatewaySymbol"
+            },
+            "BPMNShape_EndEvent_6461655": {
+                "x": 687.0,
+                "y": 443.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_6461655",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_6461655",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_EndEvent_2": {
+                "x": 1646.0,
+                "y": 190.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "EndEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_EndEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.EndEventSymbol"
+            },
+            "BPMNShape_CallActivity_6461648": {
+                "x": 733.0,
+                "y": 305.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/Utilities.groovy;Function = setValueMappingToProperty",
+                "object": "CallActivity_6461648",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461648",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_StartEvent_2": {
+                "x": 235.0,
+                "y": 129.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_2",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_2",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_CallActivity_6461646": {
+                "x": 1053.0,
+                "y": 212.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461646",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461646",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461686": {
+                "x": 567.0,
+                "y": 112.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461686",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461686",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461665": {
+                "x": 733.0,
+                "y": 120.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/Utilities.groovy;Function = setValueMappingToProperty",
+                "object": "CallActivity_6461665",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461665",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461643": {
+                "x": 894.0,
+                "y": 212.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/Utilities.groovy;Function = setDynamicProperties",
+                "object": "CallActivity_6461643",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461643",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461684": {
+                "x": 567.0,
+                "y": 197.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461684",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461684",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461641": {
+                "x": 733.0,
+                "y": 212.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/Utilities.groovy;Function = setValueMappingToProperty",
+                "object": "CallActivity_6461641",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461641",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461663": {
+                "x": 319.0,
+                "y": 112.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461663",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461663",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461661": {
+                "x": 339.0,
+                "y": 424.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461661",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461661",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461681": {
+                "x": 1479.0,
+                "y": 189.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461681",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461681",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_ParallelGateway_6461695": {
+                "x": 1242.0,
+                "y": 207.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "ParallelGateway_6461695",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ParallelGateway_6461695",
+                "classDefinition": "sap.bpm.modelling.ui.GatewaySymbol"
+            },
+            "BPMNShape_StartEvent_6461518": {
+                "x": 242.0,
+                "y": 443.0,
+                "width": 0.0,
+                "height": 0.0,
+                "tooltip": "",
+                "object": "StartEvent_6461518",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_StartEvent_6461518",
+                "classDefinition": "sap.bpm.modelling.ui.StartEventSymbol"
+            },
+            "BPMNShape_Participant_1": {
+                "x": 49.0,
+                "y": 72.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_1",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_Participant_6461659": {
+                "x": 506.0,
+                "y": 597.0,
+                "width": 100.0,
+                "height": 140.0,
+                "tooltip": "",
+                "object": "Participant_6461659",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_Participant_6461659",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_6461639": {
+                "x": 1044.0,
+                "y": 129.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461639",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461639",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_ServiceTask_6461656": {
+                "x": 506.0,
+                "y": 427.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "",
+                "object": "ServiceTask_6461656",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_ServiceTask_6461656",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461634": {
+                "x": 894.0,
+                "y": 120.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/Utilities.groovy;Function = setDynamicProperties",
+                "object": "CallActivity_6461634",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461634",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461652": {
+                "x": 1053.0,
+                "y": 296.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461652",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461652",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_CallActivity_6461696": {
+                "x": 1327.0,
+                "y": 190.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Message Type = PlainText\nAggregation Algorithm = concatenate-strategy",
+                "object": "CallActivity_6461696",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461696",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_Participant_Process_1": {
+                "x": 178.0,
+                "y": 46.0,
+                "width": 1584.0,
+                "height": 500.0,
+                "tooltip": "",
+                "object": "Participant_Process_1",
+                "symbols": {
+                    "BPMNShape_ParallelGateway_6461685": {},
+                    "BPMNEdge_SequenceFlow_6461699": {},
+                    "BPMNShape_EndEvent_2": {},
+                    "BPMNShape_CallActivity_6461648": {},
+                    "BPMNShape_StartEvent_2": {},
+                    "BPMNShape_CallActivity_6461646": {},
+                    "BPMNShape_CallActivity_6461686": {},
+                    "BPMNShape_CallActivity_6461665": {},
+                    "BPMNShape_CallActivity_6461643": {},
+                    "BPMNShape_CallActivity_6461684": {},
+                    "BPMNEdge_SequenceFlow_6461687": {},
+                    "BPMNShape_CallActivity_6461663": {},
+                    "BPMNShape_CallActivity_6461641": {},
+                    "BPMNShape_CallActivity_6461681": {},
+                    "BPMNEdge_SequenceFlow_6461682": {},
+                    "BPMNShape_ParallelGateway_6461695": {},
+                    "BPMNEdge_SequenceFlow_6461689": {},
+                    "BPMNEdge_SequenceFlow_6461667": {},
+                    "BPMNEdge_SequenceFlow_6461700": {},
+                    "BPMNEdge_SequenceFlow_6461600": {},
+                    "BPMNEdge_SequenceFlow_6461688": {},
+                    "BPMNEdge_SequenceFlow_6461668": {},
+                    "BPMNEdge_SequenceFlow_6461701": {},
+                    "BPMNShape_CallActivity_6461639": {},
+                    "BPMNEdge_SequenceFlow_6461690": {},
+                    "BPMNShape_CallActivity_6461634": {},
+                    "BPMNEdge_SequenceFlow_6461674": {},
+                    "BPMNEdge_SequenceFlow_6461673": {},
+                    "BPMNEdge_SequenceFlow_6461698": {},
+                    "BPMNShape_CallActivity_6461696": {},
+                    "BPMNEdge_SequenceFlow_6461697": {},
+                    "BPMNShape_CallActivity_6461652": {},
+                    "BPMNEdge_SequenceFlow_6461670": {},
+                    "BPMNEdge_SequenceFlow_6461691": {},
+                    "BPMNShape_CallActivity_6461650": {},
+                    "BPMNShape_SubProcess_6461517": {},
+                    "BPMNEdge_SequenceFlow_6461694": {},
+                    "BPMNShape_CallActivity_6461692": {},
+                    "BPMNEdge_SequenceFlow_6461693": {},
+                    "BPMNEdge_SequenceFlow_6461671": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_Participant_Process_1",
+                "classDefinition": "sap.bpm.modelling.ui.ParticipantSymbol"
+            },
+            "BPMNShape_CallActivity_6461650": {
+                "x": 894.0,
+                "y": 305.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Script = /script/Utilities.groovy;Function = setDynamicProperties",
+                "object": "CallActivity_6461650",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461650",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            },
+            "BPMNShape_SubProcess_6461517": {
+                "x": 207.0,
+                "y": 389.0,
+                "width": 597.0,
+                "height": 137.0,
+                "tooltip": "",
+                "object": "SubProcess_6461517",
+                "symbols": {
+                    "BPMNShape_ServiceTask_6461656": {},
+                    "BPMNShape_StartEvent_6461518": {},
+                    "BPMNEdge_SequenceFlow_6461658": {},
+                    "BPMNShape_EndEvent_6461655": {},
+                    "BPMNEdge_SequenceFlow_6461657": {},
+                    "BPMNEdge_SequenceFlow_6461662": {},
+                    "BPMNShape_CallActivity_6461661": {}
+                },
+                "isDirty": false,
+                "id": "BPMNShape_SubProcess_6461517",
+                "classDefinition": "sap.bpm.modelling.ui.SubProcessSymbol"
+            },
+            "BPMNShape_CallActivity_6461692": {
+                "x": 567.0,
+                "y": 296.0,
+                "width": 100.0,
+                "height": 60.0,
+                "tooltip": "Modifies incoming message with additional information \n",
+                "object": "CallActivity_6461692",
+                "symbols": {},
+                "isDirty": false,
+                "id": "BPMNShape_CallActivity_6461692",
+                "classDefinition": "sap.bpm.modelling.ui.ActivitySymbol"
+            }
+        },
+        "connectorDiagramElements": {
+            "BPMNEdge_SequenceFlow_6461699": {
+                "object": "SequenceFlow_6461699",
+                "sourceSymbol": "BPMNShape_CallActivity_6461652",
+                "targetSymbol": "BPMNShape_ParallelGateway_6461695",
+                "tooltip": "",
+                "points": "1103.0,326.0 1197.5,326.0 1197.5,227.0 1262.0,227.0",
+                "id": "BPMNEdge_SequenceFlow_6461699",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461658": {
+                "object": "SequenceFlow_6461658",
+                "sourceSymbol": "BPMNShape_ServiceTask_6461656",
+                "targetSymbol": "BPMNShape_EndEvent_6461655",
+                "tooltip": "",
+                "points": "556.0,455.5 711.0,455.5",
+                "id": "BPMNEdge_SequenceFlow_6461658",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461657": {
+                "object": "SequenceFlow_6461657",
+                "sourceSymbol": "BPMNShape_StartEvent_6461518",
+                "targetSymbol": "BPMNShape_CallActivity_6461661",
+                "tooltip": "",
+                "points": "258.0,456.5 389.0,456.5",
+                "id": "BPMNEdge_SequenceFlow_6461657",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461662": {
+                "object": "SequenceFlow_6461662",
+                "sourceSymbol": "BPMNShape_CallActivity_6461661",
+                "targetSymbol": "BPMNShape_ServiceTask_6461656",
+                "tooltip": "",
+                "points": "389.0,455.5 556.0,455.5",
+                "id": "BPMNEdge_SequenceFlow_6461662",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461687": {
+                "object": "SequenceFlow_6461687",
+                "sourceSymbol": "BPMNShape_CallActivity_6461663",
+                "targetSymbol": "BPMNShape_ParallelGateway_6461685",
+                "tooltip": "",
+                "points": "369.0,141.0 497.0,141.0",
+                "id": "BPMNEdge_SequenceFlow_6461687",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461682": {
+                "object": "SequenceFlow_6461682",
+                "sourceSymbol": "BPMNShape_CallActivity_6461681",
+                "targetSymbol": "BPMNShape_EndEvent_2",
+                "tooltip": "",
+                "points": "1529.0,219.5 1662.0,219.5",
+                "id": "BPMNEdge_SequenceFlow_6461682",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461667": {
+                "object": "SequenceFlow_6461667",
+                "sourceSymbol": "BPMNShape_CallActivity_6461665",
+                "targetSymbol": "BPMNShape_CallActivity_6461634",
+                "tooltip": "",
+                "points": "783.0,150.0 944.0,150.0",
+                "id": "BPMNEdge_SequenceFlow_6461667",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461700": {
+                "object": "SequenceFlow_6461700",
+                "sourceSymbol": "BPMNShape_ParallelGateway_6461695",
+                "targetSymbol": "BPMNShape_CallActivity_6461696",
+                "tooltip": "",
+                "points": "1262.0,227.0 1376.0,227.0",
+                "id": "BPMNEdge_SequenceFlow_6461700",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461689": {
+                "object": "SequenceFlow_6461689",
+                "sourceSymbol": "BPMNShape_CallActivity_6461686",
+                "targetSymbol": "BPMNShape_CallActivity_6461665",
+                "tooltip": "",
+                "points": "617.0,139.5 743.0,139.5",
+                "id": "BPMNEdge_SequenceFlow_6461689",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461600": {
+                "object": "SequenceFlow_6461600",
+                "sourceSymbol": "BPMNShape_StartEvent_2",
+                "targetSymbol": "BPMNShape_CallActivity_6461663",
+                "tooltip": "",
+                "points": "251.0,143.5 369.0,143.5",
+                "id": "BPMNEdge_SequenceFlow_6461600",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461688": {
+                "object": "SequenceFlow_6461688",
+                "sourceSymbol": "BPMNShape_ParallelGateway_6461685",
+                "targetSymbol": "BPMNShape_CallActivity_6461686",
+                "tooltip": "",
+                "points": "497.0,140.0 595.0,140.0",
+                "id": "BPMNEdge_SequenceFlow_6461688",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461701": {
+                "object": "SequenceFlow_6461701",
+                "sourceSymbol": "BPMNShape_CallActivity_6461696",
+                "targetSymbol": "BPMNShape_CallActivity_6461681",
+                "tooltip": "",
+                "points": "1377.0,220.0 1536.0,220.0",
+                "id": "BPMNEdge_SequenceFlow_6461701",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461668": {
+                "object": "SequenceFlow_6461668",
+                "sourceSymbol": "BPMNShape_CallActivity_6461634",
+                "targetSymbol": "BPMNShape_CallActivity_6461639",
+                "tooltip": "",
+                "points": "959.5,151.0 1086.5,151.0",
+                "id": "BPMNEdge_SequenceFlow_6461668",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461690": {
+                "object": "SequenceFlow_6461690",
+                "sourceSymbol": "BPMNShape_ParallelGateway_6461685",
+                "targetSymbol": "BPMNShape_CallActivity_6461684",
+                "tooltip": "",
+                "points": "489.0,140.0 489.0,223.0 628.0,223.0",
+                "id": "BPMNEdge_SequenceFlow_6461690",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461674": {
+                "object": "SequenceFlow_6461674",
+                "sourceSymbol": "BPMNShape_CallActivity_6461650",
+                "targetSymbol": "BPMNShape_CallActivity_6461652",
+                "tooltip": "",
+                "points": "944.0,334.5 1103.0,334.5",
+                "id": "BPMNEdge_SequenceFlow_6461674",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461673": {
+                "object": "SequenceFlow_6461673",
+                "sourceSymbol": "BPMNShape_CallActivity_6461648",
+                "targetSymbol": "BPMNShape_CallActivity_6461650",
+                "tooltip": "",
+                "points": "783.0,333.5 935.0,333.5",
+                "id": "BPMNEdge_SequenceFlow_6461673",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461698": {
+                "object": "SequenceFlow_6461698",
+                "sourceSymbol": "BPMNShape_CallActivity_6461646",
+                "targetSymbol": "BPMNShape_ParallelGateway_6461695",
+                "tooltip": "",
+                "points": "1103.0,242.0 1197.5,242.0 1197.5,227.0 1262.0,227.0",
+                "id": "BPMNEdge_SequenceFlow_6461698",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461697": {
+                "object": "SequenceFlow_6461697",
+                "sourceSymbol": "BPMNShape_CallActivity_6461639",
+                "targetSymbol": "BPMNShape_ParallelGateway_6461695",
+                "tooltip": "",
+                "points": "1094.0,159.0 1193.0,159.0 1193.0,227.0 1262.0,227.0",
+                "id": "BPMNEdge_SequenceFlow_6461697",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461670": {
+                "object": "SequenceFlow_6461670",
+                "sourceSymbol": "BPMNShape_CallActivity_6461641",
+                "targetSymbol": "BPMNShape_CallActivity_6461643",
+                "tooltip": "",
+                "points": "780.0,242.0 941.0,242.0",
+                "id": "BPMNEdge_SequenceFlow_6461670",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461691": {
+                "object": "SequenceFlow_6461691",
+                "sourceSymbol": "BPMNShape_CallActivity_6461684",
+                "targetSymbol": "BPMNShape_CallActivity_6461641",
+                "tooltip": "",
+                "points": "617.0,227.0 775.0,227.0",
+                "id": "BPMNEdge_SequenceFlow_6461691",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461694": {
+                "object": "SequenceFlow_6461694",
+                "sourceSymbol": "BPMNShape_CallActivity_6461692",
+                "targetSymbol": "BPMNShape_CallActivity_6461648",
+                "tooltip": "",
+                "points": "617.0,324.5 765.0,324.5",
+                "id": "BPMNEdge_SequenceFlow_6461694",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461693": {
+                "object": "SequenceFlow_6461693",
+                "sourceSymbol": "BPMNShape_ParallelGateway_6461685",
+                "targetSymbol": "BPMNShape_CallActivity_6461692",
+                "tooltip": "",
+                "points": "495.5,140.0 495.5,324.0 590.0,324.0",
+                "id": "BPMNEdge_SequenceFlow_6461693",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_SequenceFlow_6461671": {
+                "object": "SequenceFlow_6461671",
+                "sourceSymbol": "BPMNShape_CallActivity_6461643",
+                "targetSymbol": "BPMNShape_CallActivity_6461646",
+                "tooltip": "",
+                "points": "956.5,240.0 1110.0,240.0",
+                "id": "BPMNEdge_SequenceFlow_6461671",
+                "classDefinition": "sap.bpm.modelling.ui.SequenceFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_4": {
+                "object": "MessageFlow_4",
+                "sourceSymbol": "BPMNShape_Participant_1",
+                "targetSymbol": "BPMNShape_StartEvent_2",
+                "tooltip": "Name = ProcessDirect\nAdapter Type = ProcessDirect\nTransport Protocol =Not Applicable\nMessage Protocol = Not Applicable\n",
+                "id": "BPMNEdge_MessageFlow_4",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            },
+            "BPMNEdge_MessageFlow_6461660": {
+                "object": "MessageFlow_6461660",
+                "sourceSymbol": "BPMNShape_ServiceTask_6461656",
+                "targetSymbol": "BPMNShape_Participant_6461659",
+                "tooltip": "Name = ProcessDirect\nAdapter Type = ProcessDirect\nTransport Protocol =Not Applicable\nMessage Protocol = Not Applicable\n",
+                "id": "BPMNEdge_MessageFlow_6461660",
+                "classDefinition": "sap.bpm.modelling.ui.MessageFlowSymbol"
+            }
+        },
+        "deletedShapes": [],
+        "deletedConnectors": []
+    }
+}
